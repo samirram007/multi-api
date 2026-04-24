@@ -1,0 +1,25 @@
+###
+curl -X POST  https://school-os-api.local/api/auth/login
+-H "Content-Type: application/json"
+-d '{"email":"admin@admin.com","password":"password"}'
+
+###
+curl -X POST  https://school-os-api.local/api/clear
+-H "Content-Type: application/json"
+
+###
+curl -X POST  https://school-os-api.local/api/reload
+-H "Content-Type: application/json"
+
+###
+curl
+-X GET
+-H "Content-Type: application/json"
+https://school-os-api.local/api/auth/profile
+
+
+###
+curl
+-X GET
+-H "Content-Type: application/json"
+https://school-os-api.local/api/stock_items

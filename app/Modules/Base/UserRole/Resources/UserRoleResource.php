@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Modules\Base\UserRole\Resources;
+
+use App\Modules\Base\Role\Resources\RoleResource;
+use App\Modules\Base\User\Resources\UserResource;
+use Illuminate\Http\Request;
+
+use App\Http\Resources\SuccessResource;
+class UserRoleResource extends SuccessResource
+{
+    public function toArray(Request $request): array
+    {
+        return [
+            'id' => $this->id,
+            'userId' => $this->user_id,
+            'roleId' => $this->role_id,
+            'user' => UserResource::make($this->whenLoaded('user')),
+            'role' => RoleResource::make($this->whenLoaded('role')),
+        ];
+    }
+}
