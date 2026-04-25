@@ -18,15 +18,14 @@ use Laravel\Socialite\Facades\Socialite;
 class AuthController extends Controller
 {
 
-    protected $domain;
-    protected $token_expire_duration;
+    private string $domain;
+    private int $token_expire_duration;
     public function __construct(
         protected AuthServiceInterface $authService,
         protected UserServiceInterface $userService
     ) {
-        $this->domain = strtolower(config('session.domain'));
-        // $this->token_expire_duration = env('TOKEN_EXPIRE_DURATION', 30000);
-        $this->token_expire_duration = config('session.lifetime') * 60;
+        $this->domain = strtolower(config('session.domain', 'localhost'));
+        $this->token_expire_duration = config('session.lifetime', 120) * 60;
     }
     public function login(LoginRequest $request): JsonResponse
     {
@@ -52,42 +51,18 @@ class AuthController extends Controller
         return $this->respondWithToken($token, 'User created successfully');
     }
 
-    /**
-     * @OA\Post(
-     *     path="/api/auth/logout",
-     *     tags={"Auth"},
-     *     summary="Logout user",
-     *     security={{"bearerAuth":{}}},
-     *     @OA\Response(
-     *         response=200,
-     *         description="User logged out successfully",
-     *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="User logged out successfully"),
-     *         )
-     *     ),
-     *     @OA\Response(
-     *         response=401,
-     *         description="Unauthorized",
-     *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="Unauthorized"),
-     *         )
-     *     ),
-     * )
-     */
+
 
     public function logout(): JsonResponse
     {
-
         $this->authService->logout();
-        $cookie = cookie('token', '', -1, '/', $this->domain, true, true);
+        $cookie = cookie('token', '', time() - 3600, '/', $this->domain, true, true, 'None');
 
         return response()->json(['message' => 'Logged out'])->withCookie($cookie);
     }
-    public function clean_logout(): JsonResponse
+    public function cleanLogout(): JsonResponse
     {
-
-        // $this->authService->logout();
-        $cookie = cookie('token', '', -1, '/', $this->domain, true, true);
+        $cookie = cookie('token', '', time() - 3600, '/', $this->domain, true, true, 'None');
 
         return response()->json(['message' => 'Logged out'])->withCookie($cookie);
     }
@@ -135,7 +110,6 @@ class AuthController extends Controller
 
     protected function respondWithToken(string $token, string $message = 'Authenticated successfully!')
     {
-
         $cookie = cookie(
             'token',
             $token,
@@ -147,12 +121,13 @@ class AuthController extends Controller
             true,
             'None'
         );
-        Log::info(' cookie', ['cookie' => $cookie]);
+        Log::info('Auth token issued', ['token' => $token]);
 
         return response()->json([
-            // 'token' => $token,
             'status' => 'success',
             'message' => $message,
+            'tokenDuration' => $this->token_expire_duration,
+            'expireOn' => now()->addMinutes($this->token_expire_duration)->toIso8601String(),
         ])->withCookie($cookie);
     }
 }
