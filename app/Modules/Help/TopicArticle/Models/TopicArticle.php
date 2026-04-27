@@ -1,10 +1,10 @@
 <?php
-namespace App\Modules\TopicArticle\Models;
+namespace Modules\Help\TopicArticle\Models;
 
-use App\Modules\RelatedArticle\Models\RelatedArticle;
-use App\Modules\TopicCategory\Models\TopicCategory;
-use App\Modules\TopicSection\Models\TopicSection;
-use App\Modules\User\Models\User;
+use Modules\Help\RelatedArticle\Models\RelatedArticle;
+use Modules\Help\TopicCategory\Models\TopicCategory;
+use Modules\Help\TopicSection\Models\TopicSection;
+use Modules\User\Models\User;
 use App\Traits\Blameable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

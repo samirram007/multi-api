@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\FeeItemMonth\Services;
+namespace Modules\School\FeeItemMonth\Services;
 
-use App\Modules\School\FeeItemMonth\Contracts\FeeItemMonthServiceInterface;
-use App\Modules\School\FeeItemMonth\Models\FeeItemMonth;
+use Modules\School\FeeItemMonth\Contracts\FeeItemMonthServiceInterface;
+use Modules\School\FeeItemMonth\Models\FeeItemMonth;
 use Illuminate\Database\Eloquent\Collection;
 
 class FeeItemMonthService implements FeeItemMonthServiceInterface

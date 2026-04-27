@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\Resturant\Booking\Controllers\Api;
+namespace Modules\Resturant\Booking\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\Resturant\Booking\Resources\BookingResource;
-use App\Modules\Resturant\Booking\Resources\BookingCollection;
-use App\Modules\Resturant\Booking\Requests\BookingRequest;
-use App\Modules\Resturant\Booking\Facades\BookingFacade as Booking;
+use Modules\Resturant\Booking\Resources\BookingResource;
+use Modules\Resturant\Booking\Resources\BookingCollection;
+use Modules\Resturant\Booking\Requests\BookingRequest;
+use Modules\Resturant\Booking\Facades\BookingFacade as Booking;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

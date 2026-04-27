@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\School\AcademicStandard\Controllers\Api;
+namespace Modules\School\AcademicStandard\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\School\AcademicStandard\Resources\AcademicStandardResource;
-use App\Modules\School\AcademicStandard\Resources\AcademicStandardCollection;
-use App\Modules\School\AcademicStandard\Requests\AcademicStandardRequest;
-use App\Modules\School\AcademicStandard\Facades\AcademicStandardFacade as AcademicStandard;
+use Modules\School\AcademicStandard\Resources\AcademicStandardResource;
+use Modules\School\AcademicStandard\Resources\AcademicStandardCollection;
+use Modules\School\AcademicStandard\Requests\AcademicStandardRequest;
+use Modules\School\AcademicStandard\Facades\AcademicStandardFacade as AcademicStandard;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

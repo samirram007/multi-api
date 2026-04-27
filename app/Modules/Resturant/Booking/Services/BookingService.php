@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Resturant\Booking\Services;
+namespace Modules\Resturant\Booking\Services;
 
-use App\Modules\Resturant\Booking\Contracts\BookingServiceInterface;
-use App\Modules\Resturant\Booking\Models\Booking;
+use Modules\Resturant\Booking\Contracts\BookingServiceInterface;
+use Modules\Resturant\Booking\Models\Booking;
 use Illuminate\Database\Eloquent\Collection;
 
 class BookingService implements BookingServiceInterface

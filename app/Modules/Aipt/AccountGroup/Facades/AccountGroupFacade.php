@@ -1,5 +1,5 @@
 <?php
-namespace App\Modules\Aipt\AccountGroup\Facades;
+namespace Modules\Aipt\AccountGroup\Facades;
 
 use Illuminate\Support\Facades\Facade;
 class AccountGroupFacade extends Facade

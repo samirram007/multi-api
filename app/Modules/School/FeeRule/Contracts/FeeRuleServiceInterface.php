@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\FeeRule\Contracts;
+namespace Modules\School\FeeRule\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\School\FeeRule\Models\FeeRule;
+use Modules\School\FeeRule\Models\FeeRule;
 
 interface FeeRuleServiceInterface
 {

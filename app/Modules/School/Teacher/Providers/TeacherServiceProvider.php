@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\School\Teacher\Providers;
+namespace Modules\School\Teacher\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\School\Teacher\Contracts\TeacherServiceInterface;
-use App\Modules\School\Teacher\Services\TeacherService;
+use Modules\School\Teacher\Contracts\TeacherServiceInterface;
+use Modules\School\Teacher\Services\TeacherService;
 
 class TeacherServiceProvider extends ServiceProvider
 {

@@ -1,6 +1,6 @@
 <?php
 
-use App\Modules\Help\HelpCenter\Controllers\Api\HelpCenterController;
+use Modules\Help\HelpCenter\Controllers\Api\HelpCenterController;
 use Illuminate\Support\Facades\Route;
 
 Route::apiResource('help_centers', HelpCenterController::class);

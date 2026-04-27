@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Support\TicketPriority\Services;
+namespace Modules\Support\TicketPriority\Services;
 
-use App\Modules\Support\TicketPriority\Contracts\TicketPriorityServiceInterface;
-use App\Modules\Support\TicketPriority\Models\TicketPriority;
+use Modules\Support\TicketPriority\Contracts\TicketPriorityServiceInterface;
+use Modules\Support\TicketPriority\Models\TicketPriority;
 use Illuminate\Database\Eloquent\Collection;
 
 class TicketPriorityService implements TicketPriorityServiceInterface

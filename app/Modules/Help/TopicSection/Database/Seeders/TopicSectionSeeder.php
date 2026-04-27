@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\TopicSection\Database\Seeders;
+namespace Modules\Help\TopicSection\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\TopicSection\Models\TopicSection;
+use Modules\Help\TopicSection\Models\TopicSection;
 
 class TopicSectionSeeder extends Seeder
 {

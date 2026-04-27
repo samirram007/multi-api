@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Support\TicketType\Resources;
+namespace Modules\Support\TicketType\Resources;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\SuccessCollection;

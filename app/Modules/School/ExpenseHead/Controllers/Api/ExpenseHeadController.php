@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\School\ExpenseHead\Controllers\Api;
+namespace Modules\School\ExpenseHead\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\School\ExpenseHead\Resources\ExpenseHeadResource;
-use App\Modules\School\ExpenseHead\Resources\ExpenseHeadCollection;
-use App\Modules\School\ExpenseHead\Requests\ExpenseHeadRequest;
-use App\Modules\School\ExpenseHead\Facades\ExpenseHeadFacade as ExpenseHead;
+use Modules\School\ExpenseHead\Resources\ExpenseHeadResource;
+use Modules\School\ExpenseHead\Resources\ExpenseHeadCollection;
+use Modules\School\ExpenseHead\Requests\ExpenseHeadRequest;
+use Modules\School\ExpenseHead\Facades\ExpenseHeadFacade as ExpenseHead;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\Guardian\Database\Seeders;
+namespace Modules\School\Guardian\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\School\Guardian\Models\Guardian;
+use Modules\School\Guardian\Models\Guardian;
 
 class GuardianSeeder extends Seeder
 {

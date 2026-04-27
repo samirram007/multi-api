@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Help\HelpCenter\Resources;
+namespace Modules\Help\HelpCenter\Resources;
 
 use Illuminate\Http\Request;
 

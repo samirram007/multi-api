@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\Teacher\Services;
+namespace Modules\School\Teacher\Services;
 
-use App\Modules\School\Teacher\Contracts\TeacherServiceInterface;
-use App\Modules\School\Teacher\Models\Teacher;
+use Modules\School\Teacher\Contracts\TeacherServiceInterface;
+use Modules\School\Teacher\Models\Teacher;
 use Illuminate\Database\Eloquent\Collection;
 
 class TeacherService implements TeacherServiceInterface

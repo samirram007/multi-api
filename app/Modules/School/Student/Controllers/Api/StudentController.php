@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Modules\School\Student\Controllers\Api;
+namespace Modules\School\Student\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Modules\School\Student\Contracts\StudentServiceInterface;
-use App\Modules\School\Student\Resources\StudentResource;
-use App\Modules\School\Student\Resources\StudentCollection;
-use App\Modules\School\Student\Requests\StudentRequest;
+use Modules\School\Student\Contracts\StudentServiceInterface;
+use Modules\School\Student\Resources\StudentResource;
+use Modules\School\Student\Resources\StudentCollection;
+use Modules\School\Student\Requests\StudentRequest;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

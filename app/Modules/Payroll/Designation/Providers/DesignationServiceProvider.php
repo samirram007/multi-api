@@ -1,10 +1,10 @@
 <?php
-namespace App\Modules\Payroll\Designation\Providers;
+namespace Modules\Payroll\Designation\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\Payroll\Designation\Contracts\DesignationServiceInterface;
-use App\Modules\Payroll\Designation\Services\DesignationService;
+use Modules\Payroll\Designation\Contracts\DesignationServiceInterface;
+use Modules\Payroll\Designation\Services\DesignationService;
 
 class DesignationServiceProvider extends ServiceProvider
 {

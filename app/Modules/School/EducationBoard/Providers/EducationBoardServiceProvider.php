@@ -1,10 +1,10 @@
 <?php
-namespace App\Modules\School\EducationBoard\Providers;
+namespace Modules\School\EducationBoard\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\School\EducationBoard\Contracts\EducationBoardServiceInterface;
-use App\Modules\School\EducationBoard\Services\EducationBoardService;
+use Modules\School\EducationBoard\Contracts\EducationBoardServiceInterface;
+use Modules\School\EducationBoard\Services\EducationBoardService;
 
 class EducationBoardServiceProvider extends ServiceProvider
 {

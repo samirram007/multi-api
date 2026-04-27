@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Modules\Base\Company\Resources;
+namespace Modules\Base\Company\Resources;
 
 use App\Http\Resources\SuccessResource;
-use App\Modules\Base\CompanyType\Resources\CompanyTypeResource;
+use Modules\Base\CompanyType\Resources\CompanyTypeResource;
 
-use App\Modules\Base\Currency\Resources\CurrencyResource;
-use App\Modules\Base\FiscalYear\Resources\FiscalYearCollection;
+use Modules\Base\Currency\Resources\CurrencyResource;
+use Modules\Base\FiscalYear\Resources\FiscalYearCollection;
 
-use App\Modules\Base\Address\Resources\AddressResource;
+use Modules\Base\Address\Resources\AddressResource;
 
 use Illuminate\Http\Request;
 

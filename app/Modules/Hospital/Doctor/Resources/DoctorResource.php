@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Hospital\Doctor\Resources;
+namespace Modules\Hospital\Doctor\Resources;
 
 use Illuminate\Http\Request;
 

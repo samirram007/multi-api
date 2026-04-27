@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Base\AppModuleFeature\Contracts;
+namespace Modules\Base\AppModuleFeature\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\Base\AppModuleFeature\Models\AppModuleFeature;
+use Modules\Base\AppModuleFeature\Models\AppModuleFeature;
 
 interface AppModuleFeatureServiceInterface
 {

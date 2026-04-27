@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\Support\TicketMaster\Providers;
+namespace Modules\Support\TicketMaster\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\Support\TicketMaster\Contracts\TicketMasterServiceInterface;
-use App\Modules\Support\TicketMaster\Services\TicketMasterService;
+use Modules\Support\TicketMaster\Contracts\TicketMasterServiceInterface;
+use Modules\Support\TicketMaster\Services\TicketMasterService;
 
 class TicketMasterServiceProvider extends ServiceProvider
 {

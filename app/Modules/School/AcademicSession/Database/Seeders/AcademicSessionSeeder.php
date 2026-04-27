@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Modules\School\AcademicSession\Database\Seeders;
+namespace Modules\School\AcademicSession\Database\Seeders;
 
-use App\Modules\School\AcademicSession\Models\AcademicSession;
+use Modules\School\AcademicSession\Models\AcademicSession;
 use Illuminate\Database\Seeder;
 
 

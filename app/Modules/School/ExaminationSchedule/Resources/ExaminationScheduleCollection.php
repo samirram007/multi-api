@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\School\ExaminationSchedule\Resources;
+namespace Modules\School\ExaminationSchedule\Resources;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\SuccessCollection;

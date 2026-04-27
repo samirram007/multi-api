@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Support\TicketType\Database\Seeders;
+namespace Modules\Support\TicketType\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\Support\TicketType\Models\TicketType;
+use Modules\Support\TicketType\Models\TicketType;
 
 class TicketTypeSeeder extends Seeder
 {

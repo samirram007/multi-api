@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Resturant\Order\Contracts;
+namespace Modules\Resturant\Order\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\Resturant\Order\Models\Order;
+use Modules\Resturant\Order\Models\Order;
 
 interface OrderServiceInterface
 {

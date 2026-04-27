@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\Admission\Services;
+namespace Modules\School\Admission\Services;
 
-use App\Modules\School\Admission\Contracts\AdmissionServiceInterface;
-use App\Modules\School\Admission\Models\Admission;
+use Modules\School\Admission\Contracts\AdmissionServiceInterface;
+use Modules\School\Admission\Models\Admission;
 use Illuminate\Database\Eloquent\Collection;
 
 class AdmissionService implements AdmissionServiceInterface

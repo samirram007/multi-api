@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\School\ExaminationResult\Tests\Feature;
+namespace Modules\School\ExaminationResult\Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Modules\School\ExaminationResult\Models\ExaminationResult;
+use Modules\School\ExaminationResult\Models\ExaminationResult;
 
 class ExaminationResultTest extends TestCase
 {

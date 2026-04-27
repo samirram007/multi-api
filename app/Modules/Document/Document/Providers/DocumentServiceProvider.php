@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\Document\Document\Providers;
+namespace Modules\Document\Document\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\Document\Document\Contracts\DocumentServiceInterface;
-use App\Modules\Document\Document\Services\DocumentService;
+use Modules\Document\Document\Contracts\DocumentServiceInterface;
+use Modules\Document\Document\Services\DocumentService;
 
 class DocumentServiceProvider extends ServiceProvider
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Pathology\Doctor\Contracts;
+namespace Modules\Pathology\Doctor\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\Pathology\Doctor\Models\Doctor;
+use Modules\Pathology\Doctor\Models\Doctor;
 
 interface DoctorServiceInterface
 {

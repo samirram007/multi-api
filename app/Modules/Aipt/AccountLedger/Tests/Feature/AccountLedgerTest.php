@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Aipt\AccountLedger\Tests\Feature;
+namespace Modules\Aipt\AccountLedger\Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Modules\Aipt\AccountLedger\Models\AccountLedger;
+use Modules\Aipt\AccountLedger\Models\AccountLedger;
 
 class AccountLedgerTest extends TestCase
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Aipt\AccountLedger\Contracts;
+namespace Modules\Aipt\AccountLedger\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\Aipt\AccountLedger\Models\AccountLedger;
+use Modules\Aipt\AccountLedger\Models\AccountLedger;
 
 interface AccountLedgerServiceInterface
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\EducationBoard\Database\Seeders;
+namespace Modules\School\EducationBoard\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\School\EducationBoard\Models\EducationBoard;
+use Modules\School\EducationBoard\Models\EducationBoard;
 
 class EducationBoardSeeder extends Seeder
 {

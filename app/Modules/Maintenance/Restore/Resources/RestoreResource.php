@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Maintenance\Restore\Resources;
+namespace Modules\Maintenance\Restore\Resources;
 
 use Illuminate\Http\Request;
 

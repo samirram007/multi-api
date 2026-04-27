@@ -1,10 +1,10 @@
 <?php
-namespace App\Modules\School\Building\Providers;
+namespace Modules\School\Building\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\School\Building\Contracts\BuildingServiceInterface;
-use App\Modules\School\Building\Services\BuildingService;
+use Modules\School\Building\Contracts\BuildingServiceInterface;
+use Modules\School\Building\Services\BuildingService;
 
 class BuildingServiceProvider extends ServiceProvider
 {

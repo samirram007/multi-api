@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\School\Teacher\Controllers\Api;
+namespace Modules\School\Teacher\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\School\Teacher\Resources\TeacherResource;
-use App\Modules\School\Teacher\Resources\TeacherCollection;
-use App\Modules\School\Teacher\Requests\TeacherRequest;
-use App\Modules\School\Teacher\Facades\TeacherFacade as Teacher;
+use Modules\School\Teacher\Resources\TeacherResource;
+use Modules\School\Teacher\Resources\TeacherCollection;
+use Modules\School\Teacher\Requests\TeacherRequest;
+use Modules\School\Teacher\Facades\TeacherFacade as Teacher;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

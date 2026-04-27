@@ -1,10 +1,10 @@
 <?php
-namespace App\Modules\Maintenance\Restore\Providers;
+namespace Modules\Maintenance\Restore\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\Maintenance\Restore\Contracts\RestoreServiceInterface;
-use App\Modules\Maintenance\Restore\Services\RestoreService;
+use Modules\Maintenance\Restore\Contracts\RestoreServiceInterface;
+use Modules\Maintenance\Restore\Services\RestoreService;
 
 class RestoreServiceProvider extends ServiceProvider
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\Admission\Contracts;
+namespace Modules\School\Admission\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\School\Admission\Models\Admission;
+use Modules\School\Admission\Models\Admission;
 
 interface AdmissionServiceInterface
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Support\TicketStatus\Tests\Feature;
+namespace Modules\Support\TicketStatus\Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Modules\Support\TicketStatus\Models\TicketStatus;
+use Modules\Support\TicketStatus\Models\TicketStatus;
 
 class TicketStatusTest extends TestCase
 {

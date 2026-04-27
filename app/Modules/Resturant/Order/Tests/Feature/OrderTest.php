@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Resturant\Order\Tests\Feature;
+namespace Modules\Resturant\Order\Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Modules\Resturant\Order\Models\Order;
+use Modules\Resturant\Order\Models\Order;
 
 class OrderTest extends TestCase
 {

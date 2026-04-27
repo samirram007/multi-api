@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\Maintenance\Backup\Controllers\Api;
+namespace Modules\Maintenance\Backup\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\Maintenance\Backup\Resources\BackupResource;
-use App\Modules\Maintenance\Backup\Resources\BackupCollection;
-use App\Modules\Maintenance\Backup\Requests\BackupRequest;
-use App\Modules\Maintenance\Backup\Facades\BackupFacade as Backup;
+use Modules\Maintenance\Backup\Resources\BackupResource;
+use Modules\Maintenance\Backup\Resources\BackupCollection;
+use Modules\Maintenance\Backup\Requests\BackupRequest;
+use Modules\Maintenance\Backup\Facades\BackupFacade as Backup;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

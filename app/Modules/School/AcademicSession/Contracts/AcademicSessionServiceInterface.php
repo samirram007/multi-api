@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\AcademicSession\Contracts;
+namespace Modules\School\AcademicSession\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\School\AcademicSession\Models\AcademicSession;
+use Modules\School\AcademicSession\Models\AcademicSession;
 
 interface AcademicSessionServiceInterface
 {

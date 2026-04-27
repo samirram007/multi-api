@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Base\Auth\Services;
+namespace Modules\Base\Auth\Services;
 
-use App\Modules\Base\Auth\Contracts\AuthServiceInterface;
+use Modules\Base\Auth\Contracts\AuthServiceInterface;
 
-use App\Modules\Base\User\Models\User;
+use Modules\Base\User\Models\User;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;

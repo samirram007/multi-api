@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Base\User\Services;
+namespace Modules\Base\User\Services;
 
-use App\Modules\Base\User\Contracts\UserServiceInterface;
-use App\Modules\Base\User\Models\User;
+use Modules\Base\User\Contracts\UserServiceInterface;
+use Modules\Base\User\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Str;
 

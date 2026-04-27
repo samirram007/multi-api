@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Support\TicketMessage\Tests\Feature;
+namespace Modules\Support\TicketMessage\Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Modules\Support\TicketMessage\Models\TicketMessage;
+use Modules\Support\TicketMessage\Models\TicketMessage;
 
 class TicketMessageTest extends TestCase
 {

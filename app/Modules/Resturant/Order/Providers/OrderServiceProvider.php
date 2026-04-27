@@ -1,10 +1,10 @@
 <?php
-namespace App\Modules\Resturant\Order\Providers;
+namespace Modules\Resturant\Order\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\Resturant\Order\Contracts\OrderServiceInterface;
-use App\Modules\Resturant\Order\Services\OrderService;
+use Modules\Resturant\Order\Contracts\OrderServiceInterface;
+use Modules\Resturant\Order\Services\OrderService;
 
 class OrderServiceProvider extends ServiceProvider
 {

@@ -1,5 +1,5 @@
 <?php
-namespace App\Modules\Help\HelpCenter\Models;
+namespace Modules\Help\HelpCenter\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 
+use App\Support\ModuleConnectionResolver;
 use Illuminate\Database\Eloquent\Model;
 
 abstract class BaseModel extends Model
@@ -17,5 +18,15 @@ abstract class BaseModel extends Model
         if (property_exists(static::class, 'baseCasts')) {
             $this->casts = array_merge($this->casts, static::$baseCasts);
         }
+    }
+
+    public function getConnectionName()
+    {
+        // Explicit connection on the model still wins
+        if (property_exists($this, 'connection') && $this->connection) {
+            return $this->connection;
+        }
+
+        return ModuleConnectionResolver::resolve(static::class);
     }
 }

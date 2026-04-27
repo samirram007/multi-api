@@ -1,5 +1,5 @@
 <?php
-namespace App\Modules\TopicCategory\Models;
+namespace Modules\Help\TopicCategory\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -27,15 +27,15 @@ class TopicCategory extends Model
     public function topic_sections(): HasMany
     {
         return $this->hasMany(
-            \App\Modules\TopicSection\Models\TopicSection::class,
+            \App\Modules\Help\TopicSection\Models\TopicSection::class,
             'topic_category_id'
         );
     }
     public function topic_articles(): HasManyThrough
     {
         return $this->hasManyThrough(
-            \App\Modules\TopicArticle\Models\TopicArticle::class,
-            \App\Modules\TopicSection\Models\TopicSection::class,
+            \App\Modules\Help\TopicArticle\Models\TopicArticle::class,
+            \App\Modules\Help\TopicSection\Models\TopicSection::class,
             'topic_category_id',        // Foreign key on TopicSection table
             'topic_article_section_id', // Foreign key on TopicArticle table
             'id',                       // Local key on TopicCategory table

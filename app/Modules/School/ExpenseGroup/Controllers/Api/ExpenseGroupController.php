@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\School\ExpenseGroup\Controllers\Api;
+namespace Modules\School\ExpenseGroup\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\School\ExpenseGroup\Resources\ExpenseGroupResource;
-use App\Modules\School\ExpenseGroup\Resources\ExpenseGroupCollection;
-use App\Modules\School\ExpenseGroup\Requests\ExpenseGroupRequest;
-use App\Modules\School\ExpenseGroup\Facades\ExpenseGroupFacade as ExpenseGroup;
+use Modules\School\ExpenseGroup\Resources\ExpenseGroupResource;
+use Modules\School\ExpenseGroup\Resources\ExpenseGroupCollection;
+use Modules\School\ExpenseGroup\Requests\ExpenseGroupRequest;
+use Modules\School\ExpenseGroup\Facades\ExpenseGroupFacade as ExpenseGroup;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

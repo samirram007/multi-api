@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Resturant\Booking\Resources;
+namespace Modules\Resturant\Booking\Resources;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\SuccessCollection;

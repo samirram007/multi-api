@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Aipt\AccountGroup\Database\Seeders;
+namespace Modules\Aipt\AccountGroup\Database\Seeders;
 
-use App\Modules\Aipt\AccountNature\Models\AccountNature;
+use Modules\Aipt\AccountNature\Models\AccountNature;
 use Illuminate\Database\Seeder;
-use App\Modules\Aipt\AccountGroup\Models\AccountGroup;
+use Modules\Aipt\AccountGroup\Models\AccountGroup;
 use Illuminate\Support\Facades\DB;
 
 class AccountGroupSeeder extends Seeder

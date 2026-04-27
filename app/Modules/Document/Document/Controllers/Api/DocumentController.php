@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Modules\Document\Document\Controllers\Api;
+namespace Modules\Document\Document\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\SuccessCollection;
 use App\Http\Resources\SuccessResource;
-use App\Modules\Document\Document\Facades\DocumentFacade;
-use App\Modules\Document\Document\Requests\CreateFolderRequest;
-use App\Modules\Document\Document\Requests\DocumentRequest;
-use App\Modules\Document\Document\Resources\DocumentCollection;
-use App\Modules\Document\Document\Resources\DocumentResource;
+use Modules\Document\Document\Facades\DocumentFacade;
+use Modules\Document\Document\Requests\CreateFolderRequest;
+use Modules\Document\Document\Requests\DocumentRequest;
+use Modules\Document\Document\Resources\DocumentCollection;
+use Modules\Document\Document\Resources\DocumentResource;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

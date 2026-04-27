@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Base\Currency\Tests\Feature;
+namespace Modules\Base\Currency\Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Modules\Base\Currency\Models\Currency;
+use Modules\Base\Currency\Models\Currency;
 
 class CurrencyTest extends TestCase
 {

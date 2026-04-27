@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Modules\Base\Address\Controllers\Api;
+namespace Modules\Base\Address\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Base\Address\Contracts\AddressServiceInterface;
-use App\Modules\Base\Address\Resources\AddressResource;
-use App\Modules\Base\Address\Resources\AddressCollection;
-use App\Modules\Base\Address\Requests\AddressRequest;
+use Modules\Base\Address\Contracts\AddressServiceInterface;
+use Modules\Base\Address\Resources\AddressResource;
+use Modules\Base\Address\Resources\AddressCollection;
+use Modules\Base\Address\Requests\AddressRequest;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

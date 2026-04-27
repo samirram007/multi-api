@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Resturant\Booking\Database\Seeders;
+namespace Modules\Resturant\Booking\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\Resturant\Booking\Models\Booking;
+use Modules\Resturant\Booking\Models\Booking;
 
 class BookingSeeder extends Seeder
 {

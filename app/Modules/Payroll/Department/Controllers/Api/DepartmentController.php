@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\Payroll\Department\Controllers\Api;
+namespace Modules\Payroll\Department\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\Payroll\Department\Resources\DepartmentResource;
-use App\Modules\Payroll\Department\Resources\DepartmentCollection;
-use App\Modules\Payroll\Department\Requests\DepartmentRequest;
-use App\Modules\Payroll\Department\Facades\DepartmentFacade as Department;
+use Modules\Payroll\Department\Resources\DepartmentResource;
+use Modules\Payroll\Department\Resources\DepartmentCollection;
+use Modules\Payroll\Department\Requests\DepartmentRequest;
+use Modules\Payroll\Department\Facades\DepartmentFacade as Department;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

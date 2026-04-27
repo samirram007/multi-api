@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Hotel\Booking\Contracts;
+namespace Modules\Hotel\Booking\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\Hotel\Booking\Models\Booking;
+use Modules\Hotel\Booking\Models\Booking;
 
 interface BookingServiceInterface
 {

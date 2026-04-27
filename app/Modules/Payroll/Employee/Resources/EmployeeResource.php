@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Payroll\Employee\Resources;
+namespace Modules\Payroll\Employee\Resources;
 
 use Illuminate\Http\Request;
 

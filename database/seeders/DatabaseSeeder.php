@@ -3,17 +3,17 @@
 namespace Database\Seeders;
 
 
-use App\Modules\Base\Country\Database\Seeders\CountrySeeder;
-use App\Modules\Base\Currency\Database\Seeders\CurrencySeeder;
-use App\Modules\Base\Role\Database\Seeders\RoleSeeder;
-use App\Modules\Base\State\Database\Seeders\StateSeeder;
-use App\Modules\School\AcademicSession\Database\Seeders\AcademicSessionSeeder;
+use Modules\Base\Country\Database\Seeders\CountrySeeder;
+use Modules\Base\Currency\Database\Seeders\CurrencySeeder;
+use Modules\Base\Role\Database\Seeders\RoleSeeder;
+use Modules\Base\State\Database\Seeders\StateSeeder;
+use Modules\School\AcademicSession\Database\Seeders\AcademicSessionSeeder;
 
-use App\Modules\School\AcademicStandard\Database\Seeders\AcademicStandardSeeder;
+use Modules\School\AcademicStandard\Database\Seeders\AcademicStandardSeeder;
 
-use App\Modules\School\Student\Database\Seeders\StudentSeeder;
+use Modules\School\Student\Database\Seeders\StudentSeeder;
 
-use App\Modules\School\Teacher\Database\Seeders\TeacherSeeder;
+use Modules\School\Teacher\Database\Seeders\TeacherSeeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 

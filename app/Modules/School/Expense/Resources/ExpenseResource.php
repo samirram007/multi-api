@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\School\Expense\Resources;
+namespace Modules\School\Expense\Resources;
 
 use Illuminate\Http\Request;
 

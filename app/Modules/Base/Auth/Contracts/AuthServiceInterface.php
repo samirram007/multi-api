@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Modules\Base\Auth\Contracts;
+namespace Modules\Base\Auth\Contracts;
 
-use App\Modules\Base\User\Models\User;
+use Modules\Base\User\Models\User;
 
 
 interface AuthServiceInterface

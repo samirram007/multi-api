@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\IncomeGroup\Contracts;
+namespace Modules\School\IncomeGroup\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\School\IncomeGroup\Models\IncomeGroup;
+use Modules\School\IncomeGroup\Models\IncomeGroup;
 
 interface IncomeGroupServiceInterface
 {

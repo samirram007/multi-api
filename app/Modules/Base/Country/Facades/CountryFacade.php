@@ -1,7 +1,7 @@
 <?php
-namespace App\Modules\Base\Country\Facades;
+namespace Modules\Base\Country\Facades;
 
-use App\Modules\Base\Country\Contracts\CountryServiceInterface;
+use Modules\Base\Country\Contracts\CountryServiceInterface;
 use Illuminate\Support\Facades\Facade;
 class CountryFacade extends Facade
 {

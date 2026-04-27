@@ -1,10 +1,10 @@
 <?php
-namespace App\Modules\School\ExpenseHead\Providers;
+namespace Modules\School\ExpenseHead\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\School\ExpenseHead\Contracts\ExpenseHeadServiceInterface;
-use App\Modules\School\ExpenseHead\Services\ExpenseHeadService;
+use Modules\School\ExpenseHead\Contracts\ExpenseHeadServiceInterface;
+use Modules\School\ExpenseHead\Services\ExpenseHeadService;
 
 class ExpenseHeadServiceProvider extends ServiceProvider
 {

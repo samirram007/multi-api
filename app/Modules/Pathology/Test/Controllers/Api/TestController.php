@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\Pathology\Test\Controllers\Api;
+namespace Modules\Pathology\Test\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\Pathology\Test\Resources\TestResource;
-use App\Modules\Pathology\Test\Resources\TestCollection;
-use App\Modules\Pathology\Test\Requests\TestRequest;
-use App\Modules\Pathology\Test\Facades\TestFacade as Test;
+use Modules\Pathology\Test\Resources\TestResource;
+use Modules\Pathology\Test\Resources\TestCollection;
+use Modules\Pathology\Test\Requests\TestRequest;
+use Modules\Pathology\Test\Facades\TestFacade as Test;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

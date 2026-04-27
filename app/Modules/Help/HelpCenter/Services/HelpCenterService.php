@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Help\HelpCenter\Services;
+namespace Modules\Help\HelpCenter\Services;
 
-use App\Modules\Help\HelpCenter\Contracts\HelpCenterServiceInterface;
-use App\Modules\Help\HelpCenter\Models\HelpCenter;
-use App\Modules\Help\TopicArticle\Models\TopicArticle;
+use Modules\Help\HelpCenter\Contracts\HelpCenterServiceInterface;
+use Modules\Help\HelpCenter\Models\HelpCenter;
+use Modules\Help\TopicArticle\Models\TopicArticle;
 use Illuminate\Database\Eloquent\Collection;
 
 class HelpCenterService implements HelpCenterServiceInterface

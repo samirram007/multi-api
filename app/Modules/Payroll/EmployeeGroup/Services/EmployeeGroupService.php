@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Payroll\EmployeeGroup\Services;
+namespace Modules\Payroll\EmployeeGroup\Services;
 
-use App\Modules\Payroll\EmployeeGroup\Contracts\EmployeeGroupServiceInterface;
-use App\Modules\Payroll\EmployeeGroup\Models\EmployeeGroup;
+use Modules\Payroll\EmployeeGroup\Contracts\EmployeeGroupServiceInterface;
+use Modules\Payroll\EmployeeGroup\Models\EmployeeGroup;
 use Illuminate\Database\Eloquent\Collection;
 
 class EmployeeGroupService implements EmployeeGroupServiceInterface

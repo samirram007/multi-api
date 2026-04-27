@@ -1,10 +1,10 @@
 <?php
-namespace App\Modules\School\ExpenseGroup\Providers;
+namespace Modules\School\ExpenseGroup\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\School\ExpenseGroup\Contracts\ExpenseGroupServiceInterface;
-use App\Modules\School\ExpenseGroup\Services\ExpenseGroupService;
+use Modules\School\ExpenseGroup\Contracts\ExpenseGroupServiceInterface;
+use Modules\School\ExpenseGroup\Services\ExpenseGroupService;
 
 class ExpenseGroupServiceProvider extends ServiceProvider
 {

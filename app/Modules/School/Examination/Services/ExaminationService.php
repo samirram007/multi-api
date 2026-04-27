@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\Examination\Services;
+namespace Modules\School\Examination\Services;
 
-use App\Modules\School\Examination\Contracts\ExaminationServiceInterface;
-use App\Modules\School\Examination\Models\Examination;
+use Modules\School\Examination\Contracts\ExaminationServiceInterface;
+use Modules\School\Examination\Models\Examination;
 use Illuminate\Database\Eloquent\Collection;
 
 class ExaminationService implements ExaminationServiceInterface

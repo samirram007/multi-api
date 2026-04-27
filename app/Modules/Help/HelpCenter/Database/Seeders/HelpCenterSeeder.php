@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Help\HelpCenter\Database\Seeders;
+namespace Modules\Help\HelpCenter\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\Help\HelpCenter\Models\HelpCenter;
+use Modules\Help\HelpCenter\Models\HelpCenter;
 
 class HelpCenterSeeder extends Seeder
 {

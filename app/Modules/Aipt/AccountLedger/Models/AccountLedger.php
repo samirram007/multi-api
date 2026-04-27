@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\Aipt\AccountLedger\Models;
+namespace Modules\Aipt\AccountLedger\Models;
 
-use App\Modules\Aipt\VoucherEntry\Models\VoucherEntry;
+use Modules\Aipt\VoucherEntry\Models\VoucherEntry;
 use Illuminate\Database\Eloquent\Model;
-use App\Modules\Aipt\AccountGroup\Models\AccountGroup;
-use App\Modules\Aipt\AccountNature\Models\AccountNature;
+use Modules\Aipt\AccountGroup\Models\AccountGroup;
+use Modules\Aipt\AccountNature\Models\AccountNature;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;

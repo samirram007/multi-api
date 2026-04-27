@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Base\CompanyType\Database\Seeders;
+namespace Modules\Base\CompanyType\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\Base\CompanyType\Models\CompanyType;
+use Modules\Base\CompanyType\Models\CompanyType;
 
 class CompanyTypeSeeder extends Seeder
 {

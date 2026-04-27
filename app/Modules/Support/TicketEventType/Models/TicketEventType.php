@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Support\TicketEventType\Models;
+namespace Modules\Support\TicketEventType\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

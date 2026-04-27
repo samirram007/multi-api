@@ -1,10 +1,10 @@
 <?php
-namespace App\Modules\Hotel\Booking\Providers;
+namespace Modules\Hotel\Booking\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\Hotel\Booking\Contracts\BookingServiceInterface;
-use App\Modules\Hotel\Booking\Services\BookingService;
+use Modules\Hotel\Booking\Contracts\BookingServiceInterface;
+use Modules\Hotel\Booking\Services\BookingService;
 
 class BookingServiceProvider extends ServiceProvider
 {

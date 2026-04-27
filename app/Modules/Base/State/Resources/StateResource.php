@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\Base\State\Resources;
+namespace Modules\Base\State\Resources;
 
 use App\Http\Resources\SuccessResource;
 
 
-use App\Modules\Base\Country\Resources\CountryResource;
+use Modules\Base\Country\Resources\CountryResource;
 use Illuminate\Http\Request;
 
 

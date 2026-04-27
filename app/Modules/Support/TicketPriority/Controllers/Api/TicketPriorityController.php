@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Modules\Support\TicketPriority\Controllers\Api;
+namespace Modules\Support\TicketPriority\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Support\TicketPriority\Contracts\TicketPriorityServiceInterface;
-use App\Modules\Support\TicketPriority\Resources\TicketPriorityResource;
-use App\Modules\Support\TicketPriority\Resources\TicketPriorityCollection;
-use App\Modules\Support\TicketPriority\Requests\TicketPriorityRequest;
+use Modules\Support\TicketPriority\Contracts\TicketPriorityServiceInterface;
+use Modules\Support\TicketPriority\Resources\TicketPriorityResource;
+use Modules\Support\TicketPriority\Resources\TicketPriorityCollection;
+use Modules\Support\TicketPriority\Requests\TicketPriorityRequest;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

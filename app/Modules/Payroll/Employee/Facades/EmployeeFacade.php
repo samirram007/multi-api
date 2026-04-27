@@ -1,5 +1,5 @@
 <?php
-        namespace App\Modules\Payroll\Employee\Facades;
+        namespace Modules\Payroll\Employee\Facades;
         use Illuminate\Support\Facades\Facade;
         class EmployeeFacade extends Facade
         {

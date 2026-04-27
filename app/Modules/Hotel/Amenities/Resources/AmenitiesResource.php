@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Hotel\Amenities\Resources;
+namespace Modules\Hotel\Amenities\Resources;
 
 use Illuminate\Http\Request;
 

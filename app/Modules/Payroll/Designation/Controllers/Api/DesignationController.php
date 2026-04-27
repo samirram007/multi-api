@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\Payroll\Designation\Controllers\Api;
+namespace Modules\Payroll\Designation\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\Payroll\Designation\Resources\DesignationResource;
-use App\Modules\Payroll\Designation\Resources\DesignationCollection;
-use App\Modules\Payroll\Designation\Requests\DesignationRequest;
-use App\Modules\Payroll\Designation\Facades\DesignationFacade as Designation;
+use Modules\Payroll\Designation\Resources\DesignationResource;
+use Modules\Payroll\Designation\Resources\DesignationCollection;
+use Modules\Payroll\Designation\Requests\DesignationRequest;
+use Modules\Payroll\Designation\Facades\DesignationFacade as Designation;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

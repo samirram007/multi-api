@@ -2,7 +2,7 @@
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Route;
-use App\Modules\Base\Auth\Controllers\Api\AuthController;
+use Modules\Base\Auth\Controllers\Api\AuthController;
 
 Route::group(['prefix' => 'auth'], function ($router) {
     Route::post('/register', [AuthController::class, 'register']);

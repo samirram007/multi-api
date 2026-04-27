@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\Campus\Services;
+namespace Modules\School\Campus\Services;
 
-use App\Modules\School\Campus\Contracts\CampusServiceInterface;
-use App\Modules\School\Campus\Models\Campus;
+use Modules\School\Campus\Contracts\CampusServiceInterface;
+use Modules\School\Campus\Models\Campus;
 use Illuminate\Database\Eloquent\Collection;
 
 class CampusService implements CampusServiceInterface

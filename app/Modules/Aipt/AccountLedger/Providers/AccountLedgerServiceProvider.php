@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\Aipt\AccountLedger\Providers;
+namespace Modules\Aipt\AccountLedger\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\Aipt\AccountLedger\Contracts\AccountLedgerServiceInterface;
-use App\Modules\Aipt\AccountLedger\Services\AccountLedgerService;
+use Modules\Aipt\AccountLedger\Contracts\AccountLedgerServiceInterface;
+use Modules\Aipt\AccountLedger\Services\AccountLedgerService;
 
 class AccountLedgerServiceProvider extends ServiceProvider
 {

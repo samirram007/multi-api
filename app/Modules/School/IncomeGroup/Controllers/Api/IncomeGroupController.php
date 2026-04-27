@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\School\IncomeGroup\Controllers\Api;
+namespace Modules\School\IncomeGroup\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\School\IncomeGroup\Resources\IncomeGroupResource;
-use App\Modules\School\IncomeGroup\Resources\IncomeGroupCollection;
-use App\Modules\School\IncomeGroup\Requests\IncomeGroupRequest;
-use App\Modules\School\IncomeGroup\Facades\IncomeGroupFacade as IncomeGroup;
+use Modules\School\IncomeGroup\Resources\IncomeGroupResource;
+use Modules\School\IncomeGroup\Resources\IncomeGroupCollection;
+use Modules\School\IncomeGroup\Requests\IncomeGroupRequest;
+use Modules\School\IncomeGroup\Facades\IncomeGroupFacade as IncomeGroup;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

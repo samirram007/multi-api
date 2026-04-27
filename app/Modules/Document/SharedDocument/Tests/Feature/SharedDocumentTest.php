@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Document\SharedDocument\Tests\Feature;
+namespace Modules\Document\SharedDocument\Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Modules\Document\SharedDocument\Models\SharedDocument;
+use Modules\Document\SharedDocument\Models\SharedDocument;
 
 class SharedDocumentTest extends TestCase
 {

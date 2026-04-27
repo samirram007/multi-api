@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Payroll\Department\Database\Seeders;
+namespace Modules\Payroll\Department\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\Payroll\Department\Models\Department;
+use Modules\Payroll\Department\Models\Department;
 
 class DepartmentSeeder extends Seeder
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Help\HelpCenter\Contracts;
+namespace Modules\Help\HelpCenter\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\Help\HelpCenter\Models\HelpCenter;
+use Modules\Help\HelpCenter\Models\HelpCenter;
 
 interface HelpCenterServiceInterface
 {

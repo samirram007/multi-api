@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Modules\Base\Auth\Controllers\Api;
+namespace Modules\Base\Auth\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Base\Auth\Contracts\AuthServiceInterface;
-use App\Modules\Base\Auth\Requests\ChangePasswordRequest;
-use App\Modules\Base\Auth\Requests\LoginRequest;
-use App\Modules\Base\Auth\Requests\RegisterRequest;
+use Modules\Base\Auth\Contracts\AuthServiceInterface;
+use Modules\Base\Auth\Requests\ChangePasswordRequest;
+use Modules\Base\Auth\Requests\LoginRequest;
+use Modules\Base\Auth\Requests\RegisterRequest;
 
-use App\Modules\Base\User\Contracts\UserServiceInterface;
-use App\Modules\Base\User\Resources\UserResource;
+use Modules\Base\User\Contracts\UserServiceInterface;
+use Modules\Base\User\Resources\UserResource;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;

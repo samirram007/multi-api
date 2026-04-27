@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Base\Address\Requests;
+namespace Modules\Base\Address\Requests;
 
 use App\Enums\AddressType;
 use Illuminate\Foundation\Http\FormRequest;

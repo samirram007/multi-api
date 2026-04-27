@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Payroll\EmployeeGroup\Database\Seeders;
+namespace Modules\Payroll\EmployeeGroup\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\Payroll\EmployeeGroup\Models\EmployeeGroup;
+use Modules\Payroll\EmployeeGroup\Models\EmployeeGroup;
 
 class EmployeeGroupSeeder extends Seeder
 {

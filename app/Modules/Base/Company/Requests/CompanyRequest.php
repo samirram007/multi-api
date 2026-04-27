@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Base\Company\Requests;
+namespace Modules\Base\Company\Requests;
 
 
-use App\Modules\Base\Address\Requests\AddressRequest;
+use Modules\Base\Address\Requests\AddressRequest;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**

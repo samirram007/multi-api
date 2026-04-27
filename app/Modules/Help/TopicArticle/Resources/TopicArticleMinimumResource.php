@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\TopicArticle\Resources;
+namespace Modules\Help\TopicArticle\Resources;
 
-use App\Modules\RelatedArticle\Resources\RelatedArticleResource;
-use App\Modules\TopicCategory\Resources\TopicCategoryResource;
-use App\Modules\TopicSection\Resources\TopicSectionResource;
-use App\Modules\User\Resources\UserResource;
+use Modules\Help\RelatedArticle\Resources\RelatedArticleResource;
+use Modules\Help\TopicCategory\Resources\TopicCategoryResource;
+use Modules\Help\TopicSection\Resources\TopicSectionResource;
+use Modules\User\Resources\UserResource;
 use Illuminate\Http\Request;
 
 use App\Http\Resources\SuccessResource;

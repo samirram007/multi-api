@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Modules\Support\SLAPolicyRule\Controllers\Api;
+namespace Modules\Support\SLAPolicyRule\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Support\SLAPolicyRule\Contracts\SLAPolicyRuleServiceInterface;
-use App\Modules\Support\SLAPolicyRule\Resources\SLAPolicyRuleResource;
-use App\Modules\Support\SLAPolicyRule\Resources\SLAPolicyRuleCollection;
-use App\Modules\Support\SLAPolicyRule\Requests\SLAPolicyRuleRequest;
+use Modules\Support\SLAPolicyRule\Contracts\SLAPolicyRuleServiceInterface;
+use Modules\Support\SLAPolicyRule\Resources\SLAPolicyRuleResource;
+use Modules\Support\SLAPolicyRule\Resources\SLAPolicyRuleCollection;
+use Modules\Support\SLAPolicyRule\Requests\SLAPolicyRuleRequest;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

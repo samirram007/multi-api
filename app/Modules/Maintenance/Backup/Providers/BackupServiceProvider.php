@@ -1,10 +1,10 @@
 <?php
-namespace App\Modules\Maintenance\Backup\Providers;
+namespace Modules\Maintenance\Backup\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\Maintenance\Backup\Contracts\BackupServiceInterface;
-use App\Modules\Maintenance\Backup\Services\BackupService;
+use Modules\Maintenance\Backup\Contracts\BackupServiceInterface;
+use Modules\Maintenance\Backup\Services\BackupService;
 
 class BackupServiceProvider extends ServiceProvider
 {

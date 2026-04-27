@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\Payroll\Employee\Controllers\Api;
+namespace Modules\Payroll\Employee\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\Payroll\Employee\Resources\EmployeeResource;
-use App\Modules\Payroll\Employee\Resources\EmployeeCollection;
-use App\Modules\Payroll\Employee\Requests\EmployeeRequest;
-use App\Modules\Payroll\Employee\Facades\EmployeeFacade as Employee;
+use Modules\Payroll\Employee\Resources\EmployeeResource;
+use Modules\Payroll\Employee\Resources\EmployeeCollection;
+use Modules\Payroll\Employee\Requests\EmployeeRequest;
+use Modules\Payroll\Employee\Facades\EmployeeFacade as Employee;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

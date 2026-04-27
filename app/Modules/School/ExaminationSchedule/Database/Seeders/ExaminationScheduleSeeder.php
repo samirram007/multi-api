@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\ExaminationSchedule\Database\Seeders;
+namespace Modules\School\ExaminationSchedule\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\School\ExaminationSchedule\Models\ExaminationSchedule;
+use Modules\School\ExaminationSchedule\Models\ExaminationSchedule;
 
 class ExaminationScheduleSeeder extends Seeder
 {

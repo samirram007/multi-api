@@ -1,10 +1,10 @@
 <?php
-namespace App\Modules\Pathology\Doctor\Providers;
+namespace Modules\Pathology\Doctor\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\Pathology\Doctor\Contracts\DoctorServiceInterface;
-use App\Modules\Pathology\Doctor\Services\DoctorService;
+use Modules\Pathology\Doctor\Contracts\DoctorServiceInterface;
+use Modules\Pathology\Doctor\Services\DoctorService;
 
 class DoctorServiceProvider extends ServiceProvider
 {

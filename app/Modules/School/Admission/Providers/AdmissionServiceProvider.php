@@ -1,10 +1,10 @@
 <?php
-namespace App\Modules\School\Admission\Providers;
+namespace Modules\School\Admission\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\School\Admission\Contracts\AdmissionServiceInterface;
-use App\Modules\School\Admission\Services\AdmissionService;
+use Modules\School\Admission\Contracts\AdmissionServiceInterface;
+use Modules\School\Admission\Services\AdmissionService;
 
 class AdmissionServiceProvider extends ServiceProvider
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Document\Document\Contracts;
+namespace Modules\Document\Document\Contracts;
 
 
-use App\Modules\Document\Document\Models\Document;
+use Modules\Document\Document\Models\Document;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Collection as SupportCollection;

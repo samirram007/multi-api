@@ -1,10 +1,10 @@
 <?php
-namespace App\Modules\School\Floor\Providers;
+namespace Modules\School\Floor\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\School\Floor\Contracts\FloorServiceInterface;
-use App\Modules\School\Floor\Services\FloorService;
+use Modules\School\Floor\Contracts\FloorServiceInterface;
+use Modules\School\Floor\Services\FloorService;
 
 class FloorServiceProvider extends ServiceProvider
 {

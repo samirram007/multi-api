@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Payroll\Designation\Tests\Feature;
+namespace Modules\Payroll\Designation\Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Modules\Payroll\Designation\Models\Designation;
+use Modules\Payroll\Designation\Models\Designation;
 
 class DesignationTest extends TestCase
 {

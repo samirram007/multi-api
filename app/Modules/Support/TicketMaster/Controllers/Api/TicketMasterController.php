@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Modules\Support\TicketMaster\Controllers\Api;
+namespace Modules\Support\TicketMaster\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Support\TicketMaster\Contracts\TicketMasterServiceInterface;
-use App\Modules\Support\TicketMaster\Resources\TicketMasterResource;
-use App\Modules\Support\TicketMaster\Resources\TicketMasterCollection;
-use App\Modules\Support\TicketMaster\Requests\TicketMasterRequest;
+use Modules\Support\TicketMaster\Contracts\TicketMasterServiceInterface;
+use Modules\Support\TicketMaster\Resources\TicketMasterResource;
+use Modules\Support\TicketMaster\Resources\TicketMasterCollection;
+use Modules\Support\TicketMaster\Requests\TicketMasterRequest;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

@@ -1,5 +1,5 @@
 <?php
-        namespace App\Modules\School\Campus\Facades;
+        namespace Modules\School\Campus\Facades;
         use Illuminate\Support\Facades\Facade;
         class CampusFacade extends Facade
         {

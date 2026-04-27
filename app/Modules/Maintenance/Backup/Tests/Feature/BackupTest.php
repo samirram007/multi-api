@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Maintenance\Backup\Tests\Feature;
+namespace Modules\Maintenance\Backup\Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Modules\Maintenance\Backup\Models\Backup;
+use Modules\Maintenance\Backup\Models\Backup;
 
 class BackupTest extends TestCase
 {

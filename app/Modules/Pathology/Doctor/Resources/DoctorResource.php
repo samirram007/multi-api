@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Pathology\Doctor\Resources;
+namespace Modules\Pathology\Doctor\Resources;
 
 use Illuminate\Http\Request;
 

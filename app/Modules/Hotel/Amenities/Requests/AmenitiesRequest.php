@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Hotel\Amenities\Requests;
+namespace Modules\Hotel\Amenities\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

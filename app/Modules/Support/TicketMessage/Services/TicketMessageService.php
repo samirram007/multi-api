@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Support\TicketMessage\Services;
+namespace Modules\Support\TicketMessage\Services;
 
-use App\Modules\Support\TicketMessage\Contracts\TicketMessageServiceInterface;
-use App\Modules\Support\TicketMessage\Models\TicketMessage;
+use Modules\Support\TicketMessage\Contracts\TicketMessageServiceInterface;
+use Modules\Support\TicketMessage\Models\TicketMessage;
 use Illuminate\Database\Eloquent\Collection;
 
 class TicketMessageService implements TicketMessageServiceInterface

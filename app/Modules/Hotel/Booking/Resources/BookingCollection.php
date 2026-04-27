@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Hotel\Booking\Resources;
+namespace Modules\Hotel\Booking\Resources;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\SuccessCollection;

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\IncomeGroup\Database\Seeders;
+namespace Modules\School\IncomeGroup\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\School\IncomeGroup\Models\IncomeGroup;
+use Modules\School\IncomeGroup\Models\IncomeGroup;
 
 class IncomeGroupSeeder extends Seeder
 {

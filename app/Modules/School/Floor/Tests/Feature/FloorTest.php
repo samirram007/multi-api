@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\School\Floor\Tests\Feature;
+namespace Modules\School\Floor\Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Modules\School\Floor\Models\Floor;
+use Modules\School\Floor\Models\Floor;
 
 class FloorTest extends TestCase
 {

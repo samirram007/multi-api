@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\RelatedArticle\Contracts;
+namespace Modules\Help\RelatedArticle\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\RelatedArticle\Models\RelatedArticle;
+use Modules\Help\RelatedArticle\Models\RelatedArticle;
 
 interface RelatedArticleServiceInterface
 {

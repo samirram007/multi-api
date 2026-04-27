@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\Base\Currency\Providers;
+namespace Modules\Base\Currency\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\Base\Currency\Contracts\CurrencyServiceInterface;
-use App\Modules\Base\Currency\Services\CurrencyService;
+use Modules\Base\Currency\Contracts\CurrencyServiceInterface;
+use Modules\Base\Currency\Services\CurrencyService;
 
 class CurrencyServiceProvider extends ServiceProvider
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Base\Auth\Resources;
+namespace Modules\Base\Auth\Resources;
 
 use App\Http\Resources\SuccessCollection;
 

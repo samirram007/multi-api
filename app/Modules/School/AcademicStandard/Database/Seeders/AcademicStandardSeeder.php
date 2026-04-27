@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Modules\School\AcademicStandard\Database\Seeders;
+namespace Modules\School\AcademicStandard\Database\Seeders;
 
-use App\Modules\School\AcademicStandard\Models\AcademicStandard;
+use Modules\School\AcademicStandard\Models\AcademicStandard;
 use Illuminate\Database\Seeder;
 
 

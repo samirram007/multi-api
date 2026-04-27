@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\School\IncomeGroup\Tests\Feature;
+namespace Modules\School\IncomeGroup\Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Modules\School\IncomeGroup\Models\IncomeGroup;
+use Modules\School\IncomeGroup\Models\IncomeGroup;
 
 class IncomeGroupTest extends TestCase
 {

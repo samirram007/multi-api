@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\School\Guardian\Tests\Feature;
+namespace Modules\School\Guardian\Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Modules\School\Guardian\Models\Guardian;
+use Modules\School\Guardian\Models\Guardian;
 
 class GuardianTest extends TestCase
 {

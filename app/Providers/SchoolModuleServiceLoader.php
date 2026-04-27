@@ -14,7 +14,7 @@ class SchoolModuleServiceLoader extends ServiceProvider
 
         foreach ($directories as $modulePath) {
             $module = basename($modulePath);
-            $providerClass = "App\\Modules\\School\\{$module}\\Providers\\{$module}ServiceProvider";
+            $providerClass = "Modules\\School\\{$module}\\Providers\\{$module}ServiceProvider";
 
             if (class_exists($providerClass)) {
                 $this->app->register($providerClass);

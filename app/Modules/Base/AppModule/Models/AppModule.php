@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Modules\Base\AppModule\Models;
+namespace Modules\Base\AppModule\Models;
 
-use App\Modules\Base\AppModuleFeature\Models\AppModuleFeature;
+use Modules\Base\AppModuleFeature\Models\AppModuleFeature;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;

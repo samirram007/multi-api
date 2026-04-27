@@ -1,10 +1,10 @@
 <?php
-namespace App\Modules\Pathology\Test\Providers;
+namespace Modules\Pathology\Test\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\Pathology\Test\Contracts\TestServiceInterface;
-use App\Modules\Pathology\Test\Services\TestService;
+use Modules\Pathology\Test\Contracts\TestServiceInterface;
+use Modules\Pathology\Test\Services\TestService;
 
 class TestServiceProvider extends ServiceProvider
 {

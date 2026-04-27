@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Base\AppModuleFeature\Services;
+namespace Modules\Base\AppModuleFeature\Services;
 
-use App\Modules\Base\AppModuleFeature\Contracts\AppModuleFeatureServiceInterface;
-use App\Modules\Base\AppModuleFeature\Models\AppModuleFeature;
+use Modules\Base\AppModuleFeature\Contracts\AppModuleFeatureServiceInterface;
+use Modules\Base\AppModuleFeature\Models\AppModuleFeature;
 use Illuminate\Database\Eloquent\Collection;
 
 class AppModuleFeatureService implements AppModuleFeatureServiceInterface

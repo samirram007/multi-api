@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Support\TicketMessage\Database\Seeders;
+namespace Modules\Support\TicketMessage\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\Support\TicketMessage\Models\TicketMessage;
+use Modules\Support\TicketMessage\Models\TicketMessage;
 
 class TicketMessageSeeder extends Seeder
 {

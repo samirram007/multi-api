@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Support\TicketMessage\Requests;
+namespace Modules\Support\TicketMessage\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

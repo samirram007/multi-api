@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Hospital\Doctor\Services;
+namespace Modules\Hospital\Doctor\Services;
 
-use App\Modules\Hospital\Doctor\Contracts\DoctorServiceInterface;
-use App\Modules\Hospital\Doctor\Models\Doctor;
+use Modules\Hospital\Doctor\Contracts\DoctorServiceInterface;
+use Modules\Hospital\Doctor\Models\Doctor;
 use Illuminate\Database\Eloquent\Collection;
 
 class DoctorService implements DoctorServiceInterface

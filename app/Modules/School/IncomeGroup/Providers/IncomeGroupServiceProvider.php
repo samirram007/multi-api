@@ -1,10 +1,10 @@
 <?php
-namespace App\Modules\School\IncomeGroup\Providers;
+namespace Modules\School\IncomeGroup\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\School\IncomeGroup\Contracts\IncomeGroupServiceInterface;
-use App\Modules\School\IncomeGroup\Services\IncomeGroupService;
+use Modules\School\IncomeGroup\Contracts\IncomeGroupServiceInterface;
+use Modules\School\IncomeGroup\Services\IncomeGroupService;
 
 class IncomeGroupServiceProvider extends ServiceProvider
 {

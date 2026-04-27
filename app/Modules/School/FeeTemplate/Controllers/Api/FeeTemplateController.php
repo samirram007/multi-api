@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\School\FeeTemplate\Controllers\Api;
+namespace Modules\School\FeeTemplate\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\School\FeeTemplate\Resources\FeeTemplateResource;
-use App\Modules\School\FeeTemplate\Resources\FeeTemplateCollection;
-use App\Modules\School\FeeTemplate\Requests\FeeTemplateRequest;
-use App\Modules\School\FeeTemplate\Facades\FeeTemplateFacade as FeeTemplate;
+use Modules\School\FeeTemplate\Resources\FeeTemplateResource;
+use Modules\School\FeeTemplate\Resources\FeeTemplateCollection;
+use Modules\School\FeeTemplate\Requests\FeeTemplateRequest;
+use Modules\School\FeeTemplate\Facades\FeeTemplateFacade as FeeTemplate;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

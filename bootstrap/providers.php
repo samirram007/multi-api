@@ -1,8 +1,10 @@
 <?php
 
 use App\Providers\AiptModuleServiceLoader;
+use App\Providers\AppModuleServiceLoader;
 use App\Providers\AppServiceProvider;
 use App\Providers\BaseModuleServiceLoader;
+use App\Providers\DeveloperModuleServiceLoader;
 use App\Providers\DocumentModuleServiceLoader;
 use App\Providers\HospitalModuleServiceLoader;
 use App\Providers\MaintenanceModuleServiceLoader;
@@ -11,8 +13,11 @@ use App\Providers\PathologyModuleServiceLoader;
 use App\Providers\HotelModuleServiceLoader;
 use App\Providers\RestaurantModuleServiceLoader;
 
+
 $providers = [
     AppServiceProvider::class,
+    AppModuleServiceLoader::class,
+    DeveloperModuleServiceLoader::class,
     BaseModuleServiceLoader::class,
     DocumentModuleServiceLoader::class,
     MaintenanceModuleServiceLoader::class,
@@ -40,5 +45,5 @@ switch (env('APP_MODULE')) {
         $providers[] = RestaurantModuleServiceLoader::class;
         break;
 }
-//printf("Registered Providers: %s\n", implode("\n", $providers));
+// Log::info("Registered Providers: %s\n", implode("\n", $providers));
 return $providers;

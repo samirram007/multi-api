@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Modules\RelatedArticle\Controllers\Api;
+namespace Modules\Help\RelatedArticle\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Modules\RelatedArticle\Contracts\RelatedArticleServiceInterface;
-use App\Modules\RelatedArticle\Resources\RelatedArticleResource;
-use App\Modules\RelatedArticle\Resources\RelatedArticleCollection;
-use App\Modules\RelatedArticle\Requests\RelatedArticleRequest;
+use Modules\Help\RelatedArticle\Contracts\RelatedArticleServiceInterface;
+use Modules\Help\RelatedArticle\Resources\RelatedArticleResource;
+use Modules\Help\RelatedArticle\Resources\RelatedArticleCollection;
+use Modules\Help\RelatedArticle\Requests\RelatedArticleRequest;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

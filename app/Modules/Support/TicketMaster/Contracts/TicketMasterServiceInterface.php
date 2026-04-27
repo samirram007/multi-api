@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Support\TicketMaster\Contracts;
+namespace Modules\Support\TicketMaster\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\Support\TicketMaster\Models\TicketMaster;
+use Modules\Support\TicketMaster\Models\TicketMaster;
 
 interface TicketMasterServiceInterface
 {

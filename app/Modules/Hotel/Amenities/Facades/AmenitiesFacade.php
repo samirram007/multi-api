@@ -1,5 +1,5 @@
 <?php
-        namespace App\Modules\Hotel\Amenities\Facades;
+        namespace Modules\Hotel\Amenities\Facades;
         use Illuminate\Support\Facades\Facade;
         class AmenitiesFacade extends Facade
         {

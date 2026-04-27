@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\Aipt\AccountGroup\Providers;
+namespace Modules\Aipt\AccountGroup\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\Aipt\AccountGroup\Contracts\AccountGroupServiceInterface;
-use App\Modules\Aipt\AccountGroup\Services\AccountGroupService;
+use Modules\Aipt\AccountGroup\Contracts\AccountGroupServiceInterface;
+use Modules\Aipt\AccountGroup\Services\AccountGroupService;
 
 class AccountGroupServiceProvider extends ServiceProvider
 {

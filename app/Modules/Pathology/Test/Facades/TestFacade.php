@@ -1,5 +1,5 @@
 <?php
-        namespace App\Modules\Pathology\Test\Facades;
+        namespace Modules\Pathology\Test\Facades;
         use Illuminate\Support\Facades\Facade;
         class TestFacade extends Facade
         {

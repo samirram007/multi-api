@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Resturant\Order\Database\Seeders;
+namespace Modules\Resturant\Order\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\Resturant\Order\Models\Order;
+use Modules\Resturant\Order\Models\Order;
 
 class OrderSeeder extends Seeder
 {

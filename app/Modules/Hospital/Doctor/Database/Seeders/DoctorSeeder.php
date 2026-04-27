@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Hospital\Doctor\Database\Seeders;
+namespace Modules\Hospital\Doctor\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\Doctor\Models\Doctor;
+use Modules\Doctor\Models\Doctor;
 
 class DoctorSeeder extends Seeder
 {

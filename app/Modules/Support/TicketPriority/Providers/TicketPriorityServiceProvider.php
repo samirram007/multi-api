@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\Support\TicketPriority\Providers;
+namespace Modules\Support\TicketPriority\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\Support\TicketPriority\Contracts\TicketPriorityServiceInterface;
-use App\Modules\Support\TicketPriority\Services\TicketPriorityService;
+use Modules\Support\TicketPriority\Contracts\TicketPriorityServiceInterface;
+use Modules\Support\TicketPriority\Services\TicketPriorityService;
 
 class TicketPriorityServiceProvider extends ServiceProvider
 {

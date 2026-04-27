@@ -1,5 +1,5 @@
 <?php
-        namespace App\Modules\Hospital\Patient\Facades;
+        namespace Modules\Hospital\Patient\Facades;
         use Illuminate\Support\Facades\Facade;
         class PatientFacade extends Facade
         {

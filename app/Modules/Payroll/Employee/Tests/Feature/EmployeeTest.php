@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Payroll\Employee\Tests\Feature;
+namespace Modules\Payroll\Employee\Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Modules\Payroll\Employee\Models\Employee;
+use Modules\Payroll\Employee\Models\Employee;
 
 class EmployeeTest extends TestCase
 {

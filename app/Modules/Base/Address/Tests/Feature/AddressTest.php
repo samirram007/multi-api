@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Base\Address\Tests\Feature;
+namespace Modules\Base\Address\Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Modules\Base\Address\Models\Address;
+use Modules\Base\Address\Models\Address;
 
 class AddressTest extends TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Aipt\AccountLedger\Resources;
+namespace Modules\Aipt\AccountLedger\Resources;
 
 use App\Http\Resources\SuccessCollection;
 use Illuminate\Http\Request;

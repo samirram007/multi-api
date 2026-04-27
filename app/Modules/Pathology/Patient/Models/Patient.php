@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Pathology\Patient\Models;
+namespace Modules\Pathology\Patient\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Hospital\Doctor\Tests\Feature;
+namespace Modules\Hospital\Doctor\Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Modules\Hospital\Doctor\Models\Doctor;
+use Modules\Hospital\Doctor\Models\Doctor;
 
 class DoctorTest extends TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Payroll\Department\Resources;
+namespace Modules\Payroll\Department\Resources;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\SuccessCollection;

@@ -1,5 +1,5 @@
 <?php
-        namespace App\Modules\Maintenance\Restore\Facades;
+        namespace Modules\Maintenance\Restore\Facades;
         use Illuminate\Support\Facades\Facade;
         class RestoreFacade extends Facade
         {

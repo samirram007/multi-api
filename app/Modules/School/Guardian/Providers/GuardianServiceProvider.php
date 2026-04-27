@@ -1,10 +1,10 @@
 <?php
-namespace App\Modules\School\Guardian\Providers;
+namespace Modules\School\Guardian\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\School\Guardian\Contracts\GuardianServiceInterface;
-use App\Modules\School\Guardian\Services\GuardianService;
+use Modules\School\Guardian\Contracts\GuardianServiceInterface;
+use Modules\School\Guardian\Services\GuardianService;
 
 class GuardianServiceProvider extends ServiceProvider
 {

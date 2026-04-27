@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\AcademicClass\Database\Seeders;
+namespace Modules\School\AcademicClass\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\School\AcademicClass\Models\AcademicClass;
+use Modules\School\AcademicClass\Models\AcademicClass;
 
 class AcademicClassSeeder extends Seeder
 {

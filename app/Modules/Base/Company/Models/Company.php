@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\Base\Company\Models;
+namespace Modules\Base\Company\Models;
 
-use App\Modules\Base\CompanyType\Models\CompanyType;
-use App\Modules\Base\Country\Models\Country;
-use App\Modules\Base\Currency\Models\Currency;
-use App\Modules\Base\FiscalYear\Models\FiscalYear;
-use App\Modules\Base\Address\Models\Address;
-use App\Modules\Base\State\Models\State;
+use Modules\Base\CompanyType\Models\CompanyType;
+use Modules\Base\Country\Models\Country;
+use Modules\Base\Currency\Models\Currency;
+use Modules\Base\FiscalYear\Models\FiscalYear;
+use Modules\Base\Address\Models\Address;
+use Modules\Base\State\Models\State;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Payroll\Employee\Models;
+namespace Modules\Payroll\Employee\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

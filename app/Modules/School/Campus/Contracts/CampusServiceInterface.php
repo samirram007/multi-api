@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\Campus\Contracts;
+namespace Modules\School\Campus\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\School\Campus\Models\Campus;
+use Modules\School\Campus\Models\Campus;
 
 interface CampusServiceInterface
 {

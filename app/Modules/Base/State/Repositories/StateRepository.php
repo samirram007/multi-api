@@ -1,8 +1,8 @@
 <?php
-namespace App\Modules\Base\State\Repositories;
+namespace Modules\Base\State\Repositories;
 
-use App\Modules\Base\State\Contracts\StateRepositoryInterface;
-use App\Modules\Base\State\Models\State;
+use Modules\Base\State\Contracts\StateRepositoryInterface;
+use Modules\Base\State\Models\State;
 
 
 use App\Support\Contracts\CachedRepositoryInterface;

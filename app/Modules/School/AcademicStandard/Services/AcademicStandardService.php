@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\AcademicStandard\Services;
+namespace Modules\School\AcademicStandard\Services;
 
-use App\Modules\School\AcademicStandard\Contracts\AcademicStandardServiceInterface;
-use App\Modules\School\AcademicStandard\Models\AcademicStandard;
+use Modules\School\AcademicStandard\Contracts\AcademicStandardServiceInterface;
+use Modules\School\AcademicStandard\Models\AcademicStandard;
 use Illuminate\Database\Eloquent\Collection;
 
 class AcademicStandardService implements AcademicStandardServiceInterface

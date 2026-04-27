@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Pathology\Test\Resources;
+namespace Modules\Pathology\Test\Resources;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\SuccessCollection;

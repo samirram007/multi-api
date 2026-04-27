@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Modules\Base\Role\Controllers\Api;
+namespace Modules\Base\Role\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Base\Role\Contracts\RoleServiceInterface;
-use App\Modules\Base\Role\Resources\RoleResource;
-use App\Modules\Base\Role\Resources\RoleCollection;
-use App\Modules\Base\Role\Requests\RoleRequest;
+use Modules\Base\Role\Contracts\RoleServiceInterface;
+use Modules\Base\Role\Resources\RoleResource;
+use Modules\Base\Role\Resources\RoleCollection;
+use Modules\Base\Role\Requests\RoleRequest;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

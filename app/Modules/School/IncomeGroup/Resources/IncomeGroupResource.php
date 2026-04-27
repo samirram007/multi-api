@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\School\IncomeGroup\Resources;
+namespace Modules\School\IncomeGroup\Resources;
 
 use Illuminate\Http\Request;
 

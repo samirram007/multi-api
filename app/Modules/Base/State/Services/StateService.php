@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Base\State\Services;
+namespace Modules\Base\State\Services;
 
-use App\Modules\Base\State\Contracts\StateServiceInterface;
-use App\Modules\Base\State\Facades\StateRepoFacade;
-use App\Modules\Base\State\Models\State;
+use Modules\Base\State\Contracts\StateServiceInterface;
+use Modules\Base\State\Facades\StateRepoFacade;
+use Modules\Base\State\Models\State;
 use Illuminate\Database\Eloquent\Collection;
 
 class StateService implements StateServiceInterface

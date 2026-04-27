@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Base\CompanyType\Services;
+namespace Modules\Base\CompanyType\Services;
 
-use App\Modules\Base\CompanyType\Contracts\CompanyTypeServiceInterface;
-use App\Modules\Base\CompanyType\Models\CompanyType;
+use Modules\Base\CompanyType\Contracts\CompanyTypeServiceInterface;
+use Modules\Base\CompanyType\Models\CompanyType;
 use Illuminate\Database\Eloquent\Collection;
 
 class CompanyTypeService implements CompanyTypeServiceInterface

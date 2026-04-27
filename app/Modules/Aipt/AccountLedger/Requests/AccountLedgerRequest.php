@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Aipt\AccountLedger\Requests;
+namespace Modules\Aipt\AccountLedger\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

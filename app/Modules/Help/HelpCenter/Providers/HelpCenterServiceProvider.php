@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\Help\HelpCenter\Providers;
+namespace Modules\Help\HelpCenter\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\Help\HelpCenter\Contracts\HelpCenterServiceInterface;
-use App\Modules\Help\HelpCenter\Services\HelpCenterService;
+use Modules\Help\HelpCenter\Contracts\HelpCenterServiceInterface;
+use Modules\Help\HelpCenter\Services\HelpCenterService;
 
 class HelpCenterServiceProvider extends ServiceProvider
 {

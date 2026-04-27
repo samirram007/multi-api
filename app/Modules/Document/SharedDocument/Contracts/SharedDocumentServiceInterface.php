@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Document\SharedDocument\Contracts;
+namespace Modules\Document\SharedDocument\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\Document\SharedDocument\Models\SharedDocument;
+use Modules\Document\SharedDocument\Models\SharedDocument;
 
 interface SharedDocumentServiceInterface
 {

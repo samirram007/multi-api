@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Payroll\Designation\Contracts;
+namespace Modules\Payroll\Designation\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\Payroll\Designation\Models\Designation;
+use Modules\Payroll\Designation\Models\Designation;
 
 interface DesignationServiceInterface
 {

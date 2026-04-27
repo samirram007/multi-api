@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\TopicCategory\Services;
+namespace Modules\Help\TopicCategory\Services;
 
-use App\Modules\TopicCategory\Contracts\TopicCategoryServiceInterface;
-use App\Modules\TopicCategory\Models\TopicCategory;
+use Modules\Help\TopicCategory\Contracts\TopicCategoryServiceInterface;
+use Modules\Help\TopicCategory\Models\TopicCategory;
 use Illuminate\Database\Eloquent\Collection;
 
 class TopicCategoryService implements TopicCategoryServiceInterface

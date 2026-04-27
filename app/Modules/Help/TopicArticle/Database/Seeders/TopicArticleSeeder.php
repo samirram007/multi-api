@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\TopicArticle\Database\Seeders;
+namespace Modules\Help\TopicArticle\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\TopicArticle\Models\TopicArticle;
+use Modules\Help\TopicArticle\Models\TopicArticle;
 
 class TopicArticleSeeder extends Seeder
 {

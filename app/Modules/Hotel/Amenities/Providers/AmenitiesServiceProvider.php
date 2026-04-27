@@ -1,10 +1,10 @@
 <?php
-namespace App\Modules\Hotel\Amenities\Providers;
+namespace Modules\Hotel\Amenities\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\Hotel\Amenities\Contracts\AmenitiesServiceInterface;
-use App\Modules\Hotel\Amenities\Services\AmenitiesService;
+use Modules\Hotel\Amenities\Contracts\AmenitiesServiceInterface;
+use Modules\Hotel\Amenities\Services\AmenitiesService;
 
 class AmenitiesServiceProvider extends ServiceProvider
 {

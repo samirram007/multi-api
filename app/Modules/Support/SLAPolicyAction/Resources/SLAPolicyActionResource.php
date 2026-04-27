@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Support\SLAPolicyAction\Resources;
+namespace Modules\Support\SLAPolicyAction\Resources;
 
 use Illuminate\Http\Request;
 

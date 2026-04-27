@@ -1,10 +1,10 @@
 <?php
-namespace App\Modules\School\ExaminationType\Providers;
+namespace Modules\School\ExaminationType\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\School\ExaminationType\Contracts\ExaminationTypeServiceInterface;
-use App\Modules\School\ExaminationType\Services\ExaminationTypeService;
+use Modules\School\ExaminationType\Contracts\ExaminationTypeServiceInterface;
+use Modules\School\ExaminationType\Services\ExaminationTypeService;
 
 class ExaminationTypeServiceProvider extends ServiceProvider
 {

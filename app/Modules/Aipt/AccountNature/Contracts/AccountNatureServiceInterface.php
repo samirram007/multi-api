@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Aipt\AccountNature\Contracts;
+namespace Modules\Aipt\AccountNature\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\Aipt\AccountNature\Models\AccountNature;
+use Modules\Aipt\AccountNature\Models\AccountNature;
 
 interface AccountNatureServiceInterface
 {

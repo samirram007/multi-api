@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Resturant\Booking\Tests\Feature;
+namespace Modules\Resturant\Booking\Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Modules\Resturant\Booking\Models\Booking;
+use Modules\Resturant\Booking\Models\Booking;
 
 class BookingTest extends TestCase
 {

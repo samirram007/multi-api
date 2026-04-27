@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\School\FeeItemMonth\Controllers\Api;
+namespace Modules\School\FeeItemMonth\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\School\FeeItemMonth\Resources\FeeItemMonthResource;
-use App\Modules\School\FeeItemMonth\Resources\FeeItemMonthCollection;
-use App\Modules\School\FeeItemMonth\Requests\FeeItemMonthRequest;
-use App\Modules\School\FeeItemMonth\Facades\FeeItemMonthFacade as FeeItemMonth;
+use Modules\School\FeeItemMonth\Resources\FeeItemMonthResource;
+use Modules\School\FeeItemMonth\Resources\FeeItemMonthCollection;
+use Modules\School\FeeItemMonth\Requests\FeeItemMonthRequest;
+use Modules\School\FeeItemMonth\Facades\FeeItemMonthFacade as FeeItemMonth;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

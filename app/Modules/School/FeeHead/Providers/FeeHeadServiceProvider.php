@@ -1,10 +1,10 @@
 <?php
-namespace App\Modules\School\FeeHead\Providers;
+namespace Modules\School\FeeHead\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\School\FeeHead\Contracts\FeeHeadServiceInterface;
-use App\Modules\School\FeeHead\Services\FeeHeadService;
+use Modules\School\FeeHead\Contracts\FeeHeadServiceInterface;
+use Modules\School\FeeHead\Services\FeeHeadService;
 
 class FeeHeadServiceProvider extends ServiceProvider
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\EducationBoard\Contracts;
+namespace Modules\School\EducationBoard\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\School\EducationBoard\Models\EducationBoard;
+use Modules\School\EducationBoard\Models\EducationBoard;
 
 interface EducationBoardServiceInterface
 {

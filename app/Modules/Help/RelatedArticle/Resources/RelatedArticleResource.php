@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\RelatedArticle\Resources;
+namespace Modules\Help\RelatedArticle\Resources;
 
-use App\Modules\TopicArticle\Models\TopicArticle;
-use App\Modules\TopicArticle\Resources\TopicArticleMinimumResource;
-use App\Modules\TopicArticle\Resources\TopicArticleResource;
+use Modules\Help\TopicArticle\Models\TopicArticle;
+use Modules\Help\TopicArticle\Resources\TopicArticleMinimumResource;
+use Modules\Help\TopicArticle\Resources\TopicArticleResource;
 use Illuminate\Http\Request;
 
 use App\Http\Resources\SuccessResource;

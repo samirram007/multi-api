@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Support\TicketEvent\Tests\Feature;
+namespace Modules\Support\TicketEvent\Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Modules\Support\TicketEvent\Models\TicketEvent;
+use Modules\Support\TicketEvent\Models\TicketEvent;
 
 class TicketEventTest extends TestCase
 {

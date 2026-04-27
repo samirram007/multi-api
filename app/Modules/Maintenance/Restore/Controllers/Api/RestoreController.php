@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\Maintenance\Restore\Controllers\Api;
+namespace Modules\Maintenance\Restore\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\Maintenance\Restore\Resources\RestoreResource;
-use App\Modules\Maintenance\Restore\Resources\RestoreCollection;
-use App\Modules\Maintenance\Restore\Requests\RestoreRequest;
-use App\Modules\Maintenance\Restore\Facades\RestoreFacade as Restore;
+use Modules\Maintenance\Restore\Resources\RestoreResource;
+use Modules\Maintenance\Restore\Resources\RestoreCollection;
+use Modules\Maintenance\Restore\Requests\RestoreRequest;
+use Modules\Maintenance\Restore\Facades\RestoreFacade as Restore;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

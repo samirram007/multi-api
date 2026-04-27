@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\TopicSection\Services;
+namespace Modules\Help\TopicSection\Services;
 
-use App\Modules\TopicSection\Contracts\TopicSectionServiceInterface;
-use App\Modules\TopicSection\Models\TopicSection;
+use Modules\Help\TopicSection\Contracts\TopicSectionServiceInterface;
+use Modules\Help\TopicSection\Models\TopicSection;
 use Illuminate\Database\Eloquent\Collection;
 
 class TopicSectionService implements TopicSectionServiceInterface

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Modules\Aipt\AccountLedger\Services;
+namespace Modules\Aipt\AccountLedger\Services;
 
-use App\Modules\Aipt\AccountLedger\Contracts\AccountLedgerServiceInterface;
-use App\Modules\Aipt\AccountLedger\Models\AccountLedger;
-use App\Modules\Aipt\User\Models\User;
-use App\Modules\Aipt\UserFiscalYear\Contracts\UserFiscalYearServiceInterface;
-use App\Modules\Aipt\UserFiscalYear\Services\UserFiscalYearService;
+use Modules\Aipt\AccountLedger\Contracts\AccountLedgerServiceInterface;
+use Modules\Aipt\AccountLedger\Models\AccountLedger;
+use Modules\Aipt\User\Models\User;
+use Modules\Aipt\UserFiscalYear\Contracts\UserFiscalYearServiceInterface;
+use Modules\Aipt\UserFiscalYear\Services\UserFiscalYearService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 

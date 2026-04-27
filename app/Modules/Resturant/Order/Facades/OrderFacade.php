@@ -1,5 +1,5 @@
 <?php
-        namespace App\Modules\Resturant\Order\Facades;
+        namespace Modules\Resturant\Order\Facades;
         use Illuminate\Support\Facades\Facade;
         class OrderFacade extends Facade
         {

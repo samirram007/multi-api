@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\RelatedArticle\Providers;
+namespace Modules\Help\RelatedArticle\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\RelatedArticle\Contracts\RelatedArticleServiceInterface;
-use App\Modules\RelatedArticle\Services\RelatedArticleService;
+use Modules\Help\RelatedArticle\Contracts\RelatedArticleServiceInterface;
+use Modules\Help\RelatedArticle\Services\RelatedArticleService;
 
 class RelatedArticleServiceProvider extends ServiceProvider
 {

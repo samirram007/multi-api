@@ -14,7 +14,7 @@ class MaintenanceModuleServiceLoader extends ServiceProvider
 
         foreach ($directories as $modulePath) {
             $module = basename($modulePath);
-            $providerClass = "App\\Modules\\Maintenance\\{$module}\\Providers\\{$module}ServiceProvider";
+            $providerClass = "Modules\\Maintenance\\{$module}\\Providers\\{$module}ServiceProvider";
 
             if (class_exists($providerClass)) {
                 $this->app->register($providerClass);

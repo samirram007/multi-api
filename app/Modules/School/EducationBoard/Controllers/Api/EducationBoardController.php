@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\School\EducationBoard\Controllers\Api;
+namespace Modules\School\EducationBoard\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\School\EducationBoard\Resources\EducationBoardResource;
-use App\Modules\School\EducationBoard\Resources\EducationBoardCollection;
-use App\Modules\School\EducationBoard\Requests\EducationBoardRequest;
-use App\Modules\School\EducationBoard\Facades\EducationBoardFacade as EducationBoard;
+use Modules\School\EducationBoard\Resources\EducationBoardResource;
+use Modules\School\EducationBoard\Resources\EducationBoardCollection;
+use Modules\School\EducationBoard\Requests\EducationBoardRequest;
+use Modules\School\EducationBoard\Facades\EducationBoardFacade as EducationBoard;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

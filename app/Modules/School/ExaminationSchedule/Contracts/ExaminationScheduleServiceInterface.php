@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\ExaminationSchedule\Contracts;
+namespace Modules\School\ExaminationSchedule\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\School\ExaminationSchedule\Models\ExaminationSchedule;
+use Modules\School\ExaminationSchedule\Models\ExaminationSchedule;
 
 interface ExaminationScheduleServiceInterface
 {

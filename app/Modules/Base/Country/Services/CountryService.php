@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Modules\Base\Country\Services;
+namespace Modules\Base\Country\Services;
 
-use App\Modules\Base\Country\Contracts\CountryRepositoryInterface;
-use App\Modules\Base\Country\Contracts\CountryServiceInterface;
+use Modules\Base\Country\Contracts\CountryRepositoryInterface;
+use Modules\Base\Country\Contracts\CountryServiceInterface;
 
-use App\Modules\Base\Country\Facades\CountryRepoFacade;
-use App\Modules\Base\Country\Models\Country;
+use Modules\Base\Country\Facades\CountryRepoFacade;
+use Modules\Base\Country\Models\Country;
 use Illuminate\Database\Eloquent\Collection;
 
 class CountryService implements CountryServiceInterface

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\Building\Services;
+namespace Modules\School\Building\Services;
 
-use App\Modules\School\Building\Contracts\BuildingServiceInterface;
-use App\Modules\School\Building\Models\Building;
+use Modules\School\Building\Contracts\BuildingServiceInterface;
+use Modules\School\Building\Models\Building;
 use Illuminate\Database\Eloquent\Collection;
 
 class BuildingService implements BuildingServiceInterface

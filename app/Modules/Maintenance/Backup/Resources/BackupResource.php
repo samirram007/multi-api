@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Maintenance\Backup\Resources;
+namespace Modules\Maintenance\Backup\Resources;
 
 use Illuminate\Http\Request;
 

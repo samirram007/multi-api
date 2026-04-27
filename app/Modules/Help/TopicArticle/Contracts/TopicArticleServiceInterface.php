@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\TopicArticle\Contracts;
+namespace Modules\Help\TopicArticle\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\TopicArticle\Models\TopicArticle;
+use Modules\Help\TopicArticle\Models\TopicArticle;
 
 interface TopicArticleServiceInterface
 {

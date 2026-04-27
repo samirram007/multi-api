@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\ExaminationResult\Services;
+namespace Modules\School\ExaminationResult\Services;
 
-use App\Modules\School\ExaminationResult\Contracts\ExaminationResultServiceInterface;
-use App\Modules\School\ExaminationResult\Models\ExaminationResult;
+use Modules\School\ExaminationResult\Contracts\ExaminationResultServiceInterface;
+use Modules\School\ExaminationResult\Models\ExaminationResult;
 use Illuminate\Database\Eloquent\Collection;
 
 class ExaminationResultService implements ExaminationResultServiceInterface

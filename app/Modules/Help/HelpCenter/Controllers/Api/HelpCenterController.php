@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Modules\Help\HelpCenter\Controllers\Api;
+namespace Modules\Help\HelpCenter\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Help\HelpCenter\Contracts\HelpCenterServiceInterface;
-use App\Modules\Help\HelpCenter\Resources\HelpCenterResource;
-use App\Modules\Help\HelpCenter\Resources\HelpCenterCollection;
-use App\Modules\Help\HelpCenter\Requests\HelpCenterRequest;
+use Modules\Help\HelpCenter\Contracts\HelpCenterServiceInterface;
+use Modules\Help\HelpCenter\Resources\HelpCenterResource;
+use Modules\Help\HelpCenter\Resources\HelpCenterCollection;
+use Modules\Help\HelpCenter\Requests\HelpCenterRequest;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
-use App\Modules\Help\TopicArticle\Models\TopicArticle;
-use App\Modules\Help\TopicArticle\Resources\TopicArticleCollection;
+use Modules\Help\TopicArticle\Models\TopicArticle;
+use Modules\Help\TopicArticle\Resources\TopicArticleCollection;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\JsonResponse;
 use Request;

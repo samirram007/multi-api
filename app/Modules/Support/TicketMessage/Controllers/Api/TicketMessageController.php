@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Modules\Support\TicketMessage\Controllers\Api;
+namespace Modules\Support\TicketMessage\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Support\TicketMessage\Contracts\TicketMessageServiceInterface;
-use App\Modules\Support\TicketMessage\Resources\TicketMessageResource;
-use App\Modules\Support\TicketMessage\Resources\TicketMessageCollection;
-use App\Modules\Support\TicketMessage\Requests\TicketMessageRequest;
+use Modules\Support\TicketMessage\Contracts\TicketMessageServiceInterface;
+use Modules\Support\TicketMessage\Resources\TicketMessageResource;
+use Modules\Support\TicketMessage\Resources\TicketMessageCollection;
+use Modules\Support\TicketMessage\Requests\TicketMessageRequest;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

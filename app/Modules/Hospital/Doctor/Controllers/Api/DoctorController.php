@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\Hospital\Doctor\Controllers\Api;
+namespace Modules\Hospital\Doctor\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\Hospital\Doctor\Resources\DoctorResource;
-use App\Modules\Hospital\Doctor\Resources\DoctorCollection;
-use App\Modules\Hospital\Doctor\Requests\DoctorRequest;
-use App\Modules\Hospital\Doctor\Facades\DoctorFacade as Doctor;
+use Modules\Hospital\Doctor\Resources\DoctorResource;
+use Modules\Hospital\Doctor\Resources\DoctorCollection;
+use Modules\Hospital\Doctor\Requests\DoctorRequest;
+use Modules\Hospital\Doctor\Facades\DoctorFacade as Doctor;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\FeeItem\Services;
+namespace Modules\School\FeeItem\Services;
 
-use App\Modules\School\FeeItem\Contracts\FeeItemServiceInterface;
-use App\Modules\School\FeeItem\Models\FeeItem;
+use Modules\School\FeeItem\Contracts\FeeItemServiceInterface;
+use Modules\School\FeeItem\Models\FeeItem;
 use Illuminate\Database\Eloquent\Collection;
 
 class FeeItemService implements FeeItemServiceInterface

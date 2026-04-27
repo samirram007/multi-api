@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Aipt\AccountGroup\Resources;
+namespace Modules\Aipt\AccountGroup\Resources;
 
 use App\Http\Resources\SuccessCollection;
 use Illuminate\Http\Request;

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Modules\Base\FiscalYear\Controllers\Api\FiscalYearController;
+use Modules\Base\FiscalYear\Controllers\Api\FiscalYearController;
 
 Route::apiResource('fiscal_years', FiscalYearController::class)->middleware(['jwt.cookies']);
 

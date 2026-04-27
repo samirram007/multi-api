@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\TopicArticle\Providers;
+namespace Modules\Help\TopicArticle\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\TopicArticle\Contracts\TopicArticleServiceInterface;
-use App\Modules\TopicArticle\Services\TopicArticleService;
+use Modules\Help\TopicArticle\Contracts\TopicArticleServiceInterface;
+use Modules\Help\TopicArticle\Services\TopicArticleService;
 
 class TopicArticleServiceProvider extends ServiceProvider
 {

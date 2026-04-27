@@ -1,5 +1,5 @@
 <?php
-        namespace App\Modules\Resturant\Booking\Facades;
+        namespace Modules\Resturant\Booking\Facades;
         use Illuminate\Support\Facades\Facade;
         class BookingFacade extends Facade
         {

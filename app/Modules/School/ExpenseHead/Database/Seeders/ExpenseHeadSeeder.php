@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\ExpenseHead\Database\Seeders;
+namespace Modules\School\ExpenseHead\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\School\ExpenseHead\Models\ExpenseHead;
+use Modules\School\ExpenseHead\Models\ExpenseHead;
 
 class ExpenseHeadSeeder extends Seeder
 {

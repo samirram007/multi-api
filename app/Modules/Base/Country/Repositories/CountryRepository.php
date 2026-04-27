@@ -1,8 +1,8 @@
 <?php
-namespace App\Modules\Base\Country\Repositories;
+namespace Modules\Base\Country\Repositories;
 
-use App\Modules\Base\Country\Contracts\CountryRepositoryInterface;
-use App\Modules\Base\Country\Models\Country;
+use Modules\Base\Country\Contracts\CountryRepositoryInterface;
+use Modules\Base\Country\Models\Country;
 
 
 use App\Support\Contracts\CachedRepositoryInterface;

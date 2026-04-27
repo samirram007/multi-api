@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\Student\Services;
+namespace Modules\School\Student\Services;
 
-use App\Modules\School\Student\Contracts\StudentServiceInterface;
-use App\Modules\School\Student\Models\Student;
+use Modules\School\Student\Contracts\StudentServiceInterface;
+use Modules\School\Student\Models\Student;
 use Illuminate\Database\Eloquent\Collection;
 
 class StudentService implements StudentServiceInterface

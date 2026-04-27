@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Maintenance\Backup\Database\Seeders;
+namespace Modules\Maintenance\Backup\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\Maintenance\Backup\Models\Backup;
+use Modules\Maintenance\Backup\Models\Backup;
 
 class BackupSeeder extends Seeder
 {

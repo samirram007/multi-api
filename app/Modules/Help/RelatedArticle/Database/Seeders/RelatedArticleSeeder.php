@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\RelatedArticle\Database\Seeders;
+namespace Modules\Help\RelatedArticle\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\RelatedArticle\Models\RelatedArticle;
+use Modules\Help\RelatedArticle\Models\RelatedArticle;
 
 class RelatedArticleSeeder extends Seeder
 {

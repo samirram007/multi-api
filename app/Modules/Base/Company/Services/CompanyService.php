@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Base\Company\Services;
+namespace Modules\Base\Company\Services;
 
-use App\Modules\Base\Address\Requests\AddressRequest;
-use App\Modules\Base\Company\Contracts\CompanyServiceInterface;
-use App\Modules\Base\Company\Models\Company;
+use Modules\Base\Address\Requests\AddressRequest;
+use Modules\Base\Company\Contracts\CompanyServiceInterface;
+use Modules\Base\Company\Models\Company;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;

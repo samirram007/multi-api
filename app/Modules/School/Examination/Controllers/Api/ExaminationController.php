@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\School\Examination\Controllers\Api;
+namespace Modules\School\Examination\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\School\Examination\Resources\ExaminationResource;
-use App\Modules\School\Examination\Resources\ExaminationCollection;
-use App\Modules\School\Examination\Requests\ExaminationRequest;
-use App\Modules\School\Examination\Facades\ExaminationFacade as Examination;
+use Modules\School\Examination\Resources\ExaminationResource;
+use Modules\School\Examination\Resources\ExaminationCollection;
+use Modules\School\Examination\Requests\ExaminationRequest;
+use Modules\School\Examination\Facades\ExaminationFacade as Examination;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

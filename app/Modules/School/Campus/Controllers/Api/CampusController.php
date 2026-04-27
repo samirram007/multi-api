@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\School\Campus\Controllers\Api;
+namespace Modules\School\Campus\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\School\Campus\Resources\CampusResource;
-use App\Modules\School\Campus\Resources\CampusCollection;
-use App\Modules\School\Campus\Requests\CampusRequest;
-use App\Modules\School\Campus\Facades\CampusFacade as Campus;
+use Modules\School\Campus\Resources\CampusResource;
+use Modules\School\Campus\Resources\CampusCollection;
+use Modules\School\Campus\Requests\CampusRequest;
+use Modules\School\Campus\Facades\CampusFacade as Campus;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\School\Building\Controllers\Api;
+namespace Modules\School\Building\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\School\Building\Resources\BuildingResource;
-use App\Modules\School\Building\Resources\BuildingCollection;
-use App\Modules\School\Building\Requests\BuildingRequest;
-use App\Modules\School\Building\Facades\BuildingFacade as Building;
+use Modules\School\Building\Resources\BuildingResource;
+use Modules\School\Building\Resources\BuildingCollection;
+use Modules\School\Building\Requests\BuildingRequest;
+use Modules\School\Building\Facades\BuildingFacade as Building;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

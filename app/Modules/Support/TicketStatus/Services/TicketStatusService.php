@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Support\TicketStatus\Services;
+namespace Modules\Support\TicketStatus\Services;
 
-use App\Modules\Support\TicketStatus\Contracts\TicketStatusServiceInterface;
-use App\Modules\Support\TicketStatus\Models\TicketStatus;
+use Modules\Support\TicketStatus\Contracts\TicketStatusServiceInterface;
+use Modules\Support\TicketStatus\Models\TicketStatus;
 use Illuminate\Database\Eloquent\Collection;
 
 class TicketStatusService implements TicketStatusServiceInterface

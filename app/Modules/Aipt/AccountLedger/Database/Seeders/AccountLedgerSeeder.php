@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Aipt\AccountLedger\Database\Seeders;
+namespace Modules\Aipt\AccountLedger\Database\Seeders;
 
-use App\Modules\Aipt\AccountGroup\Models\AccountGroup;
+use Modules\Aipt\AccountGroup\Models\AccountGroup;
 use Illuminate\Database\Seeder;
-use App\Modules\Aipt\AccountLedger\Models\AccountLedger;
+use Modules\Aipt\AccountLedger\Models\AccountLedger;
 use Illuminate\Support\Facades\DB;
 
 class AccountLedgerSeeder extends Seeder

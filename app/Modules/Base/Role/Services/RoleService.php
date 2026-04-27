@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Base\Role\Services;
+namespace Modules\Base\Role\Services;
 
-use App\Modules\Base\Role\Contracts\RoleServiceInterface;
-use App\Modules\Base\Role\Models\Role;
+use Modules\Base\Role\Contracts\RoleServiceInterface;
+use Modules\Base\Role\Models\Role;
 use Illuminate\Database\Eloquent\Collection;
 
 class RoleService implements RoleServiceInterface

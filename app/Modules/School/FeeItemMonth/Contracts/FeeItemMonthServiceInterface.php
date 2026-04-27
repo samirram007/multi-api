@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\FeeItemMonth\Contracts;
+namespace Modules\School\FeeItemMonth\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\School\FeeItemMonth\Models\FeeItemMonth;
+use Modules\School\FeeItemMonth\Models\FeeItemMonth;
 
 interface FeeItemMonthServiceInterface
 {

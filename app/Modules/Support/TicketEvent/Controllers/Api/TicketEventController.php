@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Modules\Support\TicketEvent\Controllers\Api;
+namespace Modules\Support\TicketEvent\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Support\TicketEvent\Contracts\TicketEventServiceInterface;
-use App\Modules\Support\TicketEvent\Resources\TicketEventResource;
-use App\Modules\Support\TicketEvent\Resources\TicketEventCollection;
-use App\Modules\Support\TicketEvent\Requests\TicketEventRequest;
+use Modules\Support\TicketEvent\Contracts\TicketEventServiceInterface;
+use Modules\Support\TicketEvent\Resources\TicketEventResource;
+use Modules\Support\TicketEvent\Resources\TicketEventCollection;
+use Modules\Support\TicketEvent\Requests\TicketEventRequest;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

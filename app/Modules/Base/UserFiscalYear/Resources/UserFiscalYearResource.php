@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Base\UserFiscalYear\Resources;
+namespace Modules\Base\UserFiscalYear\Resources;
 
-use App\Modules\Base\FiscalYear\Resources\FiscalYearResource;
-use App\Modules\Base\User\Resources\UserResource;
+use Modules\Base\FiscalYear\Resources\FiscalYearResource;
+use Modules\Base\User\Resources\UserResource;
 use Illuminate\Http\Request;
 
 use App\Http\Resources\SuccessResource;

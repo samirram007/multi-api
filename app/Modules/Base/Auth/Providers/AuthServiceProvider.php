@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\Base\Auth\Providers;
+namespace Modules\Base\Auth\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\Base\Auth\Contracts\AuthServiceInterface;
-use App\Modules\Base\Auth\Services\AuthService;
+use Modules\Base\Auth\Contracts\AuthServiceInterface;
+use Modules\Base\Auth\Services\AuthService;
 
 class AuthServiceProvider extends ServiceProvider
 {

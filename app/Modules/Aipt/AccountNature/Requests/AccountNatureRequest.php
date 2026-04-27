@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Aipt\AccountNature\Requests;
+namespace Modules\Aipt\AccountNature\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

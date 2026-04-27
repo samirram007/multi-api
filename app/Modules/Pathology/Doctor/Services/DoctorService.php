@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Pathology\Doctor\Services;
+namespace Modules\Pathology\Doctor\Services;
 
-use App\Modules\Pathology\Doctor\Contracts\DoctorServiceInterface;
-use App\Modules\Pathology\Doctor\Models\Doctor;
+use Modules\Pathology\Doctor\Contracts\DoctorServiceInterface;
+use Modules\Pathology\Doctor\Models\Doctor;
 use Illuminate\Database\Eloquent\Collection;
 
 class DoctorService implements DoctorServiceInterface

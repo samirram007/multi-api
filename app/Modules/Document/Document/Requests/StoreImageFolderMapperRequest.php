@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Document;
+namespace Modules\Document\Document\Requests;
 
-use App\Models\Document\DocumentsFolder;
+
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
-use App\Rules\UniqueDocumentFolderCombination;
+
 
 class StoreImageFolderMapperRequest extends FormRequest
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Pathology\Test\Requests;
+namespace Modules\Pathology\Test\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

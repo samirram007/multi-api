@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\School\ExaminationSchedule\Controllers\Api;
+namespace Modules\School\ExaminationSchedule\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\School\ExaminationSchedule\Resources\ExaminationScheduleResource;
-use App\Modules\School\ExaminationSchedule\Resources\ExaminationScheduleCollection;
-use App\Modules\School\ExaminationSchedule\Requests\ExaminationScheduleRequest;
-use App\Modules\School\ExaminationSchedule\Facades\ExaminationScheduleFacade as ExaminationSchedule;
+use Modules\School\ExaminationSchedule\Resources\ExaminationScheduleResource;
+use Modules\School\ExaminationSchedule\Resources\ExaminationScheduleCollection;
+use Modules\School\ExaminationSchedule\Requests\ExaminationScheduleRequest;
+use Modules\School\ExaminationSchedule\Facades\ExaminationScheduleFacade as ExaminationSchedule;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

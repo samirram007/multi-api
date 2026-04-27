@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\School\AcademicSession\Controllers\Api;
+namespace Modules\School\AcademicSession\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\School\AcademicSession\Resources\AcademicSessionResource;
-use App\Modules\School\AcademicSession\Resources\AcademicSessionCollection;
-use App\Modules\School\AcademicSession\Requests\AcademicSessionRequest;
-use App\Modules\School\AcademicSession\Facades\AcademicSessionFacade as AcademicSession;
+use Modules\School\AcademicSession\Resources\AcademicSessionResource;
+use Modules\School\AcademicSession\Resources\AcademicSessionCollection;
+use Modules\School\AcademicSession\Requests\AcademicSessionRequest;
+use Modules\School\AcademicSession\Facades\AcademicSessionFacade as AcademicSession;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

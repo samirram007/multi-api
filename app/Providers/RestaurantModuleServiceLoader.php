@@ -13,7 +13,7 @@ class RestaurantModuleServiceLoader extends ServiceProvider
 
         foreach ($directories as $modulePath) {
             $module = basename($modulePath);
-            $providerClass = "App\\Modules\\Restaurant\\{$module}\\Providers\\{$module}ServiceProvider";
+            $providerClass = "Modules\\Restaurant\\{$module}\\Providers\\{$module}ServiceProvider";
 
             if (class_exists($providerClass)) {
                 $this->app->register($providerClass);

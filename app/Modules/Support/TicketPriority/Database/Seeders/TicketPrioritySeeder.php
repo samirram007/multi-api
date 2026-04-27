@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Support\TicketPriority\Database\Seeders;
+namespace Modules\Support\TicketPriority\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\Support\TicketPriority\Models\TicketPriority;
+use Modules\Support\TicketPriority\Models\TicketPriority;
 
 class TicketPrioritySeeder extends Seeder
 {

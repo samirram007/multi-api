@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Modules\Document\Document\Controllers\Api\DocumentController;
+use Modules\Document\Document\Controllers\Api\DocumentController;
 
 Route::middleware(['jwt.cookies'])->prefix('documents')->group(function () {
 

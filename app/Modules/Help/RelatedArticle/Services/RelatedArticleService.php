@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\RelatedArticle\Services;
+namespace Modules\Help\RelatedArticle\Services;
 
-use App\Modules\RelatedArticle\Contracts\RelatedArticleServiceInterface;
-use App\Modules\RelatedArticle\Models\RelatedArticle;
+use Modules\Help\RelatedArticle\Contracts\RelatedArticleServiceInterface;
+use Modules\Help\RelatedArticle\Models\RelatedArticle;
 use Illuminate\Database\Eloquent\Collection;
 
 class RelatedArticleService implements RelatedArticleServiceInterface

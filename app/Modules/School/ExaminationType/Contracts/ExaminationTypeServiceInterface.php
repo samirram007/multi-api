@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\ExaminationType\Contracts;
+namespace Modules\School\ExaminationType\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\School\ExaminationType\Models\ExaminationType;
+use Modules\School\ExaminationType\Models\ExaminationType;
 
 interface ExaminationTypeServiceInterface
 {

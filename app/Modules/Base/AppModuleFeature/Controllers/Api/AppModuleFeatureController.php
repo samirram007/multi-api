@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Modules\Base\AppModuleFeature\Controllers\Api;
+namespace Modules\Base\AppModuleFeature\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Base\AppModuleFeature\Contracts\AppModuleFeatureServiceInterface;
-use App\Modules\Base\AppModuleFeature\Resources\AppModuleFeatureResource;
-use App\Modules\Base\AppModuleFeature\Resources\AppModuleFeatureCollection;
-use App\Modules\Base\AppModuleFeature\Requests\AppModuleFeatureRequest;
+use Modules\Base\AppModuleFeature\Contracts\AppModuleFeatureServiceInterface;
+use Modules\Base\AppModuleFeature\Resources\AppModuleFeatureResource;
+use Modules\Base\AppModuleFeature\Resources\AppModuleFeatureCollection;
+use Modules\Base\AppModuleFeature\Requests\AppModuleFeatureRequest;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

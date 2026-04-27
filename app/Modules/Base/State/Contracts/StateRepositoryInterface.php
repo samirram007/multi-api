@@ -1,5 +1,5 @@
 <?php
-namespace App\Modules\Base\State\Contracts;
+namespace Modules\Base\State\Contracts;
 
 
 use App\Support\Contracts\CachedRepositoryInterface;

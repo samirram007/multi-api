@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Hotel\Amenities\Database\Seeders;
+namespace Modules\Hotel\Amenities\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\Hotel\Amenities\Models\Amenities;
+use Modules\Hotel\Amenities\Models\Amenities;
 
 class AmenitiesSeeder extends Seeder
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\TopicArticle\Requests;
+namespace Modules\Help\TopicArticle\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;

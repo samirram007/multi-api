@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Base\Address\Models;
+namespace Modules\Base\Address\Models;
 
-use App\Modules\Base\Country\Models\Country;
-use App\Modules\Base\State\Models\State;
+use Modules\Base\Country\Models\Country;
+use Modules\Base\State\Models\State;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 

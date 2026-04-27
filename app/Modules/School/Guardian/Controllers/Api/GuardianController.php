@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\School\Guardian\Controllers\Api;
+namespace Modules\School\Guardian\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\School\Guardian\Resources\GuardianResource;
-use App\Modules\School\Guardian\Resources\GuardianCollection;
-use App\Modules\School\Guardian\Requests\GuardianRequest;
-use App\Modules\School\Guardian\Facades\GuardianFacade as Guardian;
+use Modules\School\Guardian\Resources\GuardianResource;
+use Modules\School\Guardian\Resources\GuardianCollection;
+use Modules\School\Guardian\Requests\GuardianRequest;
+use Modules\School\Guardian\Facades\GuardianFacade as Guardian;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

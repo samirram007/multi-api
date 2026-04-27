@@ -1,10 +1,10 @@
 <?php
-namespace App\Modules\School\ExaminationSchedule\Providers;
+namespace Modules\School\ExaminationSchedule\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\School\ExaminationSchedule\Contracts\ExaminationScheduleServiceInterface;
-use App\Modules\School\ExaminationSchedule\Services\ExaminationScheduleService;
+use Modules\School\ExaminationSchedule\Contracts\ExaminationScheduleServiceInterface;
+use Modules\School\ExaminationSchedule\Services\ExaminationScheduleService;
 
 class ExaminationScheduleServiceProvider extends ServiceProvider
 {

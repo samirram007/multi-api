@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\Base\RolePermission\Providers;
+namespace Modules\Base\RolePermission\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\Base\RolePermission\Contracts\RolePermissionServiceInterface;
-use App\Modules\Base\RolePermission\Services\RolePermissionService;
+use Modules\Base\RolePermission\Contracts\RolePermissionServiceInterface;
+use Modules\Base\RolePermission\Services\RolePermissionService;
 
 class RolePermissionServiceProvider extends ServiceProvider
 {

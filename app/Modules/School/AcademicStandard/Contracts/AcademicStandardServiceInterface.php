@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\AcademicStandard\Contracts;
+namespace Modules\School\AcademicStandard\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\School\AcademicStandard\Models\AcademicStandard;
+use Modules\School\AcademicStandard\Models\AcademicStandard;
 
 interface AcademicStandardServiceInterface
 {

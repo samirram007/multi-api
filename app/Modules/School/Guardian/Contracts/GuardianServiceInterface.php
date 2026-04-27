@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\Guardian\Contracts;
+namespace Modules\School\Guardian\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\School\Guardian\Models\Guardian;
+use Modules\School\Guardian\Models\Guardian;
 
 interface GuardianServiceInterface
 {

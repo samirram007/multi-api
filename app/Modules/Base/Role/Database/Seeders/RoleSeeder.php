@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Base\Role\Database\Seeders;
+namespace Modules\Base\Role\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\Base\Role\Models\Role;
+use Modules\Base\Role\Models\Role;
 
 class RoleSeeder extends Seeder
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\Base\State\Providers;
+namespace Modules\Base\State\Providers;
 
-use App\Modules\Base\State\Contracts\StateRepositoryInterface;
-use App\Modules\Base\State\Repositories\StateRepository;
+use Modules\Base\State\Contracts\StateRepositoryInterface;
+use Modules\Base\State\Repositories\StateRepository;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\Base\State\Contracts\StateServiceInterface;
-use App\Modules\Base\State\Services\StateService;
+use Modules\Base\State\Contracts\StateServiceInterface;
+use Modules\Base\State\Services\StateService;
 
 class StateServiceProvider extends ServiceProvider
 {

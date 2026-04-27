@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Payroll\Employee\Contracts;
+namespace Modules\Payroll\Employee\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\Payroll\Employee\Models\Employee;
+use Modules\Payroll\Employee\Models\Employee;
 
 interface EmployeeServiceInterface
 {

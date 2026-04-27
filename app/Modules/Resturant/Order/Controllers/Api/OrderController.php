@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\Resturant\Order\Controllers\Api;
+namespace Modules\Resturant\Order\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\Resturant\Order\Resources\OrderResource;
-use App\Modules\Resturant\Order\Resources\OrderCollection;
-use App\Modules\Resturant\Order\Requests\OrderRequest;
-use App\Modules\Resturant\Order\Facades\OrderFacade as Order;
+use Modules\Resturant\Order\Resources\OrderResource;
+use Modules\Resturant\Order\Resources\OrderCollection;
+use Modules\Resturant\Order\Requests\OrderRequest;
+use Modules\Resturant\Order\Facades\OrderFacade as Order;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

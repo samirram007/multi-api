@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Support\TicketPriority\Resources;
+namespace Modules\Support\TicketPriority\Resources;
 
 use Illuminate\Http\Request;
 

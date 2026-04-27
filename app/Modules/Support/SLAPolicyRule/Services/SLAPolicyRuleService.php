@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Support\SLAPolicyRule\Services;
+namespace Modules\Support\SLAPolicyRule\Services;
 
-use App\Modules\Support\SLAPolicyRule\Contracts\SLAPolicyRuleServiceInterface;
-use App\Modules\Support\SLAPolicyRule\Models\SLAPolicyRule;
+use Modules\Support\SLAPolicyRule\Contracts\SLAPolicyRuleServiceInterface;
+use Modules\Support\SLAPolicyRule\Models\SLAPolicyRule;
 use Illuminate\Database\Eloquent\Collection;
 
 class SLAPolicyRuleService implements SLAPolicyRuleServiceInterface

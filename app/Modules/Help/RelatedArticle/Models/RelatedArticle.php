@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Modules\RelatedArticle\Models;
+namespace Modules\Help\RelatedArticle\Models;
 
-use App\Modules\TopicArticle\Models\TopicArticle;
+use Modules\Help\TopicArticle\Models\TopicArticle;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Hotel\Amenities\Services;
+namespace Modules\Hotel\Amenities\Services;
 
-use App\Modules\Hotel\Amenities\Contracts\AmenitiesServiceInterface;
-use App\Modules\Hotel\Amenities\Models\Amenities;
+use Modules\Hotel\Amenities\Contracts\AmenitiesServiceInterface;
+use Modules\Hotel\Amenities\Models\Amenities;
 use Illuminate\Database\Eloquent\Collection;
 
 class AmenitiesService implements AmenitiesServiceInterface

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Modules\Base\FiscalYear\Resources;
+namespace Modules\Base\FiscalYear\Resources;
 
-use App\Modules\Base\Company\Resources\CompanyResource;
+use Modules\Base\Company\Resources\CompanyResource;
 use Illuminate\Http\Request;
 
 use App\Http\Resources\SuccessResource;

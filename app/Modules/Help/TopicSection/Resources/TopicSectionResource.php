@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\TopicSection\Resources;
+namespace Modules\Help\TopicSection\Resources;
 
-use App\Modules\TopicArticle\Resources\TopicArticleResource;
-use App\Modules\TopicCategory\Resources\TopicCategoryResource;
+use Modules\Help\TopicArticle\Resources\TopicArticleResource;
+use Modules\Help\TopicCategory\Resources\TopicCategoryResource;
 use Illuminate\Http\Request;
 
 use App\Http\Resources\SuccessResource;

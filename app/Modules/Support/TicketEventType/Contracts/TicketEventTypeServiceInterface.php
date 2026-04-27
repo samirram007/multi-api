@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Support\TicketEventType\Contracts;
+namespace Modules\Support\TicketEventType\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\Support\TicketEventType\Models\TicketEventType;
+use Modules\Support\TicketEventType\Models\TicketEventType;
 
 interface TicketEventTypeServiceInterface
 {

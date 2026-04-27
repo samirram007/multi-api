@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Support\TicketEvent\Database\Seeders;
+namespace Modules\Support\TicketEvent\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\Support\TicketEvent\Models\TicketEvent;
+use Modules\Support\TicketEvent\Models\TicketEvent;
 
 class TicketEventSeeder extends Seeder
 {

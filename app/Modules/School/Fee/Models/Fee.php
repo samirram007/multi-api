@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\School\Fee\Models;
+namespace Modules\School\Fee\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

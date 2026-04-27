@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\Hotel\Amenities\Controllers\Api;
+namespace Modules\Hotel\Amenities\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\Hotel\Amenities\Resources\AmenitiesResource;
-use App\Modules\Hotel\Amenities\Resources\AmenitiesCollection;
-use App\Modules\Hotel\Amenities\Requests\AmenitiesRequest;
-use App\Modules\Hotel\Amenities\Facades\AmenitiesFacade as Amenities;
+use Modules\Hotel\Amenities\Resources\AmenitiesResource;
+use Modules\Hotel\Amenities\Resources\AmenitiesCollection;
+use Modules\Hotel\Amenities\Requests\AmenitiesRequest;
+use Modules\Hotel\Amenities\Facades\AmenitiesFacade as Amenities;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

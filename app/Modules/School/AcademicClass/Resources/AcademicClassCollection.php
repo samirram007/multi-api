@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\School\AcademicClass\Resources;
+namespace Modules\School\AcademicClass\Resources;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\SuccessCollection;

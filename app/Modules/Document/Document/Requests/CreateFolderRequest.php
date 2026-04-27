@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Document\Document\Requests;
+namespace Modules\Document\Document\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Log;
+
 
 class CreateFolderRequest extends FormRequest
 {

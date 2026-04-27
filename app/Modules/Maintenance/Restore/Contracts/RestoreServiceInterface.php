@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Maintenance\Restore\Contracts;
+namespace Modules\Maintenance\Restore\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\Maintenance\Restore\Models\Restore;
+use Modules\Maintenance\Restore\Models\Restore;
 
 interface RestoreServiceInterface
 {

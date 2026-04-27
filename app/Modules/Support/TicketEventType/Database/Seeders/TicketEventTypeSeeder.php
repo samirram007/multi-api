@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Support\TicketEventType\Database\Seeders;
+namespace Modules\Support\TicketEventType\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\Support\TicketEventType\Models\TicketEventType;
+use Modules\Support\TicketEventType\Models\TicketEventType;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 

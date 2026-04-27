@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\School\AcademicSession\Tests\Feature;
+namespace Modules\School\AcademicSession\Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Modules\School\AcademicSession\Models\AcademicSession;
+use Modules\School\AcademicSession\Models\AcademicSession;
 
 class AcademicSessionTest extends TestCase
 {

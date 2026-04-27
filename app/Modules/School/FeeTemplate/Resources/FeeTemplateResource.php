@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\School\FeeTemplate\Resources;
+namespace Modules\School\FeeTemplate\Resources;
 
 use Illuminate\Http\Request;
 

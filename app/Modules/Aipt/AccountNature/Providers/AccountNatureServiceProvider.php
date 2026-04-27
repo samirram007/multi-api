@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\Aipt\AccountNature\Providers;
+namespace Modules\Aipt\AccountNature\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\Aipt\AccountNature\Contracts\AccountNatureServiceInterface;
-use App\Modules\Aipt\AccountNature\Services\AccountNatureService;
+use Modules\Aipt\AccountNature\Contracts\AccountNatureServiceInterface;
+use Modules\Aipt\AccountNature\Services\AccountNatureService;
 
 class AccountNatureServiceProvider extends ServiceProvider
 {

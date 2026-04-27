@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\TopicSection\Contracts;
+namespace Modules\Help\TopicSection\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\TopicSection\Models\TopicSection;
+use Modules\Help\TopicSection\Models\TopicSection;
 
 interface TopicSectionServiceInterface
 {

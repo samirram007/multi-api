@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\School\FeeRule\Resources;
+namespace Modules\School\FeeRule\Resources;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\SuccessCollection;

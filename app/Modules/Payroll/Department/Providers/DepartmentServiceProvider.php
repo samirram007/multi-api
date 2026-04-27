@@ -1,10 +1,10 @@
 <?php
-namespace App\Modules\Payroll\Department\Providers;
+namespace Modules\Payroll\Department\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\Payroll\Department\Contracts\DepartmentServiceInterface;
-use App\Modules\Payroll\Department\Services\DepartmentService;
+use Modules\Payroll\Department\Contracts\DepartmentServiceInterface;
+use Modules\Payroll\Department\Services\DepartmentService;
 
 class DepartmentServiceProvider extends ServiceProvider
 {

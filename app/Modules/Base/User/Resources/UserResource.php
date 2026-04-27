@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Base\User\Resources;
+namespace Modules\Base\User\Resources;
 
-use App\Modules\Base\Role\Resources\RoleResource;
-use App\Modules\Base\UserFiscalYear\Resources\UserFiscalYearResource;
+use Modules\Base\Role\Resources\RoleResource;
+use Modules\Base\UserFiscalYear\Resources\UserFiscalYearResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 

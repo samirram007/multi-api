@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\Floor\Contracts;
+namespace Modules\School\Floor\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\School\Floor\Models\Floor;
+use Modules\School\Floor\Models\Floor;
 
 interface FloorServiceInterface
 {

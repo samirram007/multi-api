@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\FeeTemplate\Database\Seeders;
+namespace Modules\School\FeeTemplate\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\School\FeeTemplate\Models\FeeTemplate;
+use Modules\School\FeeTemplate\Models\FeeTemplate;
 
 class FeeTemplateSeeder extends Seeder
 {

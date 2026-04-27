@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\Pathology\Patient\Controllers\Api;
+namespace Modules\Pathology\Patient\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\Pathology\Patient\Resources\PatientResource;
-use App\Modules\Pathology\Patient\Resources\PatientCollection;
-use App\Modules\Pathology\Patient\Requests\PatientRequest;
-use App\Modules\Pathology\Patient\Facades\PatientFacade as Patient;
+use Modules\Pathology\Patient\Resources\PatientResource;
+use Modules\Pathology\Patient\Resources\PatientCollection;
+use Modules\Pathology\Patient\Requests\PatientRequest;
+use Modules\Pathology\Patient\Facades\PatientFacade as Patient;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

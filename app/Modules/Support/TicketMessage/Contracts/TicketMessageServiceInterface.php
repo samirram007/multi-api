@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Support\TicketMessage\Contracts;
+namespace Modules\Support\TicketMessage\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\Support\TicketMessage\Models\TicketMessage;
+use Modules\Support\TicketMessage\Models\TicketMessage;
 
 interface TicketMessageServiceInterface
 {

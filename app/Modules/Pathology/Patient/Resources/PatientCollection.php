@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Pathology\Patient\Resources;
+namespace Modules\Pathology\Patient\Resources;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\SuccessCollection;

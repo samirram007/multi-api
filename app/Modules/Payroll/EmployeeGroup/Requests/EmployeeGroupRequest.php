@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Payroll\EmployeeGroup\Requests;
+namespace Modules\Payroll\EmployeeGroup\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

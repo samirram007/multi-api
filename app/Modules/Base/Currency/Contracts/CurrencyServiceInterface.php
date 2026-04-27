@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Base\Currency\Contracts;
+namespace Modules\Base\Currency\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\Base\Currency\Models\Currency;
+use Modules\Base\Currency\Models\Currency;
 
 interface CurrencyServiceInterface
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Maintenance\Restore\Database\Seeders;
+namespace Modules\Maintenance\Restore\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\Maintenance\Restore\Models\Restore;
+use Modules\Maintenance\Restore\Models\Restore;
 
 class RestoreSeeder extends Seeder
 {

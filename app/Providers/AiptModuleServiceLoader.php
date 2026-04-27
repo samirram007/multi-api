@@ -14,7 +14,7 @@ class AiptModuleServiceLoader extends ServiceProvider
 
         foreach ($directories as $modulePath) {
             $module = basename($modulePath);
-            $providerClass = "App\\Modules\\Aipt\\{$module}\\Providers\\{$module}ServiceProvider";
+            $providerClass = "Modules\\Aipt\\{$module}\\Providers\\{$module}ServiceProvider";
 
             if (class_exists($providerClass)) {
                 $this->app->register($providerClass);

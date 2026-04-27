@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\School\FeeItemMonth\Resources;
+namespace Modules\School\FeeItemMonth\Resources;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\SuccessCollection;

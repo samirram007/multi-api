@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\Base\Country\Providers;
+namespace Modules\Base\Country\Providers;
 
-use App\Modules\Base\Country\Contracts\CountryRepositoryInterface;
-use App\Modules\Base\Country\Repositories\CountryRepository;
+use Modules\Base\Country\Contracts\CountryRepositoryInterface;
+use Modules\Base\Country\Repositories\CountryRepository;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\Base\Country\Contracts\CountryServiceInterface;
-use App\Modules\Base\Country\Services\CountryService;
+use Modules\Base\Country\Contracts\CountryServiceInterface;
+use Modules\Base\Country\Services\CountryService;
 
 class CountryServiceProvider extends ServiceProvider
 {

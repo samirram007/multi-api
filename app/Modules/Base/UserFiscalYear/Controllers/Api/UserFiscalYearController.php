@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Modules\Base\UserFiscalYear\Controllers\Api;
+namespace Modules\Base\UserFiscalYear\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Base\UserFiscalYear\Contracts\UserFiscalYearServiceInterface;
-use App\Modules\Base\UserFiscalYear\Requests\AccountingPeriodRequest;
-use App\Modules\Base\UserFiscalYear\Requests\ReportingPeriodRequest;
-use App\Modules\Base\UserFiscalYear\Resources\UserFiscalYearResource;
-use App\Modules\Base\UserFiscalYear\Resources\UserFiscalYearCollection;
-use App\Modules\Base\UserFiscalYear\Requests\UserFiscalYearRequest;
+use Modules\Base\UserFiscalYear\Contracts\UserFiscalYearServiceInterface;
+use Modules\Base\UserFiscalYear\Requests\AccountingPeriodRequest;
+use Modules\Base\UserFiscalYear\Requests\ReportingPeriodRequest;
+use Modules\Base\UserFiscalYear\Resources\UserFiscalYearResource;
+use Modules\Base\UserFiscalYear\Resources\UserFiscalYearCollection;
+use Modules\Base\UserFiscalYear\Requests\UserFiscalYearRequest;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

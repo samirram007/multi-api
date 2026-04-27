@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Modules\Document\SharedDocument\Controllers\Api;
+namespace Modules\Document\SharedDocument\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Document\SharedDocument\Contracts\SharedDocumentServiceInterface;
-use App\Modules\Document\SharedDocument\Resources\SharedDocumentResource;
-use App\Modules\Document\SharedDocument\Resources\SharedDocumentCollection;
-use App\Modules\Document\SharedDocument\Requests\SharedDocumentRequest;
+use Modules\Document\SharedDocument\Contracts\SharedDocumentServiceInterface;
+use Modules\Document\SharedDocument\Resources\SharedDocumentResource;
+use Modules\Document\SharedDocument\Resources\SharedDocumentCollection;
+use Modules\Document\SharedDocument\Requests\SharedDocumentRequest;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Document\Document\Services;
+namespace Modules\Document\Document\Services;
 
 
-use App\Modules\Document\Document\Contracts\DocumentServiceInterface;
-use App\Modules\Document\Document\Models\Document;
+use Modules\Document\Document\Contracts\DocumentServiceInterface;
+use Modules\Document\Document\Models\Document;
 
 
 use Illuminate\Database\Eloquent\Collection;

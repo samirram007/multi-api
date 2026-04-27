@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\School\Admission\Controllers\Api;
+namespace Modules\School\Admission\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\School\Admission\Resources\AdmissionResource;
-use App\Modules\School\Admission\Resources\AdmissionCollection;
-use App\Modules\School\Admission\Requests\AdmissionRequest;
-use App\Modules\School\Admission\Facades\AdmissionFacade as Admission;
+use Modules\School\Admission\Resources\AdmissionResource;
+use Modules\School\Admission\Resources\AdmissionCollection;
+use Modules\School\Admission\Requests\AdmissionRequest;
+use Modules\School\Admission\Facades\AdmissionFacade as Admission;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

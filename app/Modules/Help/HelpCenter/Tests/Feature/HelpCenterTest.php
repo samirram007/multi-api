@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Help\HelpCenter\Tests\Feature;
+namespace Modules\Help\HelpCenter\Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Modules\Help\HelpCenter\Models\HelpCenter;
+use Modules\Help\HelpCenter\Models\HelpCenter;
 
 class HelpCenterTest extends TestCase
 {

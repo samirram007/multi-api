@@ -1,10 +1,10 @@
 <?php
-namespace App\Modules\School\AcademicSession\Providers;
+namespace Modules\School\AcademicSession\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\School\AcademicSession\Contracts\AcademicSessionServiceInterface;
-use App\Modules\School\AcademicSession\Services\AcademicSessionService;
+use Modules\School\AcademicSession\Contracts\AcademicSessionServiceInterface;
+use Modules\School\AcademicSession\Services\AcademicSessionService;
 
 class AcademicSessionServiceProvider extends ServiceProvider
 {

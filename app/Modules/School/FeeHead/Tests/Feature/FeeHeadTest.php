@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\School\FeeHead\Tests\Feature;
+namespace Modules\School\FeeHead\Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Modules\School\FeeHead\Models\FeeHead;
+use Modules\School\FeeHead\Models\FeeHead;
 
 class FeeHeadTest extends TestCase
 {

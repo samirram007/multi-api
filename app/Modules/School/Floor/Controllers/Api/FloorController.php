@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\School\Floor\Controllers\Api;
+namespace Modules\School\Floor\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\School\Floor\Resources\FloorResource;
-use App\Modules\School\Floor\Resources\FloorCollection;
-use App\Modules\School\Floor\Requests\FloorRequest;
-use App\Modules\School\Floor\Facades\FloorFacade as Floor;
+use Modules\School\Floor\Resources\FloorResource;
+use Modules\School\Floor\Resources\FloorCollection;
+use Modules\School\Floor\Requests\FloorRequest;
+use Modules\School\Floor\Facades\FloorFacade as Floor;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;

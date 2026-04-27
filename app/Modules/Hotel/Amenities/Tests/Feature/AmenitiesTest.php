@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Hotel\Amenities\Tests\Feature;
+namespace Modules\Hotel\Amenities\Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Modules\Hotel\Amenities\Models\Amenities;
+use Modules\Hotel\Amenities\Models\Amenities;
 
 class AmenitiesTest extends TestCase
 {

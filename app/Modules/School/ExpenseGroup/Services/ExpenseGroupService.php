@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\ExpenseGroup\Services;
+namespace Modules\School\ExpenseGroup\Services;
 
-use App\Modules\School\ExpenseGroup\Contracts\ExpenseGroupServiceInterface;
-use App\Modules\School\ExpenseGroup\Models\ExpenseGroup;
+use Modules\School\ExpenseGroup\Contracts\ExpenseGroupServiceInterface;
+use Modules\School\ExpenseGroup\Models\ExpenseGroup;
 use Illuminate\Database\Eloquent\Collection;
 
 class ExpenseGroupService implements ExpenseGroupServiceInterface

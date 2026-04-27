@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Support\TicketMaster\Models;
+namespace Modules\Support\TicketMaster\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

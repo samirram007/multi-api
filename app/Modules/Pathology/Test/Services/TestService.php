@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Pathology\Test\Services;
+namespace Modules\Pathology\Test\Services;
 
-use App\Modules\Pathology\Test\Contracts\TestServiceInterface;
-use App\Modules\Pathology\Test\Models\Test;
+use Modules\Pathology\Test\Contracts\TestServiceInterface;
+use Modules\Pathology\Test\Models\Test;
 use Illuminate\Database\Eloquent\Collection;
 
 class TestService implements TestServiceInterface

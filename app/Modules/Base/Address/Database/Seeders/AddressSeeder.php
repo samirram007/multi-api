@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Base\Address\Database\Seeders;
+namespace Modules\Base\Address\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\Base\Address\Models\Address;
+use Modules\Base\Address\Models\Address;
 
 class AddressSeeder extends Seeder
 {

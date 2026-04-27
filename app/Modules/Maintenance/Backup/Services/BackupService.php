@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Maintenance\Backup\Services;
+namespace Modules\Maintenance\Backup\Services;
 
-use App\Modules\Maintenance\Backup\Contracts\BackupServiceInterface;
-use App\Modules\Maintenance\Backup\Models\Backup;
+use Modules\Maintenance\Backup\Contracts\BackupServiceInterface;
+use Modules\Maintenance\Backup\Models\Backup;
 use Illuminate\Database\Eloquent\Collection;
 
 class BackupService implements BackupServiceInterface

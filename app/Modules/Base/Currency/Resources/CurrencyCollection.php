@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Base\Currency\Resources;
+namespace Modules\Base\Currency\Resources;
 
 use App\Http\Resources\SuccessCollection;
 

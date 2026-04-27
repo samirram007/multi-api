@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\School\Building\Contracts;
+namespace Modules\School\Building\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\School\Building\Models\Building;
+use Modules\School\Building\Models\Building;
 
 interface BuildingServiceInterface
 {

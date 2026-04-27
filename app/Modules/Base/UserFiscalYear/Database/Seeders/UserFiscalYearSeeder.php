@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Base\UserFiscalYear\Database\Seeders;
+namespace Modules\Base\UserFiscalYear\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\Base\UserFiscalYear\Models\UserFiscalYear;
+use Modules\Base\UserFiscalYear\Models\UserFiscalYear;
 
 class UserFiscalYearSeeder extends Seeder
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Modules\TopicCategory\Controllers\Api;
+namespace Modules\Help\TopicCategory\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Modules\TopicCategory\Contracts\TopicCategoryServiceInterface;
-use App\Modules\TopicCategory\Resources\TopicCategoryResource;
-use App\Modules\TopicCategory\Resources\TopicCategoryCollection;
-use App\Modules\TopicCategory\Requests\TopicCategoryRequest;
+use Modules\Help\TopicCategory\Contracts\TopicCategoryServiceInterface;
+use Modules\Help\TopicCategory\Resources\TopicCategoryResource;
+use Modules\Help\TopicCategory\Resources\TopicCategoryCollection;
+use Modules\Help\TopicCategory\Requests\TopicCategoryRequest;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;
