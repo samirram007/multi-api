@@ -3,4 +3,4 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Payroll\EmployeeGroup\Controllers\Api\EmployeeGroupController;
 
-Route::apiResource('employee_groups', EmployeeGroupController::class)->middleware(['jwt.cookies']);
+Route::apiResource('employee_groups', EmployeeGroupController::class)->middleware(['jwt.cookies', 'tenant']);

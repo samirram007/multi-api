@@ -12,6 +12,8 @@ interface UserServiceInterface
     public function store(array $data): User;
 
     public function findOrCreateSocialUser($socialUser, string $provider): User;
+// functionpublic findOrCreateFromProvider( $socialUser, string $provider): User;
+
     public function update(array $data, int $id): User;
     public function delete(int $id): bool;
 }

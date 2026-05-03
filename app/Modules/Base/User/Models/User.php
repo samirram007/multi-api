@@ -94,6 +94,8 @@ class User extends Authenticatable implements JWTSubject
     }
     public function getJWTCustomClaims(): array
     {
-        return [];
+         return [
+            'tenant_id' => config('tenant_id')
+        ];
     }
 }

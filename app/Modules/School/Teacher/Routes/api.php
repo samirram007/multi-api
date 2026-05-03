@@ -3,4 +3,4 @@
 use Illuminate\Support\Facades\Route;
 use Modules\School\Teacher\Controllers\Api\TeacherController;
 
-Route::apiResource('teachers', TeacherController::class)->middleware(['jwt.cookies']);
+Route::apiResource('teachers', TeacherController::class)->middleware(['jwt.cookies', 'tenant']);

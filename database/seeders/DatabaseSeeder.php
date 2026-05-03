@@ -7,6 +7,11 @@ use Modules\Base\Country\Database\Seeders\CountrySeeder;
 use Modules\Base\Currency\Database\Seeders\CurrencySeeder;
 use Modules\Base\Role\Database\Seeders\RoleSeeder;
 use Modules\Base\State\Database\Seeders\StateSeeder;
+use Modules\Hotel\Amenities\Database\Seeders\AmenitiesSeeder;
+use Modules\Hotel\Booking\Database\Seeders\BookingSeeder;
+use Modules\Pathology\Doctor\Database\Seeders\DoctorSeeder;
+use Modules\Pathology\Patient\Database\Seeders\PatientSeeder;
+use Modules\Pathology\Test\Database\Seeders\TestSeeder;
 use Modules\School\AcademicSession\Database\Seeders\AcademicSessionSeeder;
 
 use Modules\School\AcademicStandard\Database\Seeders\AcademicStandardSeeder;
@@ -26,14 +31,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $seeders = [
-                // AppModuleSeeder::class,
-            RoleSeeder::class,
-            CurrencySeeder::class,
-            CountrySeeder::class,
-            StateSeeder::class,
+        $connection = \Illuminate\Support\Facades\DB::getDefaultConnection();
+
+        $seeders = [];
+
+        // Only seed roles if NOT central, or handle based on connection
+        // if ($connection !== 'central') {
+        //     $seeders[] = RoleSeeder::class;
+        // }
+
+        $seeders = array_merge($seeders, [
+
+
             SampleDataSeeder::class,
-        ];
+        ]);
 
         switch (env('APP_MODULE')) {
             case 'Aipt':
@@ -59,16 +70,16 @@ class DatabaseSeeder extends Seeder
                 break;
             case 'Pathology':
                 $pathologySeeders = [
-                    \App\Modules\Pathology\Test\Database\Seeders\TestSeeder::class,
-                    \App\Modules\Pathology\Patient\Database\Seeders\PatientSeeder::class,
-                    \App\Modules\Pathology\Doctor\Database\Seeders\DoctorSeeder::class,
+                    TestSeeder::class,
+                    PatientSeeder::class,
+                    DoctorSeeder::class,
                 ];
                 $seeders = array_merge($seeders, $pathologySeeders);
                 break;
             case 'Hotel':
                 $hotelSeeders = [
-                    \App\Modules\Hotel\Booking\Database\Seeders\BookingSeeder::class,
-                    \App\Modules\Hotel\Amenities\Database\Seeders\AmenitiesSeeder::class,
+                    BookingSeeder::class,
+                    AmenitiesSeeder::class,
                 ];
                 $seeders = array_merge($seeders, $hotelSeeders);
                 break;

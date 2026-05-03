@@ -11,6 +11,7 @@ class State extends Model
 {
     use HasFactory;
 
+    protected $connection = 'central';
     protected $table = 'states';
 
     protected $fillable = [

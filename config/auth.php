@@ -1,6 +1,7 @@
 <?php
 
-use App\Modules\Base\User\Models\User;
+use Modules\App\TenantUser\Models\TenantUser;
+use Modules\Base\User\Models\User;
 
 
 
@@ -46,6 +47,11 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        'tenant_api' => [
+            'driver' => 'jwt',
+            'provider' => 'tenant_users',
+            'hash' => false,
+        ],
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
@@ -73,6 +79,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', User::class),
+        ],
+        'tenant_users' => [
+            'driver' => 'eloquent',
+            'model' => TenantUser::class,
         ],
 
         // 'users' => [

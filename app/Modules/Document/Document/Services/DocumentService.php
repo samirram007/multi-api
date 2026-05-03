@@ -5,6 +5,7 @@ namespace Modules\Document\Document\Services;
 
 use Modules\Document\Document\Contracts\DocumentServiceInterface;
 use Modules\Document\Document\Models\Document;
+use Modules\App\Tenant\Services\TenantManager;
 
 
 use Illuminate\Database\Eloquent\Collection;
@@ -17,15 +18,41 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-
-
 class DocumentService implements DocumentServiceInterface
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Get All (User Scoped)
-    |--------------------------------------------------------------------------
-    */
+    public function __construct(protected TenantManager $tenantManager) {}
+
+    protected function getTenantPath(): string
+    {
+        // Try to get tenant ID from the manager, or fallback to config
+        return (string) ($this->tenantManager->getCurrentTenant()?->id ?? config('tenant_id', 'central'));
+    }
+    protected function updateFolderMetadata(?int $parentId): void
+    {
+        if (!$parentId) {
+            return;
+        }
+
+        $folder = Document::find($parentId);
+        if (!$folder) {
+            return;
+        }
+
+        $files = $folder->childFiles()->get();
+        $folders = $folder->childFolders()->get();
+
+        $meta = [
+            'file_count' => $files->count(),
+            'folder_count' => $folders->count(),
+            'total_size' => $files->sum('size'),
+        ];
+
+        $folder->update(['meta' => $meta]);
+
+        // Recursive update to parent
+        $this->updateFolderMetadata($folder->parent_id);
+    }
+
 
     public function getAll(): Collection
     {
@@ -57,6 +84,7 @@ class DocumentService implements DocumentServiceInterface
     public function store(array $data): SupportCollection
     {
         $userId = Auth::id();
+        $tenantId = $this->getTenantPath();
 
         if (!$userId) {
             throw new \Exception('Unauthenticated');
@@ -65,7 +93,7 @@ class DocumentService implements DocumentServiceInterface
         $files = $data['files'] ?? [];
         $parentId = $data['parent_id'] == "" ? null : $data['parent_id'];
 
-        return DB::transaction(function () use ($files, $userId, $parentId) {
+        return DB::transaction(function () use ($files, $userId, $parentId, $tenantId) {
 
             $documents = collect();
 
@@ -81,7 +109,7 @@ class DocumentService implements DocumentServiceInterface
                 $name = $uuid . '.' . $extension;
 
                 $path = $file->storeAs(
-                    "documents/{$userId}/{$extension}",
+                    "documents/{$tenantId}/{$userId}/{$extension}",
                     $name,
                     'public'
                 );
@@ -101,6 +129,7 @@ class DocumentService implements DocumentServiceInterface
                 $documents->push($document);
             }
 
+            $this->updateFolderMetadata($parentId);
             return $documents;
         });
     }
@@ -128,10 +157,13 @@ class DocumentService implements DocumentServiceInterface
             return false;
         }
 
+        $parentId = $document->parent_id;
+
         DB::transaction(function () use ($document) {
             $this->deleteRecursive($document);
         });
 
+        $this->updateFolderMetadata($parentId);
         return true;
     }
 
@@ -242,13 +274,18 @@ class DocumentService implements DocumentServiceInterface
 
     public function createFolder(array $data): Document
     {
-        return Document::create([
+        $folder = Document::create([
             'user_id' => Auth::id(),
             'parent_id' => $data['parent_id'] ?? null,
             'original_name' => $data['name'],
             'name' => Str::slug($data['name']) . '-' . Str::random(6),
             'document_type' => 'folder',
+            'meta' => ['file_count' => 0, 'folder_count' => 0, 'total_size' => 0],
         ]);
+
+        $this->updateFolderMetadata($folder->parent_id);
+        
+        return $folder;
     }
 
 
@@ -329,6 +366,7 @@ class DocumentService implements DocumentServiceInterface
     public function uploadFile(array $data): Document
     {
         $userId = Auth::id();
+        $tenantId = $this->getTenantPath();
         if (!$userId) {
             throw new \Exception('Unauthenticated');
         }
@@ -350,7 +388,7 @@ class DocumentService implements DocumentServiceInterface
         $name = $uuid . '.' . $extension;
 
         $path = $file->storeAs(
-            "documents/{$userId}/{$extension}",
+            "documents/{$tenantId}/{$userId}/{$extension}",
             $name,
             'public'
         );
@@ -394,6 +432,7 @@ class DocumentService implements DocumentServiceInterface
     public function move(int $id, ?int $newParentId): bool
     {
         $document = Document::findOrFail($id);
+        $oldParentId = $document->parent_id;
 
         // Prevent circular move
         if ($this->isDescendant($newParentId, $id)) {
@@ -403,6 +442,9 @@ class DocumentService implements DocumentServiceInterface
         $document->update([
             'parent_id' => $newParentId,
         ]);
+
+        $this->updateFolderMetadata($oldParentId);
+        $this->updateFolderMetadata($newParentId);
 
         return true;
     }

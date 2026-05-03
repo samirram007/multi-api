@@ -26,17 +26,19 @@ class JWTFromCookie
         $token = $request->bearerToken() ?? $request->cookie('token');
         if (!$token) {
 
-           throw new AuthenticationException('No token provided.', ['api']);
+            throw new AuthenticationException('No token provided.', ['api']);
 
         }
 
         try {
+            Auth::shouldUse('api');
             JWTAuth::setToken($token);
             $user = JWTAuth::authenticate();
             if ($user) {
                 Auth::login($user);
             } else {
-                throw new AuthenticationException('Unauthenticated.');
+                throw new AuthenticationException('User Unauthenticated.');
+
             }
         } catch (JWTException $e) {
             throw new AuthenticationException('Invalid or expired token.', ['api']);

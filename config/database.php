@@ -102,6 +102,42 @@ return [
             ]) : [],
         ],
 
+        'tenant' => [
+            'driver' => 'mariadb',
+            'host' => env('TENANT_DB_CONFIG') ? json_decode(env('TENANT_DB_CONFIG'), true)['DB_HOST'] : '',
+            'port' => env('TENANT_DB_CONFIG') ? json_decode(env('TENANT_DB_CONFIG'), true)['DB_PORT'] : '3307',
+            'database' => env('TENANT_DB_CONFIG') ? json_decode(env('TENANT_DB_CONFIG'), true)['DB_DATABASE'] : '',
+            'username' => env('TENANT_DB_CONFIG') ? json_decode(env('TENANT_DB_CONFIG'), true)['DB_USERNAME'] : '',
+            'password' => env('TENANT_DB_CONFIG') ? json_decode(env('TENANT_DB_CONFIG'), true)['DB_PASSWORD'] : '',
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                (PHP_VERSION_ID >= 80500 ? Mysql::ATTR_SSL_CA : PDO::MYSQL_ATTR_SSL_CA) => env('MYSQL_ATTR_SSL_CA'),
+                PDO::ATTR_EMULATE_PREPARES => true,
+            ]) : [],
+        ],
+
+        'central' => [
+            'driver' => 'mariadb',
+            'url' => env('DB_URL'),
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '3307'),
+            'database' => 'central_db',
+            'username' => env('DB_USERNAME', 'root'),
+            'password' => env('DB_PASSWORD', 'Samir@007'),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                (PHP_VERSION_ID >= 80500 ? Mysql::ATTR_SSL_CA : PDO::MYSQL_ATTR_SSL_CA) => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+
 
         'pgsql' => [
             'driver' => 'pgsql',

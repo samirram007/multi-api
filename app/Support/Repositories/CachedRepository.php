@@ -15,10 +15,12 @@ class CachedRepository implements CachedRepositoryInterface
     protected string $prefix;
     protected int $ttl; // Default to 1 hour
 
-    public function __construct(protected BaseRepositoryInterface $repo)
+    public function __construct(protected BaseRepositoryInterface $repo, protected \Modules\App\Tenant\Services\TenantManager $tenantManager)
     {
         $this->ttl = env('CACHE_TTL', 3600);
-        $this->prefix = strtolower(class_basename($repo));
+        
+        $tenantId = $this->tenantManager->getCurrentTenant()?->id ?? 'central';
+        $this->prefix = 'tenant_' . $tenantId . '_' . strtolower(class_basename($repo));
     }
 
 

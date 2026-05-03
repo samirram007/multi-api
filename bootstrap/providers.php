@@ -23,7 +23,7 @@ $providers = [
     MaintenanceModuleServiceLoader::class,
 ];
 
-switch (env('APP_MODULE')) {
+switch (config('app.module', env('APP_MODULE'))) {
     case 'Aipt':
         $providers[] = AiptModuleServiceLoader::class;
         break;

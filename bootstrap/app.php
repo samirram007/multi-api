@@ -1,10 +1,17 @@
 <?php
 
 use App\Helpers\ApiErrorResponse;
+use Illuminate\Auth\Access\AuthorizationException;
+
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -19,8 +26,12 @@ return Application::configure(basePath: dirname(__DIR__))
             App\Http\Middleware\NormalizeQueryParameters::class,
             Illuminate\Http\Middleware\HandleCors::class
         ]);
+$middleware->append(App\Http\Middleware\SetTenantConnection::class);
+
         $middleware->alias([
             'jwt.cookies' => App\Http\Middleware\JWTFromCookie::class,
+'jwt.tenant.cookies' => App\Http\Middleware\JWTFromCookieTenant::class,
+
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

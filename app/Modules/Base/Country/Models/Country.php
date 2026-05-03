@@ -11,6 +11,7 @@ class Country extends Model
 {
     use HasFactory;
 
+    protected $connection = 'central';
     protected $table = 'countries';
 
     protected $fillable = [

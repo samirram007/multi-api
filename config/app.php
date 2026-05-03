@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'module' => env('APP_MODULE', 'Aipt'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -136,6 +138,6 @@ return [
 
     'aliases' => [
         // ...existing aliases...
-        'State' => App\Modules\State\Facades\StateFacade::class,
+        // 'State' => App\Modules\State\Facades\StateFacade::class,
     ],
 ];

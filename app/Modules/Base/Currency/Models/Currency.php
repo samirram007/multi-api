@@ -9,6 +9,7 @@ class Currency extends Model
 {
     use HasFactory;
 
+    protected $connection = 'central';
     protected $table = 'currencies';
 
     protected $fillable = [

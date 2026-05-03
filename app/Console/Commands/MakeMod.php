@@ -74,7 +74,7 @@ class MakeMod extends Command
         $content = "<?php
 
 use Illuminate\Support\Facades\Route;
-use App\Modules\\{$group}{$name}\\Controllers\\Api\\{$name}Controller;
+use Modules\\{$group}{$name}\\Controllers\\Api\\{$name}Controller;
 
 Route::apiResource('{$plural}', {$name}Controller::class)->middleware(['jwt.cookies']);
 ";
@@ -85,14 +85,14 @@ Route::apiResource('{$plural}', {$name}Controller::class)->middleware(['jwt.cook
     {
         $content = "<?php
 
-namespace App\Modules\\{$group}{$name}\Controllers\Api;
+namespace Modules\\{$group}{$name}\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\\{$group}{$name}\Resources\\{$name}Resource;
-use App\Modules\\{$group}{$name}\Resources\\{$name}Collection;
-use App\Modules\\{$group}{$name}\Requests\\{$name}Request;
-use App\Modules\\{$group}{$name}\Facades\\{$name}Facade as {$name};
+use Modules\\{$group}{$name}\Resources\\{$name}Resource;
+use Modules\\{$group}{$name}\Resources\\{$name}Collection;
+use Modules\\{$group}{$name}\Requests\\{$name}Request;
+use Modules\\{$group}{$name}\Facades\\{$name}Facade as {$name};
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;
@@ -147,10 +147,10 @@ class {$name}Controller extends Controller
     {
         $content = "<?php
 
-namespace App\Modules\\{$group}{$name}\Contracts;
+namespace Modules\\{$group}{$name}\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\\{$group}{$name}\Models\\{$name};
+use Modules\\{$group}{$name}\Models\\{$name};
 
 interface {$name}ServiceInterface
 {
@@ -168,10 +168,10 @@ interface {$name}ServiceInterface
     {
         $content = "<?php
 
-namespace App\Modules\\{$group}{$name}\Services;
+namespace Modules\\{$group}{$name}\Services;
 
-use App\Modules\\{$group}{$name}\Contracts\\{$name}ServiceInterface;
-use App\Modules\\{$group}{$name}\Models\\{$name};
+use Modules\\{$group}{$name}\Contracts\\{$name}ServiceInterface;
+use Modules\\{$group}{$name}\Models\\{$name};
 use Illuminate\Database\Eloquent\Collection;
 
 class {$name}Service implements {$name}ServiceInterface
@@ -214,7 +214,7 @@ class {$name}Service implements {$name}ServiceInterface
     {
         $content = "<?php
 
-namespace App\Modules\\{$group}{$name}\Models;
+namespace Modules\\{$group}{$name}\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -246,7 +246,7 @@ class {$name} extends Model
     {
         $content = "<?php
 
-namespace App\Modules\\{$group}{$name}\Resources;
+namespace Modules\\{$group}{$name}\Resources;
 
 use Illuminate\Http\Request;
 
@@ -271,7 +271,7 @@ class {$name}Resource extends SuccessResource
     {
         $content = "<?php
 
-namespace App\Modules\\{$group}{$name}\Resources;
+namespace Modules\\{$group}{$name}\Resources;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\SuccessCollection;
@@ -297,7 +297,7 @@ class {$name}Collection extends SuccessCollection
     {
         $content = "<?php
 
-namespace App\Modules\\{$group}{$name}\Requests;
+namespace Modules\\{$group}{$name}\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -355,13 +355,14 @@ class {$name}Request extends FormRequest
     {
 
         $content = "<?php
-        namespace App\Modules\\{$group}{$name}\Facades;
+        namespace Modules\\{$group}{$name}\Facades;
         use Illuminate\Support\Facades\Facade;
+        use Modules\\{$group}{$name}\Contracts\\{$name}ServiceInterface;
         class {$name}Facade extends Facade
         {
             protected static function getFacadeAccessor()
             {
-                return '{$plural}';
+                return {$name}ServiceInterface::class;
             }
         }
 
@@ -373,11 +374,11 @@ class {$name}Request extends FormRequest
     {
         $content = "<?php
 
-namespace App\Modules\\{$group}{$name}\Tests\Feature;
+namespace Modules\\{$group}{$name}\Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Modules\\{$group}{$name}\Models\\{$name};
+use Modules\\{$group}{$name}\Models\\{$name};
 
 class {$name}Test extends TestCase
 {
@@ -511,10 +512,10 @@ return new class extends Migration
     {
         $content = "<?php
 
-namespace App\Modules\\{$group}{$name}\Database\Seeders;
+namespace Modules\\{$group}{$name}\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\\{$group}{$name}\Models\\{$name};
+use Modules\\{$group}{$name}\Models\\{$name};
 
 class {$name}Seeder extends Seeder
 {
@@ -537,22 +538,20 @@ class {$name}Seeder extends Seeder
         string $group
     ): void {
         $content = "<?php
-namespace App\Modules\\{$group}{$name}\Providers;
+namespace Modules\\{$group}{$name}\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\\{$group}{$name}\Contracts\\{$name}ServiceInterface;
-use App\Modules\\{$group}{$name}\Services\\{$name}Service;
+use Modules\\{$group}{$name}\Contracts\\{$name}ServiceInterface;
+use Modules\\{$group}{$name}\Services\\{$name}Service;
 
 class {$name}ServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        \$this->app->bind({$name}ServiceInterface::class, {$name}Service::class);
+        \$this->app->singleton({$name}ServiceInterface::class, {$name}Service::class);
 
-        \$this->app->singleton('{$plural}', function (\$app) {
-            return \$app->make({$name}ServiceInterface::class);
-        });
+
 
 
     }
