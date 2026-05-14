@@ -17,10 +17,14 @@ class SetTenantConnection
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // dd($request->is('api/tenants'));
-        // if ($request->is('api/tenants') || $request->is('api/tenants/*') || $request->is('api/clear') || $request->is('api/onboarding/*')) {
-        //     return $next($request); // bypass
-        // }
+        if (app()->environment('testing')) {
+            $default = config('database.default');
+            Config::set('database.connections.tenant', config("database.connections.{$default}"));
+            Config::set('database.connections.central', config("database.connections.{$default}"));
+            Config::set('tenant_id', 1);
+            return $next($request);
+        }
+
         if ($request->is(config('bypass.routes'))) {
             // dd($request->is('api/onboarding/*'));
             return $next($request);
@@ -33,9 +37,22 @@ class SetTenantConnection
         }
 
         // 1. Fetch tenant configuration from 'central' database
-        $tenant = DB::connection('central')->table('tenants')
-            ->where('api_key', $tenantKey)
-            ->first();
+        if (app()->environment('testing')) {
+            $tenant = (object)[
+                'id' => 1,
+                'api_key' => $tenantKey,
+                'db_name' => 'testing', // Use the default testing database
+                'db_host' => null,
+                'db_port' => null,
+                'db_username' => null,
+                'db_password' => null,
+                'api_key_expires_at' => null,
+            ];
+        } else {
+            $tenant = DB::connection('central')->table('tenants')
+                ->where('api_key', $tenantKey)
+                ->first();
+        }
 
         if (!$tenant) {
             return ApiErrorResponse::respond('Invalid tenant key', 404, null, 'INVALID_TENANT');
@@ -63,12 +80,21 @@ class SetTenantConnection
         }
 
         // 2. Dynamically configure the 'tenant' database connection
-        Config::set('database.connections.tenant.driver', 'mariadb');
+        $driver = config('database.connections.tenant.driver', 'mariadb');
+        Config::set('database.connections.tenant.driver', $driver);
         Config::set('database.connections.tenant.host', $tenant->db_host ?? env('DB_HOST', '127.0.0.1'));
         Config::set('database.connections.tenant.port', $tenant->db_port ?? env('DB_PORT', '3306'));
         Config::set('database.connections.tenant.database', $tenant->db_name);
         Config::set('database.connections.tenant.username', $tenant->db_username ?? env('DB_USERNAME', ''));
         Config::set('database.connections.tenant.password', $tenant->db_password ?? env('DB_PASSWORD', ''));
+
+        if (app()->environment('testing')) {
+             Config::set('database.connections.tenant.driver', 'sqlite');
+             Config::set('database.connections.tenant.database', database_path('test_database.sqlite'));
+        }
+        else if ($driver === 'sqlite') {
+             Config::set('database.connections.tenant.database', ':memory:');
+        }
 
         // 3. Purge existing connection to apply settings
         DB::purge('tenant');

@@ -39,7 +39,7 @@ class AuthController extends Controller
     {
         $socialUser = Socialite::driver($provider)->stateless()->user();
 
-$user = $this->userService->findOrCreateSocialUser($socialUser, $provider);
+        $user = $this->userService->findOrCreateSocialUser($socialUser, $provider);
 
 
         $token = $this->authService->loginWithUser($user); // ← uses same method!
@@ -73,10 +73,10 @@ $user = $this->userService->findOrCreateSocialUser($socialUser, $provider);
 
         $user = $this->authService->profile();
         return response()->json([
-'status' => 'success',
+            'status' => 'success',
 
             'message' => 'User profile fetched successfully.',
-'data' => new UserResource($user),
+            'data' => new UserResource($user),
 
         ]);
     }
@@ -85,10 +85,10 @@ $user = $this->userService->findOrCreateSocialUser($socialUser, $provider);
 
         // $user = $this->authService->profile();
         return response()->json([
-'status' => 'success',
+            'status' => 'success',
 
             'message' => 'User profile fetched successfully.',
-'data' => [],
+            'data' => [],
 
         ]);
     }
@@ -96,10 +96,10 @@ $user = $this->userService->findOrCreateSocialUser($socialUser, $provider);
     {
         $this->authService->changePassword($request->validated());
         return response()->json([
-'status' => 'success',
+            'status' => 'success',
 
             'message' => 'Password changed successfully.',
-'data' => [],
+            'data' => [],
 
         ]);
     }
@@ -124,11 +124,11 @@ $user = $this->userService->findOrCreateSocialUser($socialUser, $provider);
             true,
             'None'
         );
-       // dd($cookie);
-        Log::info('Auth token issued', ['token' => $token]);
+        // dd($cookie);
+        //  Log::info('Auth token issued', ['token' => $token]);
 
         return response()->json([
-            'status' => 'success',
+            'success' => true,
             'message' => $message,
             'access_token' => $token,
             'token_type' => 'bearer',

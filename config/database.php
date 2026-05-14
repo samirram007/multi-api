@@ -35,7 +35,7 @@ return [
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DB_URL'),
-            'database' => database_path('database.sqlite'),//env('DB_DATABASE', database_path('database.sqlite')),
+            'database' => env('DB_DATABASE', database_path('database.sqlite')),
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
             'busy_timeout' => null,
@@ -103,12 +103,12 @@ return [
         ],
 
         'tenant' => [
-            'driver' => 'mariadb',
-            'host' => env('TENANT_DB_CONFIG') ? json_decode(env('TENANT_DB_CONFIG'), true)['DB_HOST'] : '',
-            'port' => env('TENANT_DB_CONFIG') ? json_decode(env('TENANT_DB_CONFIG'), true)['DB_PORT'] : '3307',
-            'database' => env('TENANT_DB_CONFIG') ? json_decode(env('TENANT_DB_CONFIG'), true)['DB_DATABASE'] : '',
-            'username' => env('TENANT_DB_CONFIG') ? json_decode(env('TENANT_DB_CONFIG'), true)['DB_USERNAME'] : '',
-            'password' => env('TENANT_DB_CONFIG') ? json_decode(env('TENANT_DB_CONFIG'), true)['DB_PASSWORD'] : '',
+            'driver' => env('DB_CONNECTION_TENANT', 'mariadb'),
+            'host' => env('TENANT_DB_CONFIG') ? json_decode(env('TENANT_DB_CONFIG'), true)['DB_HOST'] : env('DB_HOST_TENANT', ''),
+            'port' => env('TENANT_DB_CONFIG') ? json_decode(env('TENANT_DB_CONFIG'), true)['DB_PORT'] : env('DB_PORT_TENANT', '3307'),
+            'database' => env('TENANT_DB_CONFIG') ? json_decode(env('TENANT_DB_CONFIG'), true)['DB_DATABASE'] : env('DB_DATABASE_TENANT', ''),
+            'username' => env('TENANT_DB_CONFIG') ? json_decode(env('TENANT_DB_CONFIG'), true)['DB_USERNAME'] : env('DB_USERNAME_TENANT', ''),
+            'password' => env('TENANT_DB_CONFIG') ? json_decode(env('TENANT_DB_CONFIG'), true)['DB_PASSWORD'] : env('DB_PASSWORD_TENANT', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
@@ -121,11 +121,11 @@ return [
         ],
 
         'central' => [
-            'driver' => 'mariadb',
+            'driver' => env('DB_CONNECTION_CENTRAL', 'mariadb'),
             'url' => env('DB_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3307'),
-            'database' => 'central_db',
+            'database' => env('APP_ENV') === 'testing' ? database_path('test_database.sqlite') : env('DB_DATABASE_CENTRAL', 'central_db'),
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', 'Samir@007'),
             'charset' => 'utf8mb4',

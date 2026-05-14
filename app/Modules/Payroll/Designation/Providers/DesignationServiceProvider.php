@@ -10,11 +10,8 @@ class DesignationServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(DesignationServiceInterface::class, DesignationService::class);
-
-        $this->app->singleton('designations', function ($app) {
-            return $app->make(DesignationServiceInterface::class);
-        });
+        $this->app->singleton(DesignationServiceInterface::class, DesignationService::class);
+ 
 
 
     }

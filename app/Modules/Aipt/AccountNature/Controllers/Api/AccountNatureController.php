@@ -3,12 +3,10 @@
 namespace Modules\Aipt\AccountNature\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\SuccessCollection;
-use Modules\Aipt\AccountNature\Contracts\AccountNatureServiceInterface;
+use Modules\Aipt\AccountNature\Facades\AccountNatureFacade;
 use Modules\Aipt\AccountNature\Resources\AccountNatureResource;
 use Modules\Aipt\AccountNature\Resources\AccountNatureCollection;
 use Modules\Aipt\AccountNature\Requests\AccountNatureRequest;
-use App\Http\Resources\SuccessResource;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\JsonResponse;
 
@@ -16,47 +14,33 @@ class AccountNatureController extends Controller
 {
     use ApiResponseTrait;
 
-    public function __construct(protected AccountNatureServiceInterface $service)
+    public function index(): AccountNatureCollection
     {
-    }
-
-
-    public function index(): SuccessCollection
-    {
-        $data = $this->service->getAll();
-        // dd(new AccountNatureCollection($data));
-
+        $data = AccountNatureFacade::getAll();
         return new AccountNatureCollection($data);
     }
 
-
-
-    public function show(int $id): SuccessResource
+    public function show(int $id): AccountNatureResource
     {
-        $data = $this->service->getById($id);
-        return new AccountNatureResource($data, $message = 'AccountNature retrieved successfully');
+        $data = AccountNatureFacade::getById($id);
+        return new AccountNatureResource($data, 'AccountNature retrieved successfully');
     }
 
-    public function store(AccountNatureRequest $request): SuccessResource
+    public function store(AccountNatureRequest $request): AccountNatureResource
     {
-        $data = $this->service->store($request->validated());
-        return new AccountNatureResource($data, $message = 'AccountNature create successfully');
-
+        $data = AccountNatureFacade::store($request->validated());
+        return new AccountNatureResource($data, 'AccountNature created successfully');
     }
 
-    public function update(AccountNatureRequest $request, int $id): SuccessResource
+    public function update(AccountNatureRequest $request, int $id): AccountNatureResource
     {
-        $data = $this->service->update($request->validated(), $id);
-        return new AccountNatureResource($data, $message = 'AccountNature updated successfully');
-
+        $data = AccountNatureFacade::update($request->validated(), $id);
+        return new AccountNatureResource($data, 'AccountNature updated successfully');
     }
-
-
-
 
     public function destroy(int $id): JsonResponse
     {
-        $result = $this->service->delete($id);
+        $result = AccountNatureFacade::delete($id);
         return new JsonResponse([
             'status' => $result,
             'code' => 204,

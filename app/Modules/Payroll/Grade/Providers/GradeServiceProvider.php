@@ -1,0 +1,35 @@
+<?php
+
+namespace Modules\Payroll\Grade\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Route;
+use Modules\Payroll\Grade\Contracts\GradeServiceInterface;
+use Modules\Payroll\Grade\Services\GradeService;
+
+class GradeServiceProvider extends ServiceProvider
+{
+    public function register(): void
+    {
+        $this->app->singleton(GradeServiceInterface::class, GradeService::class);
+        
+    }
+
+    public function boot(): void
+    {
+        $this->loadRoutes();
+        $this->loadMigrations();
+    }
+
+    private function loadRoutes(): void
+    {
+        Route::middleware('api')
+            ->prefix('api')
+            ->group(__DIR__ . '/../Routes/api.php');
+    }
+
+    private function loadMigrations(): void
+    {
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+    }
+}

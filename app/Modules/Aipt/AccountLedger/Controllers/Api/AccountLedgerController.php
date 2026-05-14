@@ -3,13 +3,10 @@
 namespace Modules\Aipt\AccountLedger\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\SuccessCollection;
-use Modules\Aipt\AccountGroup\Resources\AccountGroupResource;
-use Modules\Aipt\AccountLedger\Contracts\AccountLedgerServiceInterface;
+use Modules\Aipt\AccountLedger\Facades\AccountLedgerFacade;
 use Modules\Aipt\AccountLedger\Resources\AccountLedgerResource;
 use Modules\Aipt\AccountLedger\Resources\AccountLedgerCollection;
 use Modules\Aipt\AccountLedger\Requests\AccountLedgerRequest;
-use App\Http\Resources\SuccessResource;
 use Modules\Aipt\AccountLedger\Resources\LedgerBalanceResource;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\JsonResponse;
@@ -18,93 +15,73 @@ class AccountLedgerController extends Controller
 {
     use ApiResponseTrait;
 
-    public function __construct(protected AccountLedgerServiceInterface $service)
+    public function index(): AccountLedgerCollection
     {
-    }
-
-    public function index(): SuccessCollection
-    {
-        $data = $this->service->getAll();
+        $data = AccountLedgerFacade::getAll();
         return new AccountLedgerCollection($data);
     }
 
-
-    public function show(int $id): ?SuccessResource
+    public function show(int $id): AccountLedgerResource
     {
-        $data = $this->service->getById($id);
-        return
-            new AccountLedgerResource(
-                $data,
-                $message = 'AccountLedger retrieved successfully'
-            );
-
+        $data = AccountLedgerFacade::getById($id);
+        return new AccountLedgerResource($data, 'AccountLedger retrieved successfully');
     }
 
-
-    public function store(AccountLedgerRequest $request): SuccessResource
+    public function store(AccountLedgerRequest $request): AccountLedgerResource
     {
-        $data = $this->service->store($request->validated());
-        return
-            new AccountGroupResource(
-                $data,
-                $message = 'AccountLedger created successfully',
-            );
+        $data = AccountLedgerFacade::store($request->validated());
+        return new AccountLedgerResource($data, 'AccountLedger created successfully');
     }
 
-    public function update(AccountLedgerRequest $request, int $id): SuccessResource
+    public function update(AccountLedgerRequest $request, int $id): AccountLedgerResource
     {
-        //dd($request->all());
-
-        $data = $this->service->update($request->validated(), $id);
-        return new AccountLedgerResource($data, $message = 'AccountLedger updated successfully');
-
+        $data = AccountLedgerFacade::update($request->validated(), $id);
+        return new AccountLedgerResource($data, 'AccountLedger updated successfully');
     }
 
     public function destroy(int $id): JsonResponse
     {
-        $result = $this->service->delete($id);
+        $result = AccountLedgerFacade::delete($id);
         return new JsonResponse([
             'status' => $result,
             'code' => 204,
             'message' => $result ? 'AccountLedger deleted successfully' : 'AccountLedger not found',
         ]);
-
-    }
-    public function ledger_balance(int $id): ?SuccessResource
-    {
-        $data = $this->service->getLedgerBalance($id);
-        // dd($data);
-        return
-            new LedgerBalanceResource(
-                (object) $data,
-                'AccountLedger Balance retrieved successfully'
-            );
-
     }
 
-    public function purchase_ledgers(): SuccessCollection
+    public function ledger_balance(int $id): LedgerBalanceResource
     {
-        $data = $this->service->getPurchaseLedgers();
+        $data = AccountLedgerFacade::getLedgerBalance($id);
+        return new LedgerBalanceResource((object) $data, 'AccountLedger Balance retrieved successfully');
+    }
+
+    public function purchase_ledgers(): AccountLedgerCollection
+    {
+        $data = AccountLedgerFacade::getPurchaseLedgers();
         return new AccountLedgerCollection($data);
     }
-    public function sale_ledgers(): SuccessCollection
+
+    public function sale_ledgers(): AccountLedgerCollection
     {
-        $data = $this->service->getSaleLedgers();
+        $data = AccountLedgerFacade::getSaleLedgers();
         return new AccountLedgerCollection($data);
     }
-    public function supplier_ledgers(): SuccessCollection
+
+    public function supplier_ledgers(): AccountLedgerCollection
     {
-        $data = $this->service->getSupplierLedgers();
+        $data = AccountLedgerFacade::getSupplierLedgers();
         return new AccountLedgerCollection($data);
     }
-    public function distributor_ledgers(): SuccessCollection
+
+    public function distributor_ledgers(): AccountLedgerCollection
     {
-        $data = $this->service->getDistributorLedgers();
+        $data = AccountLedgerFacade::getDistributorLedgers();
         return new AccountLedgerCollection($data);
     }
-    public function stock_in_hand_ledgers(): SuccessCollection
+
+    public function stock_in_hand_ledgers(): AccountLedgerCollection
     {
-        $data = $this->service->getStockInHandLedgers();
+        $data = AccountLedgerFacade::getStockInHandLedgers();
         return new AccountLedgerCollection($data);
     }
 }

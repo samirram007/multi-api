@@ -4,14 +4,11 @@ namespace Modules\Aipt\AccountGroup\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\SuccessCollection;
-// use Modules\Aipt\AccountGroup\Contracts\AccountGroupServiceInterface;
-use Modules\Aipt\AccountGroup\Facades\AccountGroup;
+use App\Http\Resources\SuccessResource;
 use Modules\Aipt\AccountGroup\Facades\AccountGroupFacade;
 use Modules\Aipt\AccountGroup\Resources\AccountGroupCollection;
 use Modules\Aipt\AccountGroup\Resources\AccountGroupResource;
-
 use Modules\Aipt\AccountGroup\Requests\AccountGroupRequest;
-use App\Http\Resources\SuccessResource;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\JsonResponse;
 
@@ -19,11 +16,11 @@ class AccountGroupController extends Controller
 {
     use ApiResponseTrait;
 
-    protected $service;
+    
 
-    public function __construct(protected AccountGroupFacade $accountGroupFacade)
+    public function __construct()
     {
-        $this->service = $accountGroupFacade;
+         
     }
 
     public function index(): SuccessCollection
@@ -35,14 +32,14 @@ class AccountGroupController extends Controller
     }
     public function show(int $id): ?SuccessResource
     {
-        $data = $this->service->getById($id);
+        $data = AccountGroupFacade::getById($id);
         // dd($data);
         return new AccountGroupResource($data, $message = 'AccountGroup retrieved successfully');
     }
 
     public function store(AccountGroupRequest $request): SuccessResource
     {
-        $data = $this->service->store($request->validated());
+        $data = AccountGroupFacade::store($request->validated());
         return
             new AccountGroupResource(
                 $data,
@@ -53,14 +50,14 @@ class AccountGroupController extends Controller
     public function update(AccountGroupRequest $request, int $id): SuccessResource
     {
 
-        $data = $this->service->update($request->validated(), $id);
+        $data = AccountGroupFacade::update($request->validated(), $id);
         return new AccountGroupResource($data, $message = 'AccountGroup updated successfully');
     }
 
     public function destroy(int $id): JsonResponse
     {
 
-        $result = $this->service->delete($id);
+        $result = AccountGroupFacade::delete($id);
         return new JsonResponse([
             'status' => $result,
             'code' => 204,

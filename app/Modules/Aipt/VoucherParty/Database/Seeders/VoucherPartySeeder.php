@@ -1,0 +1,17 @@
+<?php
+
+namespace Modules\Aipt\VoucherParty\Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Modules\Aipt\VoucherParty\Models\VoucherParty;
+
+class VoucherPartySeeder extends Seeder
+{
+    public function run(): void
+    {
+        VoucherParty::create(['name' => 'Sample VoucherParty']);
+
+        // Uncomment to use factory if available
+        // VoucherParty::factory()->count(10)->create();
+    }
+}

@@ -1,0 +1,40 @@
+<?php
+
+namespace Modules\Aipt\VoucherEntry\Models;
+
+use Modules\Aipt\AccountLedger\Models\AccountLedger;
+use Modules\Aipt\Voucher\Models\Voucher;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+class VoucherEntry extends Model
+{
+    use HasFactory;
+
+    protected $table = 'voucher_entries';
+
+    protected $fillable = [
+        'voucher_id',
+        'entry_order',
+        'account_ledger_id',
+        'debit',
+        'credit',
+        'remarks',
+    ];
+
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
+
+    public function account_ledger(): BelongsTo
+    {
+        return $this->belongsTo(AccountLedger::class);
+    }
+
+    public function voucher(): BelongsTo
+    {
+        return $this->belongsTo(Voucher::class);
+    }
+}

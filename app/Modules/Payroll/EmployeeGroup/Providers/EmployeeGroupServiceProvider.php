@@ -10,11 +10,9 @@ class EmployeeGroupServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(EmployeeGroupServiceInterface::class, EmployeeGroupService::class);
+        $this->app->singleton(EmployeeGroupServiceInterface::class, EmployeeGroupService::class);
 
-        $this->app->singleton('employee_groups', function ($app) {
-            return $app->make(EmployeeGroupServiceInterface::class);
-        });
+      
 
 
     }

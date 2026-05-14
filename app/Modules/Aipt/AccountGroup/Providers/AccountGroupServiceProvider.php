@@ -11,10 +11,8 @@ class AccountGroupServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(AccountGroupServiceInterface::class, AccountGroupService::class);
-        $this->app->singleton('account_group_service', function ($app) {
-            return $app->make(AccountGroupServiceInterface::class);
-        });
+        $this->app->singleton(AccountGroupServiceInterface::class, AccountGroupService::class);
+        
     }
 
     public function boot(): void

@@ -21,6 +21,11 @@ class User extends Authenticatable implements JWTSubject
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
+
+    protected static function newFactory()
+    {
+        return \Database\Factories\UserFactory::new();
+    }
     protected $fillable = [
         'name',
         'email',
@@ -94,7 +99,7 @@ class User extends Authenticatable implements JWTSubject
     }
     public function getJWTCustomClaims(): array
     {
-         return [
+        return [
             'tenant_id' => config('tenant_id')
         ];
     }

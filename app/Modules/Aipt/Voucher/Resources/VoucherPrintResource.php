@@ -1,0 +1,50 @@
+<?php
+
+namespace Modules\Aipt\Voucher\Resources;
+
+use App\Http\Resources\SuccessResource;
+use Modules\Aipt\Company\Resources\CompanyResource;
+use Modules\Aipt\FiscalYear\Resources\FiscalYearResource;
+use Modules\Aipt\StockJournal\Resources\StockJournalResource;
+use Modules\Aipt\VoucherDispatchDetail\Resources\VoucherDispatchDetailResource;
+use Modules\Aipt\VoucherEntry\Resources\VoucherEntryResource;
+use Modules\Aipt\VoucherParty\Resources\VoucherPartyResource;
+use Modules\Aipt\VoucherReference\Resources\VoucherReferenceResource;
+use Modules\Aipt\VoucherType\Resources\VoucherTypeResource;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+
+class VoucherPrintResource extends SuccessResource
+{
+    public function toArray(Request $request): array
+    {
+        return [
+            'id' => $this->id,
+            'voucherNo' => $this->voucher_no,
+            'voucherDate' => $this->voucher_date,
+            'referenceNo' => $this->reference_no,
+            'referenceDate' => $this->reference_date,
+            'voucherTypeId' => $this->voucher_type_id,
+            'remarks' => $this->remarks,
+            'status' => $this->status,
+            'fiscalYearId' => $this->fiscal_year_id,
+            'companyId' => $this->company_id,
+            'stockJournalId' => $this->stock_journal_id,
+            'createdAt' => $this->created_at?->toISOString(),
+            'updatedAt' => $this->updated_at?->toISOString(),
+            // 'partyLedger' => $this->whenLoaded('party_ledger'),
+            'partyLedger' => PartyLedgerResource::make($this->whenLoaded('party_ledger')),
+            'transactionLedger' => TransactionLedgerResource::make($this->whenLoaded('transaction_ledger')),
+            'amount' => $this->amount,
+            'company' => CompanyResource::make($this->whenLoaded('company')),
+            'voucherType' => VoucherTypeResource::make($this->whenLoaded('voucher_type')),
+            'fiscalYear' => FiscalYearResource::make($this->whenLoaded('fiscal_year')),
+            'stockJournal' => StockJournalResource::make($this->whenLoaded('stock_journal')),
+            'voucherEntries' => VoucherEntryResource::collection($this->whenLoaded('voucher_entries')),
+            'party' => VoucherPartyResource::make($this->whenLoaded('voucher_party')),
+            'voucherDispatchDetail' => VoucherDispatchDetailResource::make($this->whenLoaded('voucher_dispatch_detail')),
+            'voucherReferences' => VoucherReferenceResource::collection($this->whenLoaded('voucher_references')),
+            'referenceBy' => VoucherReferenceResource::make($this->whenLoaded('referenced_by')),
+        ];
+    }
+}

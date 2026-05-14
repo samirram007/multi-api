@@ -11,7 +11,8 @@ class AccountNatureServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(AccountNatureServiceInterface::class, AccountNatureService::class);
+        $this->app->singleton(AccountNatureServiceInterface::class, AccountNatureService::class);
+        
     }
 
     public function boot(): void

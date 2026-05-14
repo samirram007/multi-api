@@ -31,6 +31,7 @@ $middleware->append(App\Http\Middleware\SetTenantConnection::class);
         $middleware->alias([
             'jwt.cookies' => App\Http\Middleware\JWTFromCookie::class,
 'jwt.tenant.cookies' => App\Http\Middleware\JWTFromCookieTenant::class,
+'tenant' => App\Http\Middleware\SetTenantConnection::class,
 
         ]);
     })
