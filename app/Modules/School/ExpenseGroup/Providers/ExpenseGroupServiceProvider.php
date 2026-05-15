@@ -10,12 +10,7 @@ class ExpenseGroupServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(ExpenseGroupServiceInterface::class, ExpenseGroupService::class);
-
-        $this->app->singleton('expense_groups', function ($app) {
-            return $app->make(ExpenseGroupServiceInterface::class);
-        });
-
+        $this->app->singleton(ExpenseGroupServiceInterface::class, ExpenseGroupService::class);
 
     }
 

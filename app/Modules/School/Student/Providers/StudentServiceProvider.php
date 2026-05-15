@@ -11,7 +11,7 @@ class StudentServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(StudentServiceInterface::class, StudentService::class);
+        $this->app->singleton(StudentServiceInterface::class, StudentService::class);
     }
 
     public function boot(): void

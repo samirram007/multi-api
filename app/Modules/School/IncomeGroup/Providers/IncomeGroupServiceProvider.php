@@ -10,12 +10,7 @@ class IncomeGroupServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(IncomeGroupServiceInterface::class, IncomeGroupService::class);
-
-        $this->app->singleton('income_groups', function ($app) {
-            return $app->make(IncomeGroupServiceInterface::class);
-        });
-
+        $this->app->singleton(IncomeGroupServiceInterface::class, IncomeGroupService::class);
 
     }
 

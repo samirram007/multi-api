@@ -12,6 +12,8 @@ enum AddressType: string
     case Other = 'other';
     case Residence = 'residence';
     case Company = 'company';
+    case PERMANENT = 'permanent';
+    case CURRENT = 'current';
     public static function getValues(): array
     {
         return array_map(fn($case) => $case->value, self::cases());

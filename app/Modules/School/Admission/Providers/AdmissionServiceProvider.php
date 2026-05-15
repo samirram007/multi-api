@@ -10,12 +10,7 @@ class AdmissionServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(AdmissionServiceInterface::class, AdmissionService::class);
-
-        $this->app->singleton('admissions', function ($app) {
-            return $app->make(AdmissionServiceInterface::class);
-        });
-
+        $this->app->singleton(AdmissionServiceInterface::class, AdmissionService::class);
 
     }
 

@@ -10,12 +10,7 @@ class EducationBoardServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(EducationBoardServiceInterface::class, EducationBoardService::class);
-
-        $this->app->singleton('education_boards', function ($app) {
-            return $app->make(EducationBoardServiceInterface::class);
-        });
-
+        $this->app->singleton(EducationBoardServiceInterface::class, EducationBoardService::class);
 
     }
 

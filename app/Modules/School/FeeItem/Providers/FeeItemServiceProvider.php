@@ -10,12 +10,7 @@ class FeeItemServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(FeeItemServiceInterface::class, FeeItemService::class);
-
-        $this->app->singleton('fee_items', function ($app) {
-            return $app->make(FeeItemServiceInterface::class);
-        });
-
+        $this->app->singleton(FeeItemServiceInterface::class, FeeItemService::class);
 
     }
 

@@ -10,12 +10,7 @@ class ExaminationScheduleServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(ExaminationScheduleServiceInterface::class, ExaminationScheduleService::class);
-
-        $this->app->singleton('examination_schedules', function ($app) {
-            return $app->make(ExaminationScheduleServiceInterface::class);
-        });
-
+        $this->app->singleton(ExaminationScheduleServiceInterface::class, ExaminationScheduleService::class);
 
     }
 

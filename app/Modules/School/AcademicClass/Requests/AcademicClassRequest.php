@@ -14,18 +14,19 @@ class AcademicClassRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'name' => ['required', 'string', 'max:255','unique:academic_classes,name'],
-            'code' => ['sometimes','required', 'string', 'max:255','unique:academic_classes,code'],
-            'description' => ['sometimes','required', 'string', 'max:255'],
-            'status' => ['sometimes','required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255', 'unique:academic_classes,name'],
+            'code' => ['nullable', 'string', 'max:255', 'unique:academic_classes,code'],
+            'campus_id' => ['nullable', 'integer'],
+            'academic_standard_id' => ['nullable', 'integer'],
+            'section_id' => ['nullable', 'integer'],
+            'capacity' => ['nullable', 'integer'],
         ];
 
         // For update requests, make validation more flexible
         if ($this->isMethod('PUT') || $this->isMethod('PATCH')) {
-            $id=$this->route('academic_class');
-            $rules['name'] = ['sometimes', 'required', 'string', 'max:255', 'unique:academic_classes,name,' . $id,];
-            $rules['code'] = ['sometimes', 'required', 'string', 'max:255', 'unique:academic_classes,code,' . $id,];
-
+            $id = $this->route('academic_class');
+            $rules['name'] = ['sometimes', 'required', 'string', 'max:255', 'unique:academic_classes,name,' . $id];
+            $rules['code'] = ['nullable', 'string', 'max:255', 'unique:academic_classes,code,' . $id];
         }
 
         return $rules;

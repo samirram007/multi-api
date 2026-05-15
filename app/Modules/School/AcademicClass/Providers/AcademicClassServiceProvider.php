@@ -10,13 +10,7 @@ class AcademicClassServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(AcademicClassServiceInterface::class, AcademicClassService::class);
-
-        $this->app->singleton('academic_classes', function ($app) {
-            return $app->make(AcademicClassServiceInterface::class);
-        });
-
-
+        $this->app->singleton(AcademicClassServiceInterface::class, AcademicClassService::class);
     }
 
     public function boot(): void

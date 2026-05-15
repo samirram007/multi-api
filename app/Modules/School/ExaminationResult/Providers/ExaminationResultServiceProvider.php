@@ -10,12 +10,7 @@ class ExaminationResultServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(ExaminationResultServiceInterface::class, ExaminationResultService::class);
-
-        $this->app->singleton('examination_results', function ($app) {
-            return $app->make(ExaminationResultServiceInterface::class);
-        });
-
+        $this->app->singleton(ExaminationResultServiceInterface::class, ExaminationResultService::class);
 
     }
 

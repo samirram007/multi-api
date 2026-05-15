@@ -10,12 +10,7 @@ class ExpenseHeadServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(ExpenseHeadServiceInterface::class, ExpenseHeadService::class);
-
-        $this->app->singleton('expense_heads', function ($app) {
-            return $app->make(ExpenseHeadServiceInterface::class);
-        });
-
+        $this->app->singleton(ExpenseHeadServiceInterface::class, ExpenseHeadService::class);
 
     }
 

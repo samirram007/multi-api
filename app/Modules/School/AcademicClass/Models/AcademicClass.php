@@ -14,9 +14,10 @@ class AcademicClass extends Model
     protected $fillable = [
         'name',
         'code',
-        'description',
-        'status',
-
+        'campus_id',
+        'academic_standard_id',
+        'section_id',
+        'capacity',
     ];
 
     protected $casts = [

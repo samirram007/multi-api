@@ -4,18 +4,19 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     public function up(): void
     {
         Schema::create('admissions', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('code')->unique();
-            $table->string('description')->nullable();
-            $table->string('status')->default('active');
-            $table->string('icon')->nullable();
-
+            $table->string('admission_no')->nullable();
+            $table->date('admission_date')->nullable();
+            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('campus_id');
+            $table->unsignedBigInteger('academic_session_id');
+            $table->unsignedBigInteger('academic_class_id');
+            $table->boolean('is_active')->default(false);
+            $table->boolean('is_deleted')->default(false);
             $table->timestamps();
         });
     }

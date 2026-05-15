@@ -10,12 +10,7 @@ class FloorServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(FloorServiceInterface::class, FloorService::class);
-
-        $this->app->singleton('floors', function ($app) {
-            return $app->make(FloorServiceInterface::class);
-        });
-
+        $this->app->singleton(FloorServiceInterface::class, FloorService::class);
 
     }
 

@@ -10,12 +10,7 @@ class CampusServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(CampusServiceInterface::class, CampusService::class);
-
-        $this->app->singleton('campuses', function ($app) {
-            return $app->make(CampusServiceInterface::class);
-        });
-
+        $this->app->singleton(CampusServiceInterface::class, CampusService::class);
 
     }
 

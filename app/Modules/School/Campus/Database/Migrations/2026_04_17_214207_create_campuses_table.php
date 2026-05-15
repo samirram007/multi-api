@@ -3,19 +3,26 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Modules\Base\Company\Models\Company;
+use Modules\School\EducationBoard\Models\EducationBoard;
 
-return new class extends Migration
-{
+return new class extends Migration {
     public function up(): void
     {
         Schema::create('campuses', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('code')->unique();
-            $table->string('description')->nullable();
-            $table->string('status')->default('active');
-            $table->string('icon')->nullable();
+            $table->foreignIdFor(Company::class)->nullable();
+            $table->foreignIdFor(EducationBoard::class)->nullable();
+            $table->string('name')->require()->unique();
+            $table->string('code')->nullable();
 
+            $table->string('contact_no')->unique()->nullable();
+            $table->string('email')->unique()->nullable();
+            $table->date('establishment_date')->nullable();
+            $table->time('opening_time')->nullable();
+            $table->time('closing_time')->nullable();
+            $table->unsignedBigInteger('logo_image_id')->nullable();
+            // $table->string('logo_image')->default(value:'/images/default_logo.png');
             $table->timestamps();
         });
     }

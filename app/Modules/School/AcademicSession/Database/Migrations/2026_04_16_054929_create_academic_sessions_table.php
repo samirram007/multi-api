@@ -5,13 +5,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     public function up(): void
     {
-         Schema::create('academic_sessions', function (Blueprint $table) {
+        Schema::create('academic_sessions', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Campus::class)->default(1);
+            $table->unsignedBigInteger('campus_id')->default(1);
             $table->string('session');
             $table->date('start_date');
             $table->date('end_date');

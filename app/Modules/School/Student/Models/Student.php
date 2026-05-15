@@ -4,6 +4,7 @@ namespace Modules\School\Student\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Student extends Model
 {
@@ -53,4 +54,9 @@ class Student extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
+
+    public function studentSessions(): HasMany
+    {
+        return $this->hasMany(StudentSession::class);
+    }
 }

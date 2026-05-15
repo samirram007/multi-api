@@ -21,4 +21,8 @@ class AiptModuleServiceLoader extends ServiceProvider
             }
         }
     }
+
+    public function boot(): void
+    {
+    }
 }

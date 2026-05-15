@@ -10,12 +10,7 @@ class GuardianServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(GuardianServiceInterface::class, GuardianService::class);
-
-        $this->app->singleton('guardians', function ($app) {
-            return $app->make(GuardianServiceInterface::class);
-        });
-
+        $this->app->singleton(GuardianServiceInterface::class, GuardianService::class);
 
     }
 

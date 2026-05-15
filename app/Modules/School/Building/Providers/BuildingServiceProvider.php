@@ -10,12 +10,7 @@ class BuildingServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(BuildingServiceInterface::class, BuildingService::class);
-
-        $this->app->singleton('buildings', function ($app) {
-            return $app->make(BuildingServiceInterface::class);
-        });
-
+        $this->app->singleton(BuildingServiceInterface::class, BuildingService::class);
 
     }
 

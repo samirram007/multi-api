@@ -11,12 +11,7 @@ class TeacherServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(TeacherServiceInterface::class, TeacherService::class);
-
-        $this->app->singleton('teachers', function ($app) {
-            return $app->make(TeacherServiceInterface::class);
-        });
-
+        $this->app->singleton(TeacherServiceInterface::class, TeacherService::class);
 
     }
 
