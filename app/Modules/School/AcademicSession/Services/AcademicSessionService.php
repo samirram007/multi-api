@@ -4,37 +4,35 @@ namespace Modules\School\AcademicSession\Services;
 
 use Modules\School\AcademicSession\Contracts\AcademicSessionServiceInterface;
 use Modules\School\AcademicSession\Models\AcademicSession;
+
 use Illuminate\Database\Eloquent\Collection;
 
 class AcademicSessionService implements AcademicSessionServiceInterface
 {
-    protected $resource=[];
+    protected $resource = [];
 
     public function getAll(): Collection
     {
-        return AcademicSession::with($this->resource)->get();
+        return AcademicSessionRepoFacade::all();
     }
 
     public function getById(int $id): ?AcademicSession
     {
-        return AcademicSession::with($this->resource)->findOrFail($id);
+        return AcademicSessionRepository::find($id);
     }
 
     public function store(array $data): AcademicSession
     {
-        return AcademicSession::create($data);
+        return AcademicSessionRepository::create($data);
     }
 
     public function update(array $data, int $id): AcademicSession
     {
-        $record = AcademicSession::findOrFail($id);
-        $record->update($data);
-        return $record->fresh();
+        return AcademicSessionRepository::update($data, $id);
     }
 
     public function delete(int $id): bool
     {
-        $record = AcademicSession::findOrFail($id);
-        return $record->delete();
+        return AcademicSessionRepository::delete($id);
     }
 }

@@ -2,11 +2,11 @@
 
 namespace Modules\Base\RolePermission\Contracts;
 
-use App\Support\Contracts\BaseServiceInterface;
+
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Base\RolePermission\Models\RolePermission;
 
-interface RolePermissionServiceInterface extends BaseServiceInterface
+interface RolePermissionServiceInterface
 {
     public function getAll(): Collection;
     public function getById(int $id): ?RolePermission;

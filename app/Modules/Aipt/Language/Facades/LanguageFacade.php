@@ -1,13 +1,12 @@
 <?php
-
 namespace Modules\Aipt\Language\Facades;
 
-use Illuminate\Support\Facades\Facade;
 use Modules\Aipt\Language\Contracts\LanguageServiceInterface;
+use Illuminate\Support\Facades\Facade;
 
 class LanguageFacade extends Facade
 {
-    protected static function getFacadeAccessor(): string
+    protected static function getFacadeAccessor()
     {
         return LanguageServiceInterface::class;
     }

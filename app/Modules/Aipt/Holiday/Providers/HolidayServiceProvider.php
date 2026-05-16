@@ -3,6 +3,8 @@
 namespace Modules\Aipt\Holiday\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Aipt\Holiday\Contracts\HolidayRepositoryInterface;
+use Modules\Aipt\Holiday\Repositories\HolidayRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\Holiday\Contracts\HolidayServiceInterface;
 use Modules\Aipt\Holiday\Services\HolidayService;
@@ -11,6 +13,7 @@ class HolidayServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->singleton(HolidayRepositoryInterface::class, HolidayRepository::class);
         $this->app->singleton(HolidayServiceInterface::class, HolidayService::class);
        
     }

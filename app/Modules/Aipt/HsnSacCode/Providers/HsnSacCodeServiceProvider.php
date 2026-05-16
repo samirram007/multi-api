@@ -3,6 +3,8 @@
 namespace Modules\Aipt\HsnSacCode\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Aipt\HsnSacCode\Contracts\HsnSacCodeRepositoryInterface;
+use Modules\Aipt\HsnSacCode\Repositories\HsnSacCodeRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\HsnSacCode\Contracts\HsnSacCodeServiceInterface;
 use Modules\Aipt\HsnSacCode\Services\HsnSacCodeService;
@@ -11,6 +13,7 @@ class HsnSacCodeServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->singleton(HsnSacCodeRepositoryInterface::class, HsnSacCodeRepository::class);
         $this->app->singleton(HsnSacCodeServiceInterface::class, HsnSacCodeService::class);
         
     }

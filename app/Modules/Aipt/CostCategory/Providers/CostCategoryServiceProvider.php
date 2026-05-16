@@ -3,6 +3,8 @@
 namespace Modules\Aipt\CostCategory\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Aipt\CostCategory\Contracts\CostCategoryRepositoryInterface;
+use Modules\Aipt\CostCategory\Repositories\CostCategoryRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\CostCategory\Contracts\CostCategoryServiceInterface;
 use Modules\Aipt\CostCategory\Services\CostCategoryService;
@@ -11,6 +13,7 @@ class CostCategoryServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->singleton(CostCategoryRepositoryInterface::class, CostCategoryRepository::class);
         $this->app->singleton(CostCategoryServiceInterface::class, CostCategoryService::class);
       
     }

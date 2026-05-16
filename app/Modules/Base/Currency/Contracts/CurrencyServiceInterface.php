@@ -2,11 +2,11 @@
 
 namespace Modules\Base\Currency\Contracts;
 
-use App\Support\Contracts\BaseServiceInterface;
+
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Base\Currency\Models\Currency;
 
-interface CurrencyServiceInterface extends BaseServiceInterface
+interface CurrencyServiceInterface
 {
     public function getAll(): Collection;
     public function getById(int $id): Currency;

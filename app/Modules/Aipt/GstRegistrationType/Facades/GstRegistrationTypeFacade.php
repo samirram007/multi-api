@@ -1,13 +1,12 @@
 <?php
-
 namespace Modules\Aipt\GstRegistrationType\Facades;
 
-use Illuminate\Support\Facades\Facade;
 use Modules\Aipt\GstRegistrationType\Contracts\GstRegistrationTypeServiceInterface;
+use Illuminate\Support\Facades\Facade;
 
 class GstRegistrationTypeFacade extends Facade
 {
-    protected static function getFacadeAccessor(): string
+    protected static function getFacadeAccessor()
     {
         return GstRegistrationTypeServiceInterface::class;
     }

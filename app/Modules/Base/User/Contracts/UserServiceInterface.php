@@ -2,11 +2,11 @@
 
 namespace Modules\Base\User\Contracts;
 
-use App\Support\Contracts\BaseServiceInterface;
+
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Base\User\Models\User;
 
-interface UserServiceInterface extends BaseServiceInterface
+interface UserServiceInterface
 {
     public function getAll(): Collection;
     public function getById(int $id): User;

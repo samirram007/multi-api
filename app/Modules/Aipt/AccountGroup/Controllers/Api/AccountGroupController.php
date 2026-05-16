@@ -3,8 +3,6 @@
 namespace Modules\Aipt\AccountGroup\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\SuccessCollection;
-use App\Http\Resources\SuccessResource;
 use Modules\Aipt\AccountGroup\Facades\AccountGroupFacade;
 use Modules\Aipt\AccountGroup\Resources\AccountGroupCollection;
 use Modules\Aipt\AccountGroup\Resources\AccountGroupResource;
@@ -16,65 +14,48 @@ class AccountGroupController extends Controller
 {
     use ApiResponseTrait;
 
-    
-
     public function __construct()
     {
-         
     }
 
-    public function index(): SuccessCollection
+    public function index(): AccountGroupCollection
     {
-
-        $data = AccountGroupFacade::getAll();
-
-        return new AccountGroupCollection($data);
-    }
-    public function show(int $id): ?SuccessResource
-    {
-        $data = AccountGroupFacade::getById($id);
-        // dd($data);
-        return new AccountGroupResource($data, $message = 'AccountGroup retrieved successfully');
+        return new AccountGroupCollection(AccountGroupFacade::getAll());
     }
 
-    public function store(AccountGroupRequest $request): SuccessResource
+    public function show(int $id): AccountGroupResource
     {
-        $data = AccountGroupFacade::store($request->validated());
-        return
-            new AccountGroupResource(
-                $data,
-                $message = 'AccountGroup created successfully',
-            );
+        return new AccountGroupResource(AccountGroupFacade::getById($id), 'AccountGroup retrieved successfully');
     }
 
-    public function update(AccountGroupRequest $request, int $id): SuccessResource
+    public function store(AccountGroupRequest $request): AccountGroupResource
     {
+        return new AccountGroupResource(
+            AccountGroupFacade::store($request->validated()),
+            'AccountGroup created successfully'
+        );
+    }
 
-        $data = AccountGroupFacade::update($request->validated(), $id);
-        return new AccountGroupResource($data, $message = 'AccountGroup updated successfully');
+    public function update(AccountGroupRequest $request, int $id): AccountGroupResource
+    {
+        return new AccountGroupResource(
+            AccountGroupFacade::update($request->validated(), $id),
+            'AccountGroup updated successfully'
+        );
     }
 
     public function destroy(int $id): JsonResponse
     {
-
         $result = AccountGroupFacade::delete($id);
         return new JsonResponse([
             'status' => $result,
-            'code' => 204,
+            'code' => $result ? 204 : 404,
             'message' => $result ? 'AccountGroup deleted successfully' : 'AccountGroup not found',
         ]);
     }
 
-
-
-
-
-
-    public function current_liability_groups(): SuccessCollection
+    public function current_liability_groups(): AccountGroupCollection
     {
-
-        $data = $this->service->getCurrentLiabilityGroups();
-
-        return new AccountGroupCollection($data);
+        return new AccountGroupCollection(AccountGroupFacade::getCurrentLiabilityGroups());
     }
 }

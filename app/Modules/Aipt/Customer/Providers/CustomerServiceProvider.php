@@ -3,6 +3,8 @@
 namespace Modules\Aipt\Customer\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Aipt\Customer\Contracts\CustomerRepositoryInterface;
+use Modules\Aipt\Customer\Repositories\CustomerRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\Customer\Contracts\CustomerServiceInterface;
 use Modules\Aipt\Customer\Services\CustomerService;
@@ -11,6 +13,7 @@ class CustomerServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->singleton(CustomerRepositoryInterface::class, CustomerRepository::class);
         $this->app->singleton(CustomerServiceInterface::class, CustomerService::class);
        
     }

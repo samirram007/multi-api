@@ -3,6 +3,8 @@
 namespace Modules\Aipt\StockJournalEntry\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Aipt\StockJournalEntry\Contracts\StockJournalEntryRepositoryInterface;
+use Modules\Aipt\StockJournalEntry\Repositories\StockJournalEntryRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\StockJournalEntry\Contracts\StockJournalEntryServiceInterface;
 use Modules\Aipt\StockJournalEntry\Services\StockJournalEntryService;
@@ -11,6 +13,7 @@ class StockJournalEntryServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->singleton(StockJournalEntryRepositoryInterface::class, StockJournalEntryRepository::class);
         $this->app->singleton(StockJournalEntryServiceInterface::class, StockJournalEntryService::class);
     }
 

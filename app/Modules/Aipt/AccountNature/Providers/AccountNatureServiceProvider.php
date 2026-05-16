@@ -3,6 +3,8 @@
 namespace Modules\Aipt\AccountNature\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Aipt\AccountNature\Contracts\AccountNatureRepositoryInterface;
+use Modules\Aipt\AccountNature\Repositories\AccountNatureRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\AccountNature\Contracts\AccountNatureServiceInterface;
 use Modules\Aipt\AccountNature\Services\AccountNatureService;
@@ -11,6 +13,7 @@ class AccountNatureServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->singleton(AccountNatureRepositoryInterface::class, AccountNatureRepository::class);
         $this->app->singleton(AccountNatureServiceInterface::class, AccountNatureService::class);
         
     }

@@ -3,6 +3,8 @@
 namespace Modules\Aipt\DistributorBook\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Aipt\DistributorBook\Contracts\DistributorBookRepositoryInterface;
+use Modules\Aipt\DistributorBook\Repositories\DistributorBookRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\DistributorBook\Contracts\DistributorBookServiceInterface;
 use Modules\Aipt\DistributorBook\Services\DistributorBookService;
@@ -11,6 +13,7 @@ class DistributorBookServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->singleton(DistributorBookRepositoryInterface::class, DistributorBookRepository::class);
         $this->app->singleton(DistributorBookServiceInterface::class, DistributorBookService::class);
         
     }

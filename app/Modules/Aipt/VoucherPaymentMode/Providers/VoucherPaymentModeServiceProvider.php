@@ -3,6 +3,8 @@
 namespace Modules\Aipt\VoucherPaymentMode\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Aipt\VoucherPaymentMode\Contracts\VoucherPaymentModeRepositoryInterface;
+use Modules\Aipt\VoucherPaymentMode\Repositories\VoucherPaymentModeRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\VoucherPaymentMode\Contracts\VoucherPaymentModeServiceInterface;
 use Modules\Aipt\VoucherPaymentMode\Services\VoucherPaymentModeService;
@@ -11,6 +13,7 @@ class VoucherPaymentModeServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->singleton(VoucherPaymentModeRepositoryInterface::class, VoucherPaymentModeRepository::class);
         $this->app->singleton(VoucherPaymentModeServiceInterface::class, VoucherPaymentModeService::class);
     }
 

@@ -3,6 +3,8 @@
 namespace Modules\Aipt\StockCategory\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Aipt\StockCategory\Contracts\StockCategoryRepositoryInterface;
+use Modules\Aipt\StockCategory\Repositories\StockCategoryRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\StockCategory\Contracts\StockCategoryServiceInterface;
 use Modules\Aipt\StockCategory\Services\StockCategoryService;
@@ -11,6 +13,7 @@ class StockCategoryServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->singleton(StockCategoryRepositoryInterface::class, StockCategoryRepository::class);
         $this->app->singleton(StockCategoryServiceInterface::class, StockCategoryService::class);
     }
 

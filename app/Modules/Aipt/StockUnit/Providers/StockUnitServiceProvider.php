@@ -3,6 +3,8 @@
 namespace Modules\Aipt\StockUnit\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Aipt\StockUnit\Contracts\StockUnitRepositoryInterface;
+use Modules\Aipt\StockUnit\Repositories\StockUnitRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\StockUnit\Contracts\StockUnitServiceInterface;
 use Modules\Aipt\StockUnit\Services\StockUnitService;
@@ -11,6 +13,7 @@ class StockUnitServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->singleton(StockUnitRepositoryInterface::class, StockUnitRepository::class);
         $this->app->singleton(StockUnitServiceInterface::class, StockUnitService::class);
     }
 

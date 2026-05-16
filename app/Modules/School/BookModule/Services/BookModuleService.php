@@ -3,38 +3,35 @@
 namespace Modules\School\BookModule\Services;
 
 use Modules\School\BookModule\Contracts\BookModuleServiceInterface;
+use Modules\School\BookModule\Facades\BookModuleRepoFacade as BookModuleRepository;
 use Modules\School\BookModule\Models\BookModule;
 use Illuminate\Database\Eloquent\Collection;
 
 class BookModuleService implements BookModuleServiceInterface
 {
-    protected $resource=[];
-
     public function getAll(): Collection
     {
-        return BookModule::with($this->resource)->get();
+        return BookModuleRepository::all();
     }
 
     public function getById(int $id): ?BookModule
     {
-        return BookModule::with($this->resource)->findOrFail($id);
+        return BookModuleRepository::find($id);
     }
 
     public function store(array $data): BookModule
     {
-        return BookModule::create($data);
+        return BookModuleRepository::create($data);
     }
 
     public function update(array $data, int $id): BookModule
     {
-        $record = BookModule::findOrFail($id);
-        $record->update($data);
-        return $record->fresh();
+        return BookModuleRepository::update($data, $id);
     }
 
     public function delete(int $id): bool
     {
-        $record = BookModule::findOrFail($id);
-        return $record->delete();
+        return BookModuleRepository::delete($id);
     }
 }
+

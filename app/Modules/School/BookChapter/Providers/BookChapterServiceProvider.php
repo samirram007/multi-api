@@ -11,6 +11,7 @@ class BookChapterServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton(BookChapterServiceInterface::class, BookChapterService::class);
+        $this->app->singleton(\Modules\School\BookChapter\Contracts\BookChapterRepositoryInterface::class, \Modules\School\BookChapter\Repositories\BookChapterRepository::class);
 
 
 

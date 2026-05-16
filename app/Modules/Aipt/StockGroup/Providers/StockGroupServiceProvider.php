@@ -3,6 +3,8 @@
 namespace Modules\Aipt\StockGroup\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Aipt\StockGroup\Contracts\StockGroupRepositoryInterface;
+use Modules\Aipt\StockGroup\Repositories\StockGroupRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\StockGroup\Contracts\StockGroupServiceInterface;
 use Modules\Aipt\StockGroup\Services\StockGroupService;
@@ -11,6 +13,7 @@ class StockGroupServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->singleton(StockGroupRepositoryInterface::class, StockGroupRepository::class);
         $this->app->singleton(StockGroupServiceInterface::class, StockGroupService::class);
     }
 

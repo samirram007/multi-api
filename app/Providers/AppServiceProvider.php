@@ -3,12 +3,12 @@
 namespace App\Providers;
 
 use App\Support\Contracts\BaseRepositoryInterface;
-use App\Support\Contracts\CachedRepositoryInterface;
+
 use App\Support\Repositories\BaseRepository;
-use App\Support\Repositories\CachedRepository;
+
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
-use Laravel\Sanctum\Guard;
+
 use Modules\Aipt\Customer\Models\Customer;
 use Modules\Aipt\Distributor\Models\Distributor;
 use Modules\Aipt\StorageUnit\Models\StorageUnit;
@@ -30,7 +30,10 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(BaseRepositoryInterface::class, BaseRepository::class);
-        $this->app->bind(CachedRepositoryInterface::class, CachedRepository::class);
+        if ($this->app->environment('local') && class_exists(\Laravel\Telescope\TelescopeServiceProvider::class)) {
+            $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
+            $this->app->register(TelescopeServiceProvider::class);
+        }
     }
 
     /**

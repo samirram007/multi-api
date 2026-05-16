@@ -5,17 +5,20 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Modules\School\Book\Contracts\BookServiceInterface;
 use Modules\School\Book\Services\BookService;
+use Modules\School\Book\Contracts\BookRepositoryInterface;
+use Modules\School\Book\Repositories\BookRepository;
+use Modules\School\Book\Models\Book;
 
 class BookServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
         $this->app->singleton(BookServiceInterface::class, BookService::class);
-
-
-
-
+        $this->app->singleton(BookRepositoryInterface::class, function ($app) {
+            return new BookRepository(new Book());
+        });
     }
+
 
     public function boot(): void
     {

@@ -3,49 +3,45 @@
 namespace Modules\Aipt\StockItem\Services;
 
 use Modules\Aipt\StockItem\Contracts\StockItemServiceInterface;
+use Modules\Aipt\StockItem\Contracts\StockItemRepositoryInterface;
 use Modules\Aipt\StockItem\Models\StockItem;
-use Modules\Aipt\StockJournalEntry\Models\StockJournalEntry;
 use Illuminate\Database\Eloquent\Collection;
 
 class StockItemService implements StockItemServiceInterface
 {
-    protected $resource = ['stock_unit', 'alternate_stock_unit'];
+    protected array $resource = ['stock_unit', 'alternate_stock_unit'];
+
+    public function __construct(protected StockItemRepositoryInterface $repository)
+    {
+    }
 
     public function getAll(): Collection
     {
-        $data = StockItem::with($this->resource)->get();
-        //dd($data);
-
-        return $data;
+        return $this->repository->with($this->resource)->all();
     }
 
     public function getById(int $id): ?StockItem
     {
-
-        return StockItem::with($this->resource)->findOrFail($id);
+        return $this->repository->with($this->resource)->find($id);
     }
 
     public function store(array $data): StockItem
     {
-        //dd($data);
-        return StockItem::create($data);
+        return $this->repository->create($data);
     }
 
     public function update(array $data, int $id): StockItem
     {
-        $record = StockItem::findOrFail($id);
-        $record->update($data);
-        $record->refresh();
-        return $record;
+        return $this->repository->update($id, $data);
     }
 
     public function delete(int $id): bool
     {
-        $record = StockItem::findOrFail($id);
-        return $record->delete();
+        return $this->repository->delete($id);
     }
+
     public function getPurchasableStockItems(): Collection
     {
-        return StockItem::with($this->resource)->get();
+        return $this->repository->with($this->resource)->all();
     }
 }

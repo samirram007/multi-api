@@ -3,6 +3,8 @@
 namespace Modules\Aipt\StockItemSerial\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Aipt\StockItemSerial\Contracts\StockItemSerialRepositoryInterface;
+use Modules\Aipt\StockItemSerial\Repositories\StockItemSerialRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\StockItemSerial\Contracts\StockItemSerialServiceInterface;
 use Modules\Aipt\StockItemSerial\Services\StockItemSerialService;
@@ -11,6 +13,7 @@ class StockItemSerialServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->singleton(StockItemSerialRepositoryInterface::class, StockItemSerialRepository::class);
         $this->app->singleton(StockItemSerialServiceInterface::class, StockItemSerialService::class);
     }
 

@@ -4,52 +4,45 @@ namespace Modules\Aipt\AccountGroup\Services;
 
 use Modules\Aipt\AccountGroup\Contracts\AccountGroupServiceInterface;
 use Modules\Aipt\AccountGroup\Models\AccountGroup;
+use Modules\Aipt\AccountGroup\Facades\AccountGroupRepoFacade;
 use Illuminate\Database\Eloquent\Collection;
 
 class AccountGroupService implements AccountGroupServiceInterface
 {
-    protected $resource = ['account_nature'];
+    protected array $resource = ['account_nature'];
+
     public function getAll(): Collection
     {
-        $data = AccountGroup::with($this->resource)->get();
-        //dd($data);
-        return $data;
+        return AccountGroupRepoFacade::with($this->resource)->all();
     }
-
 
     public function getById(int $id): ?AccountGroup
     {
-        //dd(AccountGroup::findOrFail($id));
-        return AccountGroup::findOrFail($id);
+        return AccountGroupRepoFacade::with($this->resource)->find($id);
     }
 
     public function store(array $data): AccountGroup
     {
-        return AccountGroup::create($data);
+        return AccountGroupRepoFacade::create($data);
     }
 
     public function update(array $data, int $id): AccountGroup
     {
-
-        $record = AccountGroup::findOrFail($id);
-        $record->update($data);
-
-        return $record->fresh();
+        return AccountGroupRepoFacade::update($data, $id);
     }
 
     public function delete(int $id): bool
     {
-        $record = AccountGroup::findOrFail($id);
-        return $record->delete();
+        return AccountGroupRepoFacade::delete($id);
     }
 
     public function getCurrentLiabilityGroups(): Collection
     {
-        $data = AccountGroup::with($this->resource)
+        return AccountGroupRepoFacade::with($this->resource)
+            ->query()
             ->where('id', 20002)
             ->orWhere('parent_id', 20002)
-            ->orderBy('name')->get();
-        //dd($data);
-        return $data;
+            ->orderBy('name')
+            ->get();
     }
 }

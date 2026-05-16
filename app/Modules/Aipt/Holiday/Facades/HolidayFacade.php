@@ -1,13 +1,12 @@
 <?php
-
 namespace Modules\Aipt\Holiday\Facades;
 
-use Illuminate\Support\Facades\Facade;
 use Modules\Aipt\Holiday\Contracts\HolidayServiceInterface;
+use Illuminate\Support\Facades\Facade;
 
 class HolidayFacade extends Facade
 {
-    protected static function getFacadeAccessor(): string
+    protected static function getFacadeAccessor()
     {
         return HolidayServiceInterface::class;
     }

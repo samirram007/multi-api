@@ -3,38 +3,34 @@
 namespace Modules\School\AcademicClass\Services;
 
 use Modules\School\AcademicClass\Contracts\AcademicClassServiceInterface;
+use Modules\School\AcademicClass\Facades\AcademicClassRepoFacade;
 use Modules\School\AcademicClass\Models\AcademicClass;
 use Illuminate\Database\Eloquent\Collection;
 
 class AcademicClassService implements AcademicClassServiceInterface
 {
-    protected $resource=[];
-
     public function getAll(): Collection
     {
-        return AcademicClass::with($this->resource)->get();
+        return AcademicClassRepoFacade::all();
     }
 
     public function getById(int $id): ?AcademicClass
     {
-        return AcademicClass::with($this->resource)->findOrFail($id);
+        return AcademicClassRepoFacade::find($id);
     }
 
     public function store(array $data): AcademicClass
     {
-        return AcademicClass::create($data);
+        return AcademicClassRepoFacade::create($data);
     }
 
     public function update(array $data, int $id): AcademicClass
     {
-        $record = AcademicClass::findOrFail($id);
-        $record->update($data);
-        return $record->fresh();
+        return AcademicClassRepoFacade::update($data, $id);
     }
 
     public function delete(int $id): bool
     {
-        $record = AcademicClass::findOrFail($id);
-        return $record->delete();
+        return AcademicClassRepoFacade::delete($id);
     }
 }

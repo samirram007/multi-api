@@ -3,6 +3,8 @@
 namespace Modules\Aipt\UniqueQuantityCode\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Aipt\UniqueQuantityCode\Contracts\UniqueQuantityCodeRepositoryInterface;
+use Modules\Aipt\UniqueQuantityCode\Repositories\UniqueQuantityCodeRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\UniqueQuantityCode\Contracts\UniqueQuantityCodeServiceInterface;
 use Modules\Aipt\UniqueQuantityCode\Services\UniqueQuantityCodeService;
@@ -11,6 +13,7 @@ class UniqueQuantityCodeServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->singleton(UniqueQuantityCodeRepositoryInterface::class, UniqueQuantityCodeRepository::class);
         $this->app->singleton(UniqueQuantityCodeServiceInterface::class, UniqueQuantityCodeService::class);
     }
 

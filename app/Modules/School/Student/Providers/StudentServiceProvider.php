@@ -6,12 +6,18 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Modules\School\Student\Contracts\StudentServiceInterface;
 use Modules\School\Student\Services\StudentService;
+use Modules\School\Student\Contracts\StudentRepositoryInterface;
+use Modules\School\Student\Repositories\StudentRepository;
+use Modules\School\Student\Models\Student;
 
 class StudentServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
         $this->app->singleton(StudentServiceInterface::class, StudentService::class);
+        $this->app->singleton(StudentRepositoryInterface::class, function ($app) {
+            return new StudentRepository(new Student());
+        });
     }
 
     public function boot(): void

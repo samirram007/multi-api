@@ -5,6 +5,10 @@ This directory contains the poly-erp backend API built with Laravel.
 ## Architectural Patterns
 
 - **Modules:** The project uses a modular structure under `app/Modules/`. Each module should be self-contained where possible.
+    - **Documentation:** Each module MUST contain a `GEMINI.md` file describing its purpose, models, relationships, and testing standards.
+- **Repositories:** Standardize data access using `App\Support\Repositories\BaseRepository`.
+    - Always utilize the `Cacheable` trait for repository-level caching.
+    - Explicitly call `withoutCache()` or `cache(false)` when bypassing cache is necessary for specific operations.
 - **Enums:** Use PHP 8.1+ Enums for constant values, located in `app/Enums/`.
 - **Traits:** Common functionality should be extracted into traits in `app/Traits/`.
 - **Helpers:** Global helper functions are in `app/Helpers/`.

@@ -3,6 +3,8 @@
 namespace Modules\Aipt\CostCenter\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Aipt\CostCenter\Contracts\CostCenterRepositoryInterface;
+use Modules\Aipt\CostCenter\Repositories\CostCenterRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\CostCenter\Contracts\CostCenterServiceInterface;
 use Modules\Aipt\CostCenter\Services\CostCenterService;
@@ -11,6 +13,7 @@ class CostCenterServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->singleton(CostCenterRepositoryInterface::class, CostCenterRepository::class);
         $this->app->singleton(CostCenterServiceInterface::class, CostCenterService::class);
         
     }

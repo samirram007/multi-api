@@ -2,11 +2,11 @@
 
 namespace Modules\Base\Company\Contracts;
 
-use App\Support\Contracts\BaseServiceInterface;
+
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Base\Company\Models\Company;
 
-interface CompanyServiceInterface extends BaseServiceInterface
+interface CompanyServiceInterface
 {
     public function getAll(): Collection;
     public function getById(int $id): ?Company;

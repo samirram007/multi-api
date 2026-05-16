@@ -20,6 +20,13 @@
       0 => 'Laravel\\Sanctum\\SanctumServiceProvider',
     ),
   ),
+  'laravel/sentinel' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Laravel\\Sentinel\\SentinelServiceProvider',
+    ),
+  ),
   'laravel/socialite' => 
   array (
     'aliases' => 
@@ -29,6 +36,13 @@
     'providers' => 
     array (
       0 => 'Laravel\\Socialite\\SocialiteServiceProvider',
+    ),
+  ),
+  'laravel/telescope' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Laravel\\Telescope\\TelescopeServiceProvider',
     ),
   ),
   'laravel/tinker' => 

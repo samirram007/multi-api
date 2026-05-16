@@ -1,13 +1,12 @@
 <?php
-
 namespace Modules\Aipt\Distributor\Facades;
 
-use Illuminate\Support\Facades\Facade;
 use Modules\Aipt\Distributor\Contracts\DistributorServiceInterface;
+use Illuminate\Support\Facades\Facade;
 
 class DistributorFacade extends Facade
 {
-    protected static function getFacadeAccessor(): string
+    protected static function getFacadeAccessor()
     {
         return DistributorServiceInterface::class;
     }

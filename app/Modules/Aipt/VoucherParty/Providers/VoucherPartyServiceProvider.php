@@ -3,6 +3,8 @@
 namespace Modules\Aipt\VoucherParty\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Aipt\VoucherParty\Contracts\VoucherPartyRepositoryInterface;
+use Modules\Aipt\VoucherParty\Repositories\VoucherPartyRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\VoucherParty\Contracts\VoucherPartyServiceInterface;
 use Modules\Aipt\VoucherParty\Services\VoucherPartyService;
@@ -11,6 +13,7 @@ class VoucherPartyServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->singleton(VoucherPartyRepositoryInterface::class, VoucherPartyRepository::class);
         $this->app->singleton(VoucherPartyServiceInterface::class, VoucherPartyService::class);
     }
 

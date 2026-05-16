@@ -3,6 +3,8 @@
 namespace Modules\Aipt\StockItemBatch\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Aipt\StockItemBatch\Contracts\StockItemBatchRepositoryInterface;
+use Modules\Aipt\StockItemBatch\Repositories\StockItemBatchRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\StockItemBatch\Contracts\StockItemBatchServiceInterface;
 use Modules\Aipt\StockItemBatch\Services\StockItemBatchService;
@@ -11,6 +13,7 @@ class StockItemBatchServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->singleton(StockItemBatchRepositoryInterface::class, StockItemBatchRepository::class);
         $this->app->singleton(StockItemBatchServiceInterface::class, StockItemBatchService::class);
     }
 

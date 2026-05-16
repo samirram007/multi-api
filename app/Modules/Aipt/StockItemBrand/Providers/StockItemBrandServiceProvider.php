@@ -3,6 +3,8 @@
 namespace Modules\Aipt\StockItemBrand\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Aipt\StockItemBrand\Contracts\StockItemBrandRepositoryInterface;
+use Modules\Aipt\StockItemBrand\Repositories\StockItemBrandRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\StockItemBrand\Contracts\StockItemBrandServiceInterface;
 use Modules\Aipt\StockItemBrand\Services\StockItemBrandService;
@@ -11,6 +13,7 @@ class StockItemBrandServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->singleton(StockItemBrandRepositoryInterface::class, StockItemBrandRepository::class);
         $this->app->singleton(StockItemBrandServiceInterface::class, StockItemBrandService::class);
     }
 

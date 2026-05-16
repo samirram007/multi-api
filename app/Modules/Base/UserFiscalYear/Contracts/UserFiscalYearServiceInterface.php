@@ -2,11 +2,11 @@
 
 namespace Modules\Base\UserFiscalYear\Contracts;
 
-use App\Support\Contracts\BaseServiceInterface;
+
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Base\UserFiscalYear\Models\UserFiscalYear;
 
-interface UserFiscalYearServiceInterface extends BaseServiceInterface
+interface UserFiscalYearServiceInterface
 {
     public function getAll(): Collection;
     public function getById(int $id): ?UserFiscalYear;

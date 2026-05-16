@@ -3,6 +3,8 @@
 namespace Modules\Aipt\DayBook\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Aipt\DayBook\Contracts\DayBookRepositoryInterface;
+use Modules\Aipt\DayBook\Repositories\DayBookRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\DayBook\Contracts\DayBookServiceInterface;
 use Modules\Aipt\DayBook\Services\DayBookService;
@@ -11,6 +13,7 @@ class DayBookServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->singleton(DayBookRepositoryInterface::class, DayBookRepository::class);
         $this->app->singleton(DayBookServiceInterface::class, DayBookService::class);
         
     }

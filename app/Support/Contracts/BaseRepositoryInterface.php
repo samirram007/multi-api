@@ -83,7 +83,7 @@ interface BaseRepositoryInterface
      * @param array $data
      * @return mixed
      */
-    public function update(int $id, array $data);
+    public function update(array $data, int $id);
 
     /**
      * Delete a record by ID.

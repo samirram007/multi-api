@@ -3,6 +3,8 @@
 namespace Modules\Aipt\Supplier\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Aipt\Supplier\Contracts\SupplierRepositoryInterface;
+use Modules\Aipt\Supplier\Repositories\SupplierRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\Supplier\Contracts\SupplierServiceInterface;
 use Modules\Aipt\Supplier\Services\SupplierService;
@@ -11,6 +13,7 @@ class SupplierServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->singleton(SupplierRepositoryInterface::class, SupplierRepository::class);
         $this->app->singleton(SupplierServiceInterface::class, SupplierService::class);
     }
 

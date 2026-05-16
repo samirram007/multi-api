@@ -3,38 +3,35 @@
 namespace Modules\School\AcademicStandard\Services;
 
 use Modules\School\AcademicStandard\Contracts\AcademicStandardServiceInterface;
+use Modules\School\AcademicStandard\Facades\AcademicStandardRepoFacade as AcademicStandardRepository;
 use Modules\School\AcademicStandard\Models\AcademicStandard;
 use Illuminate\Database\Eloquent\Collection;
 
 class AcademicStandardService implements AcademicStandardServiceInterface
 {
-    protected $resource=[];
-
     public function getAll(): Collection
     {
-        return AcademicStandard::with($this->resource)->get();
+        return AcademicStandardRepository::all();
     }
 
     public function getById(int $id): ?AcademicStandard
     {
-        return AcademicStandard::with($this->resource)->findOrFail($id);
+        return AcademicStandardRepository::find($id);
     }
 
     public function store(array $data): AcademicStandard
     {
-        return AcademicStandard::create($data);
+        return AcademicStandardRepository::create($data);
     }
 
     public function update(array $data, int $id): AcademicStandard
     {
-        $record = AcademicStandard::findOrFail($id);
-        $record->update($data);
-        return $record->fresh();
+        return AcademicStandardRepository::update($data, $id);
     }
 
     public function delete(int $id): bool
     {
-        $record = AcademicStandard::findOrFail($id);
-        return $record->delete();
+        return AcademicStandardRepository::delete($id);
     }
 }
+

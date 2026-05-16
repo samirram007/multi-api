@@ -3,6 +3,8 @@
 namespace Modules\Aipt\VoucherDispatchDetail\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Aipt\VoucherDispatchDetail\Contracts\VoucherDispatchDetailRepositoryInterface;
+use Modules\Aipt\VoucherDispatchDetail\Repositories\VoucherDispatchDetailRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\VoucherDispatchDetail\Contracts\VoucherDispatchDetailServiceInterface;
 use Modules\Aipt\VoucherDispatchDetail\Services\VoucherDispatchDetailService;
@@ -11,6 +13,7 @@ class VoucherDispatchDetailServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->singleton(VoucherDispatchDetailRepositoryInterface::class, VoucherDispatchDetailRepository::class);
         $this->app->singleton(VoucherDispatchDetailServiceInterface::class, VoucherDispatchDetailService::class);
     }
 

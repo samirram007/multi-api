@@ -1,13 +1,12 @@
 <?php
-
 namespace Modules\Aipt\AccountNature\Facades;
 
-use Illuminate\Support\Facades\Facade;
 use Modules\Aipt\AccountNature\Contracts\AccountNatureServiceInterface;
+use Illuminate\Support\Facades\Facade;
 
 class AccountNatureFacade extends Facade
 {
-    protected static function getFacadeAccessor(): string
+    protected static function getFacadeAccessor()
     {
         return AccountNatureServiceInterface::class;
     }

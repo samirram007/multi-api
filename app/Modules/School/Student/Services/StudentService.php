@@ -3,38 +3,34 @@
 namespace Modules\School\Student\Services;
 
 use Modules\School\Student\Contracts\StudentServiceInterface;
+use Modules\School\Student\Facades\StudentRepoFacade as StudentRepository;
 use Modules\School\Student\Models\Student;
 use Illuminate\Database\Eloquent\Collection;
 
 class StudentService implements StudentServiceInterface
 {
-    protected $resource = [];
-
     public function getAll(): Collection
     {
-        return Student::with($this->resource)->get();
+        return StudentRepository::all();
     }
 
     public function getById(int $id): ?Student
     {
-        return Student::with($this->resource)->findOrFail($id);
+        return StudentRepository::find($id);
     }
 
     public function store(array $data): Student
     {
-        return Student::create($data);
+        return StudentRepository::create($data);
     }
 
     public function update(array $data, int $id): Student
     {
-        $record = Student::findOrFail($id);
-        $record->update($data);
-        return $record->fresh();
+        return StudentRepository::update($data, $id);
     }
 
     public function delete(int $id): bool
     {
-        $record = Student::findOrFail($id);
-        return $record->delete();
+        return StudentRepository::delete($id);
     }
 }

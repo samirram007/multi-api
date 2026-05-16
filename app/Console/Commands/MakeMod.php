@@ -33,6 +33,7 @@ class MakeMod extends Command
             'Requests',
             'Resources',
             'Services',
+            'Repositories',
             'Contracts',
             'Routes',
             'Providers',
@@ -49,6 +50,8 @@ class MakeMod extends Command
         // Create all module files
         $this->createApiRoutesFile($modulePath, $name, $plural, $group);
         $this->createController($modulePath, $name, $plural, $group);
+        $this->createRepositoryInterface($modulePath, $name, $group);
+        $this->createRepository($modulePath, $name, $group);
         $this->createServiceInterface($modulePath, $name, $group);
         $this->createService($modulePath, $name, $group);
         $this->createModel($modulePath, $name, $plural, $group);
@@ -56,6 +59,7 @@ class MakeMod extends Command
         $this->createCollection($modulePath, $name, $group);
         $this->createRequest($modulePath, $name, $plural, $lower, $group);
         $this->createFacade($modulePath, $name, $plural, $group);
+        $this->createRepoFacade($modulePath, $name, $plural, $group);
         $this->createTest($modulePath, $name, $plural, $group);
         $this->createMigration($modulePath, $plural);
         $this->createSeeder($modulePath, $name, $group);
@@ -81,6 +85,30 @@ Route::apiResource('{$plural}', {$name}Controller::class)->middleware(['jwt.cook
         File::put("{$modulePath}/Routes/api.php", $content);
     }
 
+    private function createRepositoryInterface(string $modulePath, string $name, string $group): void
+    {
+        $content = "<?php
+namespace Modules\\{$group}{$name}\Contracts;
+use App\Support\Contracts\BaseRepositoryInterface;
+interface {$name}RepositoryInterface extends BaseRepositoryInterface { }
+";
+        File::put("{$modulePath}/Contracts/{$name}RepositoryInterface.php", $content);
+    }
+
+    private function createRepoFacade(string $modulePath, string $name, string $plural, string $group): void
+    {
+        $content = "<?php
+namespace Modules\\{$group}{$name}\Facades;
+use Modules\\{$group}{$name}\Contracts\\{$name}RepositoryInterface;
+use Illuminate\Support\Facades\Facade;
+
+class {$name}RepoFacade extends Facade
+{
+    protected static function getFacadeAccessor() { return {$name}RepositoryInterface::class; }
+}
+";
+        File::put("{$modulePath}/Facades/{$name}RepoFacade.php", $content);
+    }
     private function createController(string $modulePath, string $name, string $plural, string $group): void
     {
         $content = "<?php
@@ -171,39 +199,42 @@ interface {$name}ServiceInterface
 namespace Modules\\{$group}{$name}\Services;
 
 use Modules\\{$group}{$name}\Contracts\\{$name}ServiceInterface;
+use Modules\\{$group}{$name}\Repositories\\{$name}Repository;
 use Modules\\{$group}{$name}\Models\\{$name};
 use Illuminate\Database\Eloquent\Collection;
 
 class {$name}Service implements {$name}ServiceInterface
 {
-    protected \$resource=[];
+    protected {$name}Repository \$repository;
+
+    public function __construct({$name}Repository \$repository)
+    {
+        \$this->repository = \$repository;
+    }
 
     public function getAll(): Collection
     {
-        return {$name}::with(\$this->resource)->get();
+        return \$this->repository->all();
     }
 
     public function getById(int \$id): ?{$name}
     {
-        return {$name}::with(\$this->resource)->findOrFail(\$id);
+        return \$this->repository->find(\$id);
     }
 
     public function store(array \$data): {$name}
     {
-        return {$name}::create(\$data);
+        return \$this->repository->create(\$data);
     }
 
     public function update(array \$data, int \$id): {$name}
     {
-        \$record = {$name}::findOrFail(\$id);
-        \$record->update(\$data);
-        return \$record->fresh();
+        return \$this->repository->update(\$id, \$data);
     }
 
     public function delete(int \$id): bool
     {
-        \$record = {$name}::findOrFail(\$id);
-        return \$record->delete();
+        return \$this->repository->delete(\$id);
     }
 }
 ";
@@ -544,16 +575,17 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Modules\\{$group}{$name}\Contracts\\{$name}ServiceInterface;
 use Modules\\{$group}{$name}\Services\\{$name}Service;
+use Modules\\{$group}{$name}\Repositories\\{$name}Repository;
+use Modules\\{$group}{$name}\Models\\{$name};
 
 class {$name}ServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        \$this->app->singleton({$name}Repository::class, function (\$app) {
+            return new {$name}Repository(new {$name}());
+        });
         \$this->app->singleton({$name}ServiceInterface::class, {$name}Service::class);
-
-
-
-
     }
 
     public function boot(): void
