@@ -5,36 +5,54 @@ namespace Modules\Base\AppModule\Services;
 use Modules\Base\AppModule\Contracts\AppModuleServiceInterface;
 use Modules\Base\AppModule\Models\AppModule;
 use Illuminate\Database\Eloquent\Collection;
+use Modules\Base\AppModule\Facades\AppModuleRepoFacade;
 
 class AppModuleService implements AppModuleServiceInterface
 {
-    protected $resource = ['app_module_features'];
+    protected bool $useCache = true;
+    protected array $resource = ['app_module_features'];
+
+    public function withoutCache(): static
+    {
+        $this->useCache = false;
+        return $this;
+    }
+
+    public function cache(bool $enabled = true): static
+    {
+        $this->useCache = $enabled;
+        return $this;
+    }
+
+    protected function query()
+    {
+        $cache = $this->useCache;
+        $this->useCache = true;
+        return AppModuleRepoFacade::cache($cache)->with($this->resource);
+    }
 
     public function getAll(): Collection
     {
-        return AppModule::with($this->resource)->get();
+        return $this->query()->all();
     }
 
     public function getById(int $id): ?AppModule
     {
-        return AppModule::with($this->resource)->findOrFail($id);
+        return $this->query()->find($id);
     }
 
     public function store(array $data): AppModule
     {
-        return AppModule::create($data);
+        return AppModuleRepoFacade::create($data);
     }
 
     public function update(array $data, int $id): AppModule
     {
-        $record = AppModule::findOrFail($id);
-        $record->update($data);
-        return $record->fresh();
+        return AppModuleRepoFacade::update($id, $data);
     }
 
     public function delete(int $id): bool
     {
-        $record = AppModule::findOrFail($id);
-        return $record->delete();
+        return AppModuleRepoFacade::delete($id);
     }
 }

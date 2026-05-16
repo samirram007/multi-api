@@ -4,11 +4,37 @@ namespace App\Support\Contracts;
 interface BaseRepositoryInterface
 {
     /**
+     * Disable cache for the next query.
+     */
+    public function withoutCache(): static;
+
+    /**
+     * Clear the cache for this repository.
+     */
+    public function clearCache(): void;
+
+    /**
      * Get a new query builder instance.
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query();
+
+    /**
+     * Set eager loading relations.
+     *
+     * @param array $relations
+     * @return static
+     */
+    public function with(array $relations): static;
+
+    /**
+     * Enable or disable cache for the next query.
+     *
+     * @param bool $enabled
+     * @return static
+     */
+    public function cache(bool $enabled = true): static;
 
     /**
      * Get all records.

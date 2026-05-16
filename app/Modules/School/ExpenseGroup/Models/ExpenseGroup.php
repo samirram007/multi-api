@@ -16,7 +16,8 @@ class ExpenseGroup extends Model
         'code',
         'description',
         'status',
-
+        'icon',
+        'active',
     ];
 
     protected $casts = [

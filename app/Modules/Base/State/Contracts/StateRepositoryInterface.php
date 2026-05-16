@@ -1,15 +1,8 @@
 <?php
 namespace Modules\Base\State\Contracts;
 
+use App\Support\Contracts\BaseRepositoryInterface;
 
-use App\Support\Contracts\CachedRepositoryInterface;
-
-interface StateRepositoryInterface extends CachedRepositoryInterface
+interface StateRepositoryInterface extends BaseRepositoryInterface
 {
-    // Define any additional methods specific to State repository if needed
-    public function all(array $with = []);
-    public function find(int $id, array $with = []);
-    public function create(array $data);
-    public function update(int $id, array $data);
-    public function delete(int $id);
 }

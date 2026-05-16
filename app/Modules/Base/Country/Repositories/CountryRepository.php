@@ -3,44 +3,12 @@ namespace Modules\Base\Country\Repositories;
 
 use Modules\Base\Country\Contracts\CountryRepositoryInterface;
 use Modules\Base\Country\Models\Country;
-
-
-use App\Support\Contracts\CachedRepositoryInterface;
 use App\Support\Repositories\BaseRepository;
-use App\Support\Repositories\CachedRepository;
-use Illuminate\Database\Eloquent\Model;
 
 class CountryRepository extends BaseRepository implements CountryRepositoryInterface
 {
-    protected Model $model;
-    protected CachedRepositoryInterface $cacheRepo;
-
-    public function __construct()
+    public function __construct(Country $model)
     {
-        $this->model = new Country();
-        $this->cacheRepo = new CachedRepository($this);
+        parent::__construct($model, cacheable: true);
     }
-
-    // CachedRepositoryInterface required methods
-    public function allCached()
-    {
-        return $this->cacheRepo->allCached();
-    }
-
-    public function findCached($id)
-    {
-        return $this->cacheRepo->findCached($id);
-    }
-
-    public function clearAllCache()
-    {
-        $this->cacheRepo->clearAllCache();
-    }
-
-    public function clearCacheById($id)
-    {
-        $this->cacheRepo->clearCacheById($id);
-    }
-
-
 }

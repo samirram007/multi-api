@@ -3,59 +3,50 @@
 namespace Modules\Base\User\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Modules\Base\User\Contracts\UserServiceInterface;
 use Modules\Base\User\Resources\UserResource;
 use Modules\Base\User\Resources\UserCollection;
 use Modules\Base\User\Requests\UserRequest;
 use App\Http\Resources\SuccessResource;
+use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\JsonResponse;
+use Modules\Base\User\Facades\UserFacade as User;
 
 class UserController extends Controller
 {
     use ApiResponseTrait;
 
-    public function __construct(protected UserServiceInterface $service)
+    public function __construct()
     {
     }
 
-    public function index(): JsonResponse
+    public function index(): SuccessCollection
     {
-        $data = $this->service->getAll();
-        return (new UserCollection($data))->response();
+        $data = User::getAll();
+        return new UserCollection($data);
     }
 
-    public function show(int $id): JsonResponse
+    public function show(int $id): SuccessResource
     {
-        $data = $this->service->getById($id);
-        return $this->resourceResponse(
-            new UserResource($data),
-            'User retrieved successfully'
-        );
+        $data = User::getById($id);
+        return new SuccessResource($data, 'User retrieved successfully');
     }
 
-    public function store(UserRequest $request): JsonResponse
+    public function store(UserRequest $request): SuccessResource
     {
-        $data = $this->service->store($request->validated());
-        return $this->resourceResponse(
-            new UserResource($data),
-            'User created successfully',
-            201
-        );
+        $data = User::store($request->validated());
+        return new SuccessResource($data, 'User created successfully');
     }
 
-    public function update(UserRequest $request, int $id): JsonResponse
+    public function update(UserRequest $request, int $id): SuccessResource
     {
-        $data = $this->service->update($request->validated(), $id);
-        return $this->resourceResponse(
-            new UserResource($data),
-            'User updated successfully'
-        );
+        $data = User::update($request->validated(), $id);
+        return new SuccessResource($data, 'User updated successfully');
     }
 
     public function destroy(int $id): JsonResponse
     {
-        $result = $this->service->delete($id);
+        $result = User::delete($id);
         return new JsonResponse([
             'status' => $result,
             'code' => 204,

@@ -3,37 +3,56 @@
 namespace Modules\Base\CompanyType\Services;
 
 use Modules\Base\CompanyType\Contracts\CompanyTypeServiceInterface;
+use Modules\Base\CompanyType\Facades\CompanyTypeRepoFacade;
 use Modules\Base\CompanyType\Models\CompanyType;
 use Illuminate\Database\Eloquent\Collection;
 
 class CompanyTypeService implements CompanyTypeServiceInterface
 {
-    protected $resource=['companies'];
+    protected bool $useCache = true;
+    protected $resource = [];
+
+    public function withoutCache(): static
+    {
+        $this->useCache = false;
+        return $this;
+    }
+
+    public function cache(bool $enabled = true): static
+    {
+        $this->useCache = $enabled;
+        return $this;
+    }
+
+    protected function query()
+    {
+        $cache = $this->useCache;
+        $this->useCache = true;
+        return CompanyTypeRepoFacade::cache($cache)->with($this->resource);
+    }
+
     public function getAll(): Collection
     {
-        return CompanyType::with($this->resource)->get();
+        return $this->query()->all();
     }
 
     public function getById(int $id): CompanyType
     {
-        return CompanyType::with($this->resource)->findOrFail($id);
+        return $this->query()->find($id);
     }
 
     public function store(array $data): CompanyType
     {
-        return CompanyType::create($data);
+        return CompanyTypeRepoFacade::create($data);
     }
 
     public function update(array $data, int $id): CompanyType
     {
-        $record = CompanyType::findOrFail($id);
-        $record->update($data);
-        return $record->fresh();
+        return CompanyTypeRepoFacade::update($id, $data);
     }
 
     public function delete(int $id): bool
     {
-        $record = CompanyType::findOrFail($id);
-        return $record->delete();
+        return CompanyTypeRepoFacade::delete($id);
     }
 }

@@ -16,7 +16,7 @@ class ExaminationType extends Model
         'code',
         'description',
         'status',
-
+        'is_promotional_exam',
     ];
 
     protected $casts = [

@@ -2,10 +2,11 @@
 
 namespace Modules\Base\AppModuleFeature\Contracts;
 
+use App\Support\Contracts\BaseServiceInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Base\AppModuleFeature\Models\AppModuleFeature;
 
-interface AppModuleFeatureServiceInterface
+interface AppModuleFeatureServiceInterface extends BaseServiceInterface
 {
     public function getAll(): Collection;
     public function getById(int $id): ?AppModuleFeature;

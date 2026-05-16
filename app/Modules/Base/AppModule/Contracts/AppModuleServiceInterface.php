@@ -2,10 +2,11 @@
 
 namespace Modules\Base\AppModule\Contracts;
 
+use App\Support\Contracts\BaseServiceInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Base\AppModule\Models\AppModule;
 
-interface AppModuleServiceInterface
+interface AppModuleServiceInterface extends BaseServiceInterface
 {
     public function getAll(): Collection;
     public function getById(int $id): ?AppModule;

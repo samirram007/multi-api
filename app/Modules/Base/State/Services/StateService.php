@@ -9,16 +9,46 @@ use Illuminate\Database\Eloquent\Collection;
 
 class StateService implements StateServiceInterface
 {
+    protected bool $useCache = true;
     protected $resource = ['country'];
+
+    /**
+     * Set the service to bypass cache for the next operation.
+     */
+    public function withoutCache(): static
+    {
+        $this->useCache = false;
+        return $this;
+    }
+
+    /**
+     * Set the service to use cache for the next operation.
+     */
+    public function cache(bool $enabled = true): static
+    {
+        $this->useCache = $enabled;
+        return $this;
+    }
+
+    /**
+     * Get a prepared repository instance with cache and relations.
+     */
+    protected function query()
+    {
+        $cache = $this->useCache;
+        $this->useCache = true; // Reset service state for next call
+
+        return StateRepoFacade::cache($cache)->with($this->resource);
+    }
 
     public function getAll(): Collection
     {
-        return StateRepoFacade::all($this->resource);
+        return $this->query()->all();
     }
 
     public function getById(int $id): ?State
     {
-        return StateRepoFacade::find($id, $this->resource);
+        return $this->query()->find($id);
     }
 
     public function store(array $data): State
@@ -28,14 +58,11 @@ class StateService implements StateServiceInterface
 
     public function update(array $data, int $id): State
     {
-        $record = StateRepoFacade::find($id);
-        $record->update($data);
-        return $record->fresh();
+        return StateRepoFacade::update($id, $data);
     }
 
     public function delete(int $id): bool
     {
-        $record = StateRepoFacade::find($id);
-        return $record->delete();
+        return StateRepoFacade::delete($id);
     }
 }

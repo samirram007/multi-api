@@ -16,7 +16,7 @@ class ExaminationResult extends Model
         'code',
         'description',
         'status',
-
+        'marks',
     ];
 
     protected $casts = [

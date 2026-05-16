@@ -15,8 +15,16 @@ class Book extends Model
         'name',
         'code',
         'description',
-        'status',
-
+        'subject_id',
+        'publication_year',
+        'page_count',
+        'price',
+        'published_at',
+        'publisher',
+        'author',
+        'illustrator',
+        'translator',
+        'cover_image_id',
     ];
 
     protected $casts = [

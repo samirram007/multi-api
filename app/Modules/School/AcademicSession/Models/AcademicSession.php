@@ -12,11 +12,16 @@ class AcademicSession extends Model
     protected $table = 'academic_sessions';
 
     protected $fillable = [
-        'name',
-        'code',
-        'description',
-        'status',
-
+        'campus_id',
+        'session',
+        'start_date',
+        'end_date',
+        'previous_academic_session_id',
+        'next_academic_session_id',
+        'current_fee_no',
+        'current_expense_no',
+        'current_transport_expense_no',
+        'is_current',
     ];
 
     protected $casts = [

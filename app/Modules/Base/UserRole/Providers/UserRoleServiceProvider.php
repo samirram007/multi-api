@@ -6,11 +6,17 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Modules\Base\UserRole\Contracts\UserRoleServiceInterface;
 use Modules\Base\UserRole\Services\UserRoleService;
+use Modules\Base\UserRole\Contracts\UserRoleRepositoryInterface;
+use Modules\Base\UserRole\Repositories\UserRoleRepository;
+use Modules\Base\UserRole\Models\UserRole;
 
 class UserRoleServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->bind(UserRoleRepositoryInterface::class, function ($app) {
+            return new UserRoleRepository(new UserRole());
+        });
         $this->app->bind(UserRoleServiceInterface::class, UserRoleService::class);
     }
 

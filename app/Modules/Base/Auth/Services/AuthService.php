@@ -3,7 +3,6 @@
 namespace Modules\Base\Auth\Services;
 
 use Modules\Base\Auth\Contracts\AuthServiceInterface;
-
 use Modules\Base\User\Models\User;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +13,16 @@ use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
 
 class AuthService implements AuthServiceInterface
 {
+    public function withoutCache(): static
+    {
+        return $this;
+    }
+
+    public function cache(bool $enabled = true): static
+    {
+        return $this;
+    }
+
     public function login(array $credentials): string
     {
         $token = Auth::attempt($credentials, $remember = true);

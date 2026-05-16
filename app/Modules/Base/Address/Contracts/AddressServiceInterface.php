@@ -2,6 +2,7 @@
 
 namespace Modules\Base\Address\Contracts;
 
+
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Base\Address\Models\Address;
 

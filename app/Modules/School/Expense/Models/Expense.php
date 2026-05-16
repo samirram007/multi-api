@@ -16,7 +16,16 @@ class Expense extends Model
         'code',
         'description',
         'status',
-
+        'expense_date',
+        'expense_no',
+        'payment_mode',
+        'narration',
+        'paid_amount',
+        'voucher_no',
+        'user_id',
+        'users',
+        'balance_amount',
+        'total_amount',
     ];
 
     protected $casts = [

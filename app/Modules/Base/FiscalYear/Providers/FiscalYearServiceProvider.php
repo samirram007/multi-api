@@ -6,12 +6,18 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Modules\Base\FiscalYear\Contracts\FiscalYearServiceInterface;
 use Modules\Base\FiscalYear\Services\FiscalYearService;
+use Modules\Base\FiscalYear\Contracts\FiscalYearRepositoryInterface;
+use Modules\Base\FiscalYear\Repositories\FiscalYearRepository;
+use Modules\Base\FiscalYear\Models\FiscalYear;
 
 class FiscalYearServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(FiscalYearServiceInterface::class, FiscalYearService::class);
+        $this->app->singleton(FiscalYearRepositoryInterface::class, function ($app) {
+            return new FiscalYearRepository(new FiscalYear());
+        });
+        $this->app->singleton(FiscalYearServiceInterface::class, FiscalYearService::class);
     }
 
     public function boot(): void

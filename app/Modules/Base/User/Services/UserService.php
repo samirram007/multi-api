@@ -4,36 +4,77 @@ namespace Modules\Base\User\Services;
 
 use Modules\Base\User\Contracts\UserServiceInterface;
 use Modules\Base\User\Models\User;
-use Illuminate\Database\Eloquent\Collection;
+
 use Illuminate\Support\Str;
+use Modules\Base\User\Facades\UserRepoFacade;
+use Illuminate\Database\Eloquent\Collection;
 
 class UserService implements UserServiceInterface
 {
+    protected bool $useCache = true;
     protected $resources = ['roles'];
+
+    /**
+     * Set the service to bypass cache for the next operation.
+     */
+    public function withoutCache(): static
+    {
+        $this->useCache = false;
+        return $this;
+    }
+
+    /**
+     * Set the service to use cache for the next operation.
+     */
+    public function cache(bool $enabled = true): static
+    {
+        $this->useCache = $enabled;
+        return $this;
+    }
+
+    /**
+     * Get a prepared repository instance with cache and relations.
+     */
+    protected function query()
+    {
+        $cache = $this->useCache;
+        $this->useCache = true; // Reset service state for next call
+
+        return UserRepoFacade::cache($cache)->with($this->resources);
+    }
+
     public function getAll(): Collection
     {
-        // return User::all()->load($this->resources);
-        return User::with($this->resources)->get();
+        return $this->query()->all();
     }
 
     public function getById(int $id): User
     {
-        return User::findOrFail($id);
+        return $this->query()->find($id);
     }
 
     public function store(array $data): User
     {
-        return User::create($data);
+        return UserRepoFacade::create($data);
     }
+
+    public function update(array $data, int $id): User
+    {
+        return UserRepoFacade::update($id, $data);
+    }
+
+    public function delete(int $id): bool
+    {
+        return UserRepoFacade::delete($id);
+    }
+
     public function findOrCreateSocialUser($socialUser, string $provider): User
     {
-        // 1. Try to find by provider + provider_id (most reliable)
         $user = User::where('provider', $provider)
             ->where('provider_id', $socialUser->getId())
             ->first();
 
         if ($user) {
-            // Update avatar/name in case they changed it
             $user->update([
                 'name' => $socialUser->getName() ?? $socialUser->getNickname(),
                 'avatar' => $socialUser->getAvatar(),
@@ -42,11 +83,9 @@ class UserService implements UserServiceInterface
             return $user;
         }
 
-        // 2. If not found by provider_id, try by email (account linking)
         if ($email = $socialUser->getEmail()) {
             $user = User::where('email', $email)->first();
             if ($user) {
-                // Link this social account to existing email/password user
                 $user->update([
                     'provider' => $provider,
                     'provider_id' => $socialUser->getId(),
@@ -56,8 +95,7 @@ class UserService implements UserServiceInterface
             }
         }
 
-        // 3. Create brand new user
-        return User::create([
+        return UserRepoFacade::create([
             'name' => $socialUser->getName() ?? $socialUser->getNickname() ?? 'User',
             'email' => $socialUser->getEmail(),
             'provider' => $provider,
@@ -68,22 +106,11 @@ class UserService implements UserServiceInterface
             'status' => 'active',
         ]);
     }
+
     public function syncAvatar(User $user, ?string $avatarUrl): void
     {
         if ($avatarUrl && $user->avatar !== $avatarUrl) {
             $user->update(['avatar' => $avatarUrl]);
         }
-    }
-    public function update(array $data, int $id): User
-    {
-        $record = User::findOrFail($id);
-        $record->update($data);
-        return $record->fresh();
-    }
-
-    public function delete(int $id): bool
-    {
-        $record = User::findOrFail($id);
-        return $record->delete();
     }
 }

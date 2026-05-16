@@ -8,12 +8,15 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Modules\Base\Country\Contracts\CountryServiceInterface;
 use Modules\Base\Country\Services\CountryService;
+use Modules\Base\Country\Models\Country;
 
 class CountryServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(CountryRepositoryInterface::class, CountryRepository::class);
+        $this->app->bind(CountryRepositoryInterface::class, function ($app) {
+            return new CountryRepository(new Country());
+        });
         $this->app->singleton(CountryServiceInterface::class, CountryService::class);
 
     }

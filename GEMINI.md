@@ -1,6 +1,6 @@
 # Backend Development Instructions (Laravel)
 
-This directory contains the SchoolOS backend API built with Laravel.
+This directory contains the poly-erp backend API built with Laravel.
 
 ## Architectural Patterns
 
@@ -14,9 +14,10 @@ This directory contains the SchoolOS backend API built with Laravel.
 - Follow PSR-12 and Laravel's coding style.
 - Use `laravel/pint` for code style enforcement: `vendor/bin/pint`.
 - Use type hints and return types for all methods.
-- Prefer constructor injection over the `app()` helper or facades where appropriate for testability.
+- Prefer using Facades for module services and repositories to maintain a clean and expressive syntax across the application.
 
 ## Database
+
 - Modules are in `app/Modules/`.
 - Migrations are in `app/Modules/**/**/database/migrations/`.
 - Seeders are in `app/Modules/**/**/database/seeders/`.

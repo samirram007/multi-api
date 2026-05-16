@@ -6,11 +6,17 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Modules\Base\Role\Contracts\RoleServiceInterface;
 use Modules\Base\Role\Services\RoleService;
+use Modules\Base\Role\Contracts\RoleRepositoryInterface;
+use Modules\Base\Role\Repositories\RoleRepository;
+use Modules\Base\Role\Models\Role;
 
 class RoleServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->bind(RoleRepositoryInterface::class, function ($app) {
+            return new RoleRepository(new Role());
+        });
         $this->app->bind(RoleServiceInterface::class, RoleService::class);
     }
 

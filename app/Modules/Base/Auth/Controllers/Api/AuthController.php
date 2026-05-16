@@ -5,32 +5,30 @@ namespace Modules\Base\Auth\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Laravel\Socialite\Facades\Socialite;
 
-use Modules\Base\Auth\Contracts\AuthServiceInterface;
 use Modules\Base\Auth\Requests\ChangePasswordRequest;
 use Modules\Base\Auth\Requests\LoginRequest;
 use Modules\Base\Auth\Requests\RegisterRequest;
 
-use Modules\Base\User\Contracts\UserServiceInterface;
 use Modules\Base\User\Resources\UserResource;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Log;
+use Modules\Base\Auth\Facades\AuthFacade as Auth;
+use Modules\Base\User\Facades\UserFacade as User;
 
 class AuthController extends Controller
 {
 
     private string $domain;
     private int $token_expire_duration;
-    public function __construct(
-        protected AuthServiceInterface $authService,
-        protected UserServiceInterface $userService
-    ) {
+
+    public function __construct() {
         $this->domain = strtolower(config('session.domain', 'localhost'));
 
         $this->token_expire_duration = config('session.lifetime', 120) * 60;
     }
+
     public function login(LoginRequest $request): JsonResponse
     {
-        $token = $this->authService->login($request->validated());
+        $token = Auth::login($request->validated());
 
         return $this->respondWithToken($token, 'Login successful!');
 
@@ -39,10 +37,10 @@ class AuthController extends Controller
     {
         $socialUser = Socialite::driver($provider)->stateless()->user();
 
-        $user = $this->userService->findOrCreateSocialUser($socialUser, $provider);
+        $user = User::findOrCreateSocialUser($socialUser, $provider);
 
 
-        $token = $this->authService->loginWithUser($user); // ← uses same method!
+        $token = Auth::loginWithUser($user); // ← uses same method!
 
         return $this->respondWithToken($token);
     }
@@ -50,13 +48,13 @@ class AuthController extends Controller
     public function register(RegisterRequest $request): JsonResponse
     {
 
-        $token = $this->authService->register($request->validated());
+        $token = Auth::register($request->validated());
         return $this->respondWithToken($token, 'User created successfully');
     }
 
     public function logout(): JsonResponse
     {
-        $this->authService->logout();
+        Auth::logout();
         $cookie = cookie('token', '', time() - 3600, '/', $this->domain, true, true, 'None');
 
         return response()->json(['message' => 'Logged out'])->withCookie($cookie);
@@ -71,7 +69,7 @@ class AuthController extends Controller
     public function profile(): JsonResponse
     {
 
-        $user = $this->authService->profile();
+        $user = Auth::profile();
         return response()->json([
             'status' => 'success',
 
@@ -80,21 +78,10 @@ class AuthController extends Controller
 
         ]);
     }
-    public function profile2(): JsonResponse
-    {
 
-        // $user = $this->authService->profile();
-        return response()->json([
-            'status' => 'success',
-
-            'message' => 'User profile fetched successfully.',
-            'data' => [],
-
-        ]);
-    }
     public function changePassword(ChangePasswordRequest $request): JsonResponse
     {
-        $this->authService->changePassword($request->validated());
+        Auth::changePassword($request->validated());
         return response()->json([
             'status' => 'success',
 
@@ -106,7 +93,7 @@ class AuthController extends Controller
 
     public function refresh()
     {
-        $token = $this->authService->refresh();
+        $token = Auth::refresh();
         return $this->respondWithToken($token, 'Token refreshed successfully!');
 
     }
@@ -124,8 +111,6 @@ class AuthController extends Controller
             true,
             'None'
         );
-        // dd($cookie);
-        //  Log::info('Auth token issued', ['token' => $token]);
 
         return response()->json([
             'success' => true,

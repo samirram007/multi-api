@@ -12,11 +12,9 @@ class BookChapter extends Model
     protected $table = 'book_chapters';
 
     protected $fillable = [
+        'book_id',
         'name',
-        'code',
         'description',
-        'status',
-
     ];
 
     protected $casts = [

@@ -6,24 +6,55 @@ use Modules\Base\UserRole\Contracts\UserRoleServiceInterface;
 use Modules\Base\UserRole\Models\UserRole;
 use Illuminate\Database\Eloquent\Collection;
 use Log;
+use Modules\Base\UserRole\Facades\UserRoleRepoFacade;
 
 class UserRoleService implements UserRoleServiceInterface
 {
+    protected bool $useCache = true;
     protected $resource = [];
+
+    /**
+     * Set the service to bypass cache for the next operation.
+     */
+    public function withoutCache(): static
+    {
+        $this->useCache = false;
+        return $this;
+    }
+
+    /**
+     * Set the service to use cache for the next operation.
+     */
+    public function cache(bool $enabled = true): static
+    {
+        $this->useCache = $enabled;
+        return $this;
+    }
+
+    /**
+     * Get a prepared repository instance with cache and relations.
+     */
+    protected function query()
+    {
+        $cache = $this->useCache;
+        $this->useCache = true; // Reset service state for next call
+
+        return UserRoleRepoFacade::cache($cache)->with($this->resource);
+    }
 
     public function getAll(): Collection
     {
-        return UserRole::with($this->resource)->get();
+        return $this->query()->all();
     }
 
     public function getById(int $id): ?UserRole
     {
-        return UserRole::with($this->resource)->findOrFail($id);
+        return $this->query()->find($id);
     }
 
     public function store(array $data): UserRole|bool|null
     {
-        $exists = UserRole::where('user_id', $data['user_id'])
+        $exists = UserRoleRepoFacade::query()->where('user_id', $data['user_id'])
             ->where('role_id', $data['role_id'])->first();
         if ($exists) {
             $exists->delete();
@@ -32,19 +63,16 @@ class UserRoleService implements UserRoleServiceInterface
             return $exists->fresh();
 
         }
-        return UserRole::create($data);
+        return UserRoleRepoFacade::create($data);
     }
 
     public function update(array $data, int $id): UserRole
     {
-        $record = UserRole::findOrFail($id);
-        $record->update($data);
-        return $record->fresh();
+        return UserRoleRepoFacade::update($id, $data);
     }
 
     public function delete(int $id): bool
     {
-        $record = UserRole::findOrFail($id);
-        return $record->delete();
+        return UserRoleRepoFacade::delete($id);
     }
 }

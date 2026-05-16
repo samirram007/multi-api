@@ -12,11 +12,9 @@ class BookModule extends Model
     protected $table = 'book_modules';
 
     protected $fillable = [
+        'book_id',
         'name',
-        'code',
         'description',
-        'status',
-
     ];
 
     protected $casts = [

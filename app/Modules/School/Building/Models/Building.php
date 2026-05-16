@@ -14,9 +14,8 @@ class Building extends Model
     protected $fillable = [
         'name',
         'code',
-        'description',
-        'status',
-
+        'campus_id',
+        'capacity',
     ];
 
     protected $casts = [

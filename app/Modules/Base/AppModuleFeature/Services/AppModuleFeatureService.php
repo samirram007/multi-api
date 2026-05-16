@@ -5,52 +5,64 @@ namespace Modules\Base\AppModuleFeature\Services;
 use Modules\Base\AppModuleFeature\Contracts\AppModuleFeatureServiceInterface;
 use Modules\Base\AppModuleFeature\Models\AppModuleFeature;
 use Illuminate\Database\Eloquent\Collection;
+use Modules\Base\AppModuleFeature\Facades\AppModuleFeatureRepoFacade;
 
 class AppModuleFeatureService implements AppModuleFeatureServiceInterface
 {
-    protected $resource = ['module'];
+    protected bool $useCache = true;
+    protected array $resource = ['app_module'];
+
+    public function withoutCache(): static
+    {
+        $this->useCache = false;
+        return $this;
+    }
+
+    public function cache(bool $enabled = true): static
+    {
+        $this->useCache = $enabled;
+        return $this;
+    }
+
+    protected function query()
+    {
+        $cache = $this->useCache;
+        $this->useCache = true;
+        return AppModuleFeatureRepoFacade::cache($cache)->with($this->resource);
+    }
 
     public function getAll(): Collection
     {
-        return AppModuleFeature::with($this->resource)->get();
+        return $this->query()->all();
     }
 
     public function getById(int $id): ?AppModuleFeature
     {
-        return AppModuleFeature::with($this->resource)->findOrFail($id);
+        return $this->query()->find($id);
     }
 
     public function store(array $data): AppModuleFeature
     {
-        return AppModuleFeature::create($data);
+        return AppModuleFeatureRepoFacade::create($data);
     }
 
     public function update(array $data, int $id): AppModuleFeature
     {
-        $record = AppModuleFeature::findOrFail($id);
-        $record->update($data);
-        return $record->fresh();
+        return AppModuleFeatureRepoFacade::update($id, $data);
     }
 
     public function delete(int $id): bool
     {
-        $record = AppModuleFeature::findOrFail($id);
-        return $record->delete();
+        return AppModuleFeatureRepoFacade::delete($id);
+    }
+
+    public function getByModuleId(int $module_id): Collection
+    {
+        return $this->query()->where(['app_module_id' => $module_id]);
     }
 
     public function getByRoleAndModule(int $role_id, int $module_id): Collection
     {
-
-        $data = AppModuleFeature::where('app_module_id', $module_id)
-            ->with([
-                'module',
-                'role_permissions' => function ($query) use ($role_id) {
-                    $query->where('role_id', $role_id);
-                }
-            ])
-            ->get();
-        // dd($data->toArray());
-        return $data;
-        // return AppModuleFeature::where('app_module_id', $module_id)->get();
+        return $this->query()->where(['role_id' => $role_id, 'app_module_id' => $module_id]);
     }
 }

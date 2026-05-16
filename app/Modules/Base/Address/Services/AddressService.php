@@ -3,38 +3,38 @@
 namespace Modules\Base\Address\Services;
 
 use Modules\Base\Address\Contracts\AddressServiceInterface;
+use Modules\Base\Address\Facades\AddressRepoFacade;
 use Modules\Base\Address\Models\Address;
 use Illuminate\Database\Eloquent\Collection;
 
 class AddressService implements AddressServiceInterface
 {
-    protected $resource = [];
+
+    protected array $resource = ['state', 'country'];
+
 
     public function getAll(): Collection
     {
-        return Address::with($this->resource)->get();
+        return AddressRepoFacade::all();
     }
 
     public function getById(int $id): ?Address
     {
-        return Address::with($this->resource)->findOrFail($id);
+        return AddressRepoFacade::find($id);
     }
 
     public function store(array $data): Address
     {
-        return Address::create($data);
+        return AddressRepoFacade::create($data);
     }
 
     public function update(array $data, int $id): Address
     {
-        $record = Address::findOrFail($id);
-        $record->update($data);
-        return $record->fresh();
+        return AddressRepoFacade::update($id, $data);
     }
 
     public function delete(int $id): bool
     {
-        $record = Address::findOrFail($id);
-        return $record->delete();
+        return AddressRepoFacade::delete($id);
     }
 }

@@ -3,7 +3,7 @@
 namespace Modules\Base\Address\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Modules\Base\Address\Contracts\AddressServiceInterface;
+use Modules\Base\Address\Facades\AddressFacade;
 use Modules\Base\Address\Resources\AddressResource;
 use Modules\Base\Address\Resources\AddressCollection;
 use Modules\Base\Address\Requests\AddressRequest;
@@ -16,38 +16,38 @@ class AddressController extends Controller
 {
     use ApiResponseTrait;
 
-    public function __construct(protected AddressServiceInterface $service)
+    public function __construct()
     {
     }
 
     public function index(): SuccessCollection
     {
-        $data = $this->service->getAll();
+        $data = AddressFacade::getAll();
         return new AddressCollection($data);
     }
 
     public function show(int $id): SuccessResource
     {
-        $data = $this->service->getById($id);
+        $data = AddressFacade::getById($id);
         return new AddressResource($data);
     }
 
     public function store(AddressRequest $request): SuccessResource
     {
-        $data = $this->service->store($request->validated());
+        $data = AddressFacade::store($request->validated());
         return new AddressResource($data, $messages = 'Address created successfully');
     }
 
     public function update(AddressRequest $request, int $id): SuccessResource
     {
-        $data = $this->service->update($request->validated(), $id);
+        $data = AddressFacade::update($request->validated(), $id);
         return new AddressResource($data, $messages = 'Address updated successfully');
     }
 
     public function destroy(int $id): JsonResponse
     {
 
-        $result = $this->service->delete($id);
+        $result = AddressFacade::delete($id);
         return new JsonResponse([
             'status' => $result,
             'code' => 204,

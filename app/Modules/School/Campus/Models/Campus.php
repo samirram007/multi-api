@@ -12,11 +12,16 @@ class Campus extends Model
     protected $table = 'campuses';
 
     protected $fillable = [
+        'company_id',
+        'education_board_id',
         'name',
         'code',
-        'description',
-        'status',
-
+        'contact_no',
+        'email',
+        'establishment_date',
+        'opening_time',
+        'closing_time',
+        'logo_image_id',
     ];
 
     protected $casts = [

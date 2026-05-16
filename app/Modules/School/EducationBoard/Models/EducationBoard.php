@@ -16,7 +16,11 @@ class EducationBoard extends Model
         'code',
         'description',
         'status',
-
+        'contact_no',
+        'email',
+        'establishment_date',
+        'website',
+        'logo_image',
     ];
 
     protected $casts = [

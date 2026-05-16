@@ -16,7 +16,8 @@ class Examination extends Model
         'code',
         'description',
         'status',
-
+        'examination_start_date',
+        'examination_end_date',
     ];
 
     protected $casts = [

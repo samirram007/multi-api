@@ -3,31 +3,32 @@
 namespace Modules\Base\Currency\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Modules\Base\Currency\Contracts\CurrencyServiceInterface;
 use Modules\Base\Currency\Resources\CurrencyResource;
 use Modules\Base\Currency\Resources\CurrencyCollection;
 use Modules\Base\Currency\Requests\CurrencyRequest;
 use App\Http\Resources\SuccessResource;
+use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\JsonResponse;
+use Modules\Base\Currency\Facades\CurrencyFacade as Currency;
 
 class CurrencyController extends Controller
 {
     use ApiResponseTrait;
 
-    public function __construct(protected CurrencyServiceInterface $service)
+    public function __construct()
     {
     }
 
-    public function index(): JsonResponse
+    public function index(): SuccessCollection
     {
-        $data = $this->service->getAll();
-        return (new CurrencyCollection($data))->response();
+        $data = Currency::getAll();
+        return new CurrencyCollection($data);
     }
 
     public function show(int $id): SuccessResource
     {
-        $data = $this->service->getById($id);
+        $data = Currency::getById($id);
         return new CurrencyResource($data, $messages = 'Currency retrieved successfully');
 
 
@@ -35,14 +36,14 @@ class CurrencyController extends Controller
 
     public function store(CurrencyRequest $request): SuccessResource
     {
-        $data = $this->service->store($request->validated());
+        $data = Currency::store($request->validated());
         return new CurrencyResource($data, $messages = 'Currency created successfully');
 
     }
 
     public function update(CurrencyRequest $request, int $id): SuccessResource
     {
-        $data = $this->service->update($request->validated(), $id);
+        $data = Currency::update($request->validated(), $id);
         return new CurrencyResource($data, $messages = 'Currency updated successfully');
 
     }
@@ -50,7 +51,7 @@ class CurrencyController extends Controller
     public function destroy(int $id): JsonResponse
     {
 
-        $result = $this->service->delete($id);
+        $result = Currency::delete($id);
         return new JsonResponse([
             'status' => $result,
             'code' => 204,

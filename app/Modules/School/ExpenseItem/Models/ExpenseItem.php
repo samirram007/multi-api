@@ -16,7 +16,10 @@ class ExpenseItem extends Model
         'code',
         'description',
         'status',
-
+        'months',
+        'amount',
+        'quantity',
+        'total_amount',
     ];
 
     protected $casts = [

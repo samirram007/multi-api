@@ -6,11 +6,17 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Modules\Base\AppModule\Contracts\AppModuleServiceInterface;
 use Modules\Base\AppModule\Services\AppModuleService;
+use Modules\Base\AppModule\Contracts\AppModuleRepositoryInterface;
+use Modules\Base\AppModule\Repositories\AppModuleRepository;
+use Modules\Base\AppModule\Models\AppModule;
 
 class AppModuleServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->bind(AppModuleRepositoryInterface::class, function ($app) {
+            return new AppModuleRepository(new AppModule());
+        });
         $this->app->bind(AppModuleServiceInterface::class, AppModuleService::class);
     }
 

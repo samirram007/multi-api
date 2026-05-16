@@ -3,7 +3,6 @@
 namespace Modules\Base\UserRole\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Modules\Base\UserRole\Contracts\UserRoleServiceInterface;
 use Modules\Base\UserRole\Resources\UserRoleResource;
 use Modules\Base\UserRole\Resources\UserRoleCollection;
 use Modules\Base\UserRole\Requests\UserRoleRequest;
@@ -11,31 +10,31 @@ use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\JsonResponse;
-use Log;
+use Modules\Base\UserRole\Facades\UserRoleFacade as UserRole;
 
 class UserRoleController extends Controller
 {
     use ApiResponseTrait;
 
-    public function __construct(protected UserRoleServiceInterface $service)
+    public function __construct()
     {
     }
 
     public function index(): SuccessCollection
     {
-        $data = $this->service->getAll();
+        $data = UserRole::getAll();
         return new UserRoleCollection($data);
     }
 
     public function show(int $id): SuccessResource
     {
-        $data = $this->service->getById($id);
+        $data = UserRole::getById($id);
         return new UserRoleResource($data);
     }
 
     public function store(UserRoleRequest $request): SuccessResource|JsonResponse
     {
-        $data = $this->service->store($request->validated());
+        $data = UserRole::store($request->validated());
 
         if ($data) {
             return new UserRoleResource($data ?? [], $messages = 'Role assigned successfully');
@@ -51,14 +50,14 @@ class UserRoleController extends Controller
 
     public function update(UserRoleRequest $request, int $id): SuccessResource
     {
-        $data = $this->service->update($request->validated(), $id);
+        $data = UserRole::update($request->validated(), $id);
         return new UserRoleResource($data, $messages = 'UserRole updated successfully');
     }
 
     public function destroy(int $id): JsonResponse
     {
 
-        $result = $this->service->delete($id);
+        $result = UserRole::delete($id);
         return new JsonResponse([
             'status' => $result,
             'code' => 204,

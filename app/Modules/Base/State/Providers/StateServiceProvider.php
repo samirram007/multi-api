@@ -8,12 +8,15 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Modules\Base\State\Contracts\StateServiceInterface;
 use Modules\Base\State\Services\StateService;
+use Modules\Base\State\Models\State;
 
 class StateServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(StateRepositoryInterface::class, StateRepository::class);
+        $this->app->bind(StateRepositoryInterface::class, function ($app) {
+            return new StateRepository(new State());
+        });
         $this->app->singleton(StateServiceInterface::class, StateService::class);
 
     }

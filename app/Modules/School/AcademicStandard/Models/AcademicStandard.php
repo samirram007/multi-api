@@ -15,8 +15,6 @@ class AcademicStandard extends Model
         'name',
         'code',
         'description',
-        'status',
-
     ];
 
     protected $casts = [
