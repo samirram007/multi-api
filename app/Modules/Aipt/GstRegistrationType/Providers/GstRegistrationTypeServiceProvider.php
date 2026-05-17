@@ -8,12 +8,15 @@ use Modules\Aipt\GstRegistrationType\Repositories\GstRegistrationTypeRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\GstRegistrationType\Contracts\GstRegistrationTypeServiceInterface;
 use Modules\Aipt\GstRegistrationType\Services\GstRegistrationTypeService;
+use Modules\Aipt\GstRegistrationType\Models\GstRegistrationType;
 
 class GstRegistrationTypeServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(GstRegistrationTypeRepositoryInterface::class, GstRegistrationTypeRepository::class);
+        $this->app->singleton(GstRegistrationTypeRepositoryInterface::class, function ($app) {
+            return new GstRegistrationTypeRepository(new GstRegistrationType());
+        });
         $this->app->singleton(GstRegistrationTypeServiceInterface::class, GstRegistrationTypeService::class);
         
     }

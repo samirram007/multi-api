@@ -8,12 +8,15 @@ use Modules\Aipt\CostCenter\Repositories\CostCenterRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\CostCenter\Contracts\CostCenterServiceInterface;
 use Modules\Aipt\CostCenter\Services\CostCenterService;
+use Modules\Aipt\CostCenter\Models\CostCenter;
 
 class CostCenterServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(CostCenterRepositoryInterface::class, CostCenterRepository::class);
+        $this->app->singleton(CostCenterRepositoryInterface::class, function ($app) {
+            return new CostCenterRepository(new CostCenter());
+        });
         $this->app->singleton(CostCenterServiceInterface::class, CostCenterService::class);
         
     }

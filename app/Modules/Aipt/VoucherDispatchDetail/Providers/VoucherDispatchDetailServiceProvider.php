@@ -8,12 +8,15 @@ use Modules\Aipt\VoucherDispatchDetail\Repositories\VoucherDispatchDetailReposit
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\VoucherDispatchDetail\Contracts\VoucherDispatchDetailServiceInterface;
 use Modules\Aipt\VoucherDispatchDetail\Services\VoucherDispatchDetailService;
+use Modules\Aipt\VoucherDispatchDetail\Models\VoucherDispatchDetail;
 
 class VoucherDispatchDetailServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(VoucherDispatchDetailRepositoryInterface::class, VoucherDispatchDetailRepository::class);
+        $this->app->singleton(VoucherDispatchDetailRepositoryInterface::class, function ($app) {
+            return new VoucherDispatchDetailRepository(new VoucherDispatchDetail());
+        });
         $this->app->singleton(VoucherDispatchDetailServiceInterface::class, VoucherDispatchDetailService::class);
     }
 

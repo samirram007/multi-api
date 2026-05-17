@@ -8,12 +8,15 @@ use Modules\Aipt\StockCategory\Repositories\StockCategoryRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\StockCategory\Contracts\StockCategoryServiceInterface;
 use Modules\Aipt\StockCategory\Services\StockCategoryService;
+use Modules\Aipt\StockCategory\Models\StockCategory;
 
 class StockCategoryServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(StockCategoryRepositoryInterface::class, StockCategoryRepository::class);
+        $this->app->singleton(StockCategoryRepositoryInterface::class, function ($app) {
+            return new StockCategoryRepository(new StockCategory());
+        });
         $this->app->singleton(StockCategoryServiceInterface::class, StockCategoryService::class);
     }
 

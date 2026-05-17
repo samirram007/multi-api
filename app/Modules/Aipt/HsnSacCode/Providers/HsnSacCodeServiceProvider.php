@@ -8,12 +8,15 @@ use Modules\Aipt\HsnSacCode\Repositories\HsnSacCodeRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\HsnSacCode\Contracts\HsnSacCodeServiceInterface;
 use Modules\Aipt\HsnSacCode\Services\HsnSacCodeService;
+use Modules\Aipt\HsnSacCode\Models\HsnSacCode;
 
 class HsnSacCodeServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(HsnSacCodeRepositoryInterface::class, HsnSacCodeRepository::class);
+        $this->app->singleton(HsnSacCodeRepositoryInterface::class, function ($app) {
+            return new HsnSacCodeRepository(new HsnSacCode());
+        });
         $this->app->singleton(HsnSacCodeServiceInterface::class, HsnSacCodeService::class);
         
     }

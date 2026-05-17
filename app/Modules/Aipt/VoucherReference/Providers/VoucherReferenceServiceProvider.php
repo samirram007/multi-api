@@ -8,12 +8,15 @@ use Modules\Aipt\VoucherReference\Repositories\VoucherReferenceRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\VoucherReference\Contracts\VoucherReferenceServiceInterface;
 use Modules\Aipt\VoucherReference\Services\VoucherReferenceService;
+use Modules\Aipt\VoucherReference\Models\VoucherReference;
 
 class VoucherReferenceServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(VoucherReferenceRepositoryInterface::class, VoucherReferenceRepository::class);
+        $this->app->singleton(VoucherReferenceRepositoryInterface::class, function ($app) {
+            return new VoucherReferenceRepository(new VoucherReference());
+        });
         $this->app->singleton(VoucherReferenceServiceInterface::class, VoucherReferenceService::class);
     }
 

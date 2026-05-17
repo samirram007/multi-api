@@ -8,12 +8,15 @@ use Modules\Aipt\Holiday\Repositories\HolidayRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\Holiday\Contracts\HolidayServiceInterface;
 use Modules\Aipt\Holiday\Services\HolidayService;
+use Modules\Aipt\Holiday\Models\Holiday;
 
 class HolidayServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(HolidayRepositoryInterface::class, HolidayRepository::class);
+        $this->app->singleton(HolidayRepositoryInterface::class, function ($app) {
+            return new HolidayRepository(new Holiday());
+        });
         $this->app->singleton(HolidayServiceInterface::class, HolidayService::class);
        
     }

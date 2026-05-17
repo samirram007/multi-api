@@ -8,12 +8,15 @@ use Modules\Aipt\StockItemBatch\Repositories\StockItemBatchRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\StockItemBatch\Contracts\StockItemBatchServiceInterface;
 use Modules\Aipt\StockItemBatch\Services\StockItemBatchService;
+use Modules\Aipt\StockItemBatch\Models\StockItemBatch;
 
 class StockItemBatchServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(StockItemBatchRepositoryInterface::class, StockItemBatchRepository::class);
+        $this->app->singleton(StockItemBatchRepositoryInterface::class, function ($app) {
+            return new StockItemBatchRepository(new StockItemBatch());
+        });
         $this->app->singleton(StockItemBatchServiceInterface::class, StockItemBatchService::class);
     }
 

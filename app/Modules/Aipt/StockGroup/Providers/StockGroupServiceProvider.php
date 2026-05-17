@@ -8,12 +8,15 @@ use Modules\Aipt\StockGroup\Repositories\StockGroupRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\StockGroup\Contracts\StockGroupServiceInterface;
 use Modules\Aipt\StockGroup\Services\StockGroupService;
+use Modules\Aipt\StockGroup\Models\StockGroup;
 
 class StockGroupServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(StockGroupRepositoryInterface::class, StockGroupRepository::class);
+        $this->app->singleton(StockGroupRepositoryInterface::class, function ($app) {
+            return new StockGroupRepository(new StockGroup());
+        });
         $this->app->singleton(StockGroupServiceInterface::class, StockGroupService::class);
     }
 

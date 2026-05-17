@@ -1,18 +1,14 @@
-# Base/Address Module
+# Base Domain Modules
 
-This module provides reusable address management functionality used across various entities in the ERP system.
+This domain contains foundational modules used throughout the ERP system.
 
-## Responsibilities
-- Manage address structures (Street, City, State, Country, Zip/Postal Code).
-- Support polymorphic relationships via addressable traits.
+## Modules
+- **Address:** Polymorphic address management.
+- **Country:** International country data.
+- **State:** Regional state data.
+- **User/Auth:** Core authentication and user management.
+- **Role/Permission:** RBAC system.
+- **Currency/FiscalYear:** Financial foundations.
 
-## Architectural Patterns
-- **Models:** Uses `App\Modules\Base\Address\Models\Address`.
-- **Relationships:** Entities requiring addresses should utilize the `App\Traits\HasPolymorphicResource` or relevant traits.
-- **Enums:** Relies on `App\Enums\AddressType` for categorizing addresses (e.g., Shipping, Billing).
-
-## Usage
-To associate an address with a model, ensure the model implements the necessary interface and uses the `Addressable` trait (if defined within the module).
-
-## Testing
-- Feature tests are located in `app/Modules/Base/Address/Tests/`.
+## Standards
+All modules in the `Base` domain must adhere to the **Modular Architecture Guide** defined in the root `GEMINI.md`.

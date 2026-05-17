@@ -8,12 +8,15 @@ use Modules\Aipt\StockJournalStorageUnitEntry\Repositories\StockJournalStorageUn
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\StockJournalStorageUnitEntry\Contracts\StockJournalStorageUnitEntryServiceInterface;
 use Modules\Aipt\StockJournalStorageUnitEntry\Services\StockJournalStorageUnitEntryService;
+use Modules\Aipt\StockJournalStorageUnitEntry\Models\StockJournalStorageUnitEntry;
 
 class StockJournalStorageUnitEntryServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(StockJournalStorageUnitEntryRepositoryInterface::class, StockJournalStorageUnitEntryRepository::class);
+        $this->app->singleton(StockJournalStorageUnitEntryRepositoryInterface::class, function ($app) {
+            return new StockJournalStorageUnitEntryRepository(new StockJournalStorageUnitEntry());
+        });
         $this->app->singleton(StockJournalStorageUnitEntryServiceInterface::class, StockJournalStorageUnitEntryService::class);
     }
 

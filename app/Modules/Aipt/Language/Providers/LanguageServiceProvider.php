@@ -8,12 +8,15 @@ use Modules\Aipt\Language\Repositories\LanguageRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\Language\Contracts\LanguageServiceInterface;
 use Modules\Aipt\Language\Services\LanguageService;
+use Modules\Aipt\Language\Models\Language;
 
 class LanguageServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(LanguageRepositoryInterface::class, LanguageRepository::class);
+        $this->app->singleton(LanguageRepositoryInterface::class, function ($app) {
+            return new LanguageRepository(new Language());
+        });
         $this->app->singleton(LanguageServiceInterface::class, LanguageService::class);
         
     }

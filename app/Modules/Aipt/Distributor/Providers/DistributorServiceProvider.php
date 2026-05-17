@@ -8,12 +8,15 @@ use Modules\Aipt\Distributor\Repositories\DistributorRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\Distributor\Contracts\DistributorServiceInterface;
 use Modules\Aipt\Distributor\Services\DistributorService;
+use Modules\Aipt\Distributor\Models\Distributor;
 
 class DistributorServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(DistributorRepositoryInterface::class, DistributorRepository::class);
+        $this->app->singleton(DistributorRepositoryInterface::class, function ($app) {
+            return new DistributorRepository(new Distributor());
+        });
         $this->app->singleton(DistributorServiceInterface::class, DistributorService::class);
          
     }

@@ -8,12 +8,15 @@ use Modules\Aipt\Vendor\Repositories\VendorRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\Vendor\Contracts\VendorServiceInterface;
 use Modules\Aipt\Vendor\Services\VendorService;
+use Modules\Aipt\Vendor\Models\Vendor;
 
 class VendorServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(VendorRepositoryInterface::class, VendorRepository::class);
+        $this->app->singleton(VendorRepositoryInterface::class, function ($app) {
+            return new VendorRepository(new Vendor());
+        });
         $this->app->singleton(VendorServiceInterface::class, VendorService::class);
     }
 

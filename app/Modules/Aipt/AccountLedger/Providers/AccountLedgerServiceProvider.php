@@ -4,6 +4,7 @@ namespace Modules\Aipt\AccountLedger\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Modules\Aipt\AccountLedger\Contracts\AccountLedgerRepositoryInterface;
+use Modules\Aipt\AccountLedger\Models\AccountLedger;
 use Modules\Aipt\AccountLedger\Repositories\AccountLedgerRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\AccountLedger\Contracts\AccountLedgerServiceInterface;
@@ -13,9 +14,11 @@ class AccountLedgerServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(AccountLedgerRepositoryInterface::class, AccountLedgerRepository::class);
+        $this->app->singleton(AccountLedgerRepositoryInterface::class, function ($app) {
+            return new AccountLedgerRepository(new AccountLedger());
+        });
         $this->app->singleton(AccountLedgerServiceInterface::class, AccountLedgerService::class);
-        
+
     }
 
     public function boot(): void

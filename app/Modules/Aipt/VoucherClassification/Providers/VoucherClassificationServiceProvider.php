@@ -8,12 +8,15 @@ use Modules\Aipt\VoucherClassification\Repositories\VoucherClassificationReposit
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\VoucherClassification\Contracts\VoucherClassificationServiceInterface;
 use Modules\Aipt\VoucherClassification\Services\VoucherClassificationService;
+use Modules\Aipt\VoucherClassification\Models\VoucherClassification;
 
 class VoucherClassificationServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(VoucherClassificationRepositoryInterface::class, VoucherClassificationRepository::class);
+        $this->app->singleton(VoucherClassificationRepositoryInterface::class, function ($app) {
+            return new VoucherClassificationRepository(new VoucherClassification());
+        });
         $this->app->singleton(VoucherClassificationServiceInterface::class, VoucherClassificationService::class);
     }
 

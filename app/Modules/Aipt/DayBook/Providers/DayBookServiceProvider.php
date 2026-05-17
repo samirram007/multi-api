@@ -8,12 +8,15 @@ use Modules\Aipt\DayBook\Repositories\DayBookRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\DayBook\Contracts\DayBookServiceInterface;
 use Modules\Aipt\DayBook\Services\DayBookService;
+use Modules\Aipt\DayBook\Models\DayBook;
 
 class DayBookServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(DayBookRepositoryInterface::class, DayBookRepository::class);
+        $this->app->singleton(DayBookRepositoryInterface::class, function ($app) {
+            return new DayBookRepository(new DayBook());
+        });
         $this->app->singleton(DayBookServiceInterface::class, DayBookService::class);
         
     }

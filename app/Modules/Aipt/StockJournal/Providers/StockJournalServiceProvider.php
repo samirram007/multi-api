@@ -8,12 +8,15 @@ use Modules\Aipt\StockJournal\Repositories\StockJournalRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\StockJournal\Contracts\StockJournalServiceInterface;
 use Modules\Aipt\StockJournal\Services\StockJournalService;
+use Modules\Aipt\StockJournal\Models\StockJournal;
 
 class StockJournalServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(StockJournalRepositoryInterface::class, StockJournalRepository::class);
+        $this->app->singleton(StockJournalRepositoryInterface::class, function ($app) {
+            return new StockJournalRepository(new StockJournal());
+        });
         $this->app->singleton(StockJournalServiceInterface::class, StockJournalService::class);
     }
 

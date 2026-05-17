@@ -4,6 +4,7 @@ namespace Modules\Aipt\AccountGroup\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Modules\Aipt\AccountGroup\Contracts\AccountGroupRepositoryInterface;
+use Modules\Aipt\AccountGroup\Models\AccountGroup;
 use Modules\Aipt\AccountGroup\Repositories\AccountGroupRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\AccountGroup\Contracts\AccountGroupServiceInterface;
@@ -13,9 +14,12 @@ class AccountGroupServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(AccountGroupRepositoryInterface::class, AccountGroupRepository::class);
+        $this->app->singleton(AccountGroupRepositoryInterface::class, function ($app) {
+            return new AccountGroupRepository(new AccountGroup());
+        });
+
         $this->app->singleton(AccountGroupServiceInterface::class, AccountGroupService::class);
-        
+
     }
 
     public function boot(): void

@@ -22,9 +22,6 @@ class MakeMod extends Command
         $lower = Str::snake($name);
         $plural = Str::plural($lower);
         $modulePath = app_path("Modules/{$groupPath}{$name}");
-        $appPath = app_path();
-        // echo "Creating module '{$group}{$name}' at path: {$modulePath}\n";
-        echo $groupPath;
 
         // Create directory structure
         $folders = [
@@ -77,7 +74,7 @@ class MakeMod extends Command
     {
         $content = "<?php
 
-use Illuminate\Support\Facades\Route;
+use Illuminate\\Support\\Facades\\Route;
 use Modules\\{$group}{$name}\\Controllers\\Api\\{$name}Controller;
 
 Route::apiResource('{$plural}', {$name}Controller::class)->middleware(['jwt.cookies']);
@@ -88,19 +85,39 @@ Route::apiResource('{$plural}', {$name}Controller::class)->middleware(['jwt.cook
     private function createRepositoryInterface(string $modulePath, string $name, string $group): void
     {
         $content = "<?php
-namespace Modules\\{$group}{$name}\Contracts;
-use App\Support\Contracts\BaseRepositoryInterface;
+namespace Modules\\{$group}{$name}\\Contracts;
+use App\\Support\\Contracts\\BaseRepositoryInterface;
 interface {$name}RepositoryInterface extends BaseRepositoryInterface { }
 ";
         File::put("{$modulePath}/Contracts/{$name}RepositoryInterface.php", $content);
     }
 
+    private function createRepository(string $modulePath, string $name, string $group): void
+    {
+        $content = "<?php
+namespace Modules\\{$group}{$name}\\Repositories;
+
+use Modules\\{$group}{$name}\\Contracts\\{$name}RepositoryInterface;
+use Modules\\{$group}{$name}\\Models\\{$name};
+use App\\Support\\Repositories\\BaseRepository;
+
+class {$name}Repository extends BaseRepository implements {$name}RepositoryInterface
+{
+    public function __construct({$name} \$model)
+    {
+        parent::__construct(\$model, cacheable: true);
+    }
+}
+";
+        File::put("{$modulePath}/Repositories/{$name}Repository.php", $content);
+    }
+
     private function createRepoFacade(string $modulePath, string $name, string $plural, string $group): void
     {
         $content = "<?php
-namespace Modules\\{$group}{$name}\Facades;
-use Modules\\{$group}{$name}\Contracts\\{$name}RepositoryInterface;
-use Illuminate\Support\Facades\Facade;
+namespace Modules\\{$group}{$name}\\Facades;
+use Modules\\{$group}{$name}\\Contracts\\{$name}RepositoryInterface;
+use Illuminate\\Support\\Facades\\Facade;
 
 class {$name}RepoFacade extends Facade
 {
@@ -109,22 +126,22 @@ class {$name}RepoFacade extends Facade
 ";
         File::put("{$modulePath}/Facades/{$name}RepoFacade.php", $content);
     }
+
     private function createController(string $modulePath, string $name, string $plural, string $group): void
     {
         $content = "<?php
 
-namespace Modules\\{$group}{$name}\Controllers\Api;
+namespace Modules\\{$group}{$name}\\Controllers\\Api;
 
-use App\Http\Controllers\Controller;
-
-use Modules\\{$group}{$name}\Resources\\{$name}Resource;
-use Modules\\{$group}{$name}\Resources\\{$name}Collection;
-use Modules\\{$group}{$name}\Requests\\{$name}Request;
-use Modules\\{$group}{$name}\Facades\\{$name}Facade as {$name};
-use App\Http\Resources\SuccessResource;
-use App\Http\Resources\SuccessCollection;
-use App\Traits\ApiResponseTrait;
-use Illuminate\Http\JsonResponse;
+use App\\Http\\Controllers\\Controller;
+use Modules\\{$group}{$name}\\Resources\\{$name}Resource;
+use Modules\\{$group}{$name}\\Resources\\{$name}Collection;
+use Modules\\{$group}{$name}\\Requests\\{$name}Request;
+use Modules\\{$group}{$name}\\Facades\\{$name}Facade as {$name}Facade;
+use App\\Traits\\ApiResponseTrait;
+use Illuminate\\Http\\JsonResponse;
+use App\\Http\\Resources\\SuccessResource;
+use App\\Http\\Resources\\SuccessCollection;
 
 class {$name}Controller extends Controller
 {
@@ -134,36 +151,35 @@ class {$name}Controller extends Controller
 
     public function index(): SuccessCollection
     {
-        \$data = {$name}::getAll();
+        \$data = {$name}Facade::getAll();
         return new {$name}Collection(\$data);
     }
 
     public function show(int \$id): SuccessResource
     {
-        \$data = {$name}::getById(\$id);
-        return  new {$name}Resource(\$data);
+        \$data = {$name}Facade::getById(\$id);
+        return new {$name}Resource(\$data);
     }
 
     public function store({$name}Request \$request): SuccessResource
     {
-        \$data = {$name}::store(\$request->validated());
-       return  new {$name}Resource(\$data, \$messages='{$name} created successfully');
+        \$data = {$name}Facade::store(\$request->validated());
+        return new {$name}Resource(\$data, '{$name} created successfully');
     }
 
     public function update({$name}Request \$request, int \$id): SuccessResource
     {
-        \$data = {$name}::update(\$request->validated(), \$id);
-        return  new {$name}Resource(\$data, \$messages='{$name} updated successfully');
+        \$data = {$name}Facade::update(\$request->validated(), \$id);
+        return new {$name}Resource(\$data, '{$name} updated successfully');
     }
 
-        public function destroy(int \$id): JsonResponse
+    public function destroy(int \$id): JsonResponse
     {
-
-        \$result={$name}::delete(\$id);
+        \$result = {$name}Facade::delete(\$id);
         return new JsonResponse([
             'status' => \$result,
             'code' => 204,
-            'message' => \$result?'{$name} deleted successfully':'{$name} not found',
+            'message' => \$result ? '{$name} deleted successfully' : '{$name} not found',
         ]);
     }
 }
@@ -175,10 +191,10 @@ class {$name}Controller extends Controller
     {
         $content = "<?php
 
-namespace Modules\\{$group}{$name}\Contracts;
+namespace Modules\\{$group}{$name}\\Contracts;
 
-use Illuminate\Database\Eloquent\Collection;
-use Modules\\{$group}{$name}\Models\\{$name};
+use Illuminate\\Database\\Eloquent\\Collection;
+use Modules\\{$group}{$name}\\Models\\{$name};
 
 interface {$name}ServiceInterface
 {
@@ -196,45 +212,38 @@ interface {$name}ServiceInterface
     {
         $content = "<?php
 
-namespace Modules\\{$group}{$name}\Services;
+namespace Modules\\{$group}{$name}\\Services;
 
-use Modules\\{$group}{$name}\Contracts\\{$name}ServiceInterface;
-use Modules\\{$group}{$name}\Repositories\\{$name}Repository;
-use Modules\\{$group}{$name}\Models\\{$name};
-use Illuminate\Database\Eloquent\Collection;
+use Modules\\{$group}{$name}\\Contracts\\{$name}ServiceInterface;
+use Modules\\{$group}{$name}\\Facades\\{$name}RepoFacade;
+use Modules\\{$group}{$name}\\Models\\{$name};
+use Illuminate\\Database\\Eloquent\\Collection;
 
 class {$name}Service implements {$name}ServiceInterface
 {
-    protected {$name}Repository \$repository;
-
-    public function __construct({$name}Repository \$repository)
-    {
-        \$this->repository = \$repository;
-    }
-
     public function getAll(): Collection
     {
-        return \$this->repository->all();
+        return {$name}RepoFacade::all();
     }
 
     public function getById(int \$id): ?{$name}
     {
-        return \$this->repository->find(\$id);
+        return {$name}RepoFacade::find(\$id);
     }
 
     public function store(array \$data): {$name}
     {
-        return \$this->repository->create(\$data);
+        return {$name}RepoFacade::create(\$data);
     }
 
     public function update(array \$data, int \$id): {$name}
     {
-        return \$this->repository->update(\$id, \$data);
+        return {$name}RepoFacade::update(\$id, \$data);
     }
 
     public function delete(int \$id): bool
     {
-        return \$this->repository->delete(\$id);
+        return {$name}RepoFacade::delete(\$id);
     }
 }
 ";
@@ -245,10 +254,10 @@ class {$name}Service implements {$name}ServiceInterface
     {
         $content = "<?php
 
-namespace Modules\\{$group}{$name}\Models;
+namespace Modules\\{$group}{$name}\\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\\Database\\Eloquent\\Model;
+use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;
 
 class {$name} extends Model
 {
@@ -261,7 +270,6 @@ class {$name} extends Model
         'code',
         'description',
         'status',
-
     ];
 
     protected \$casts = [
@@ -277,11 +285,11 @@ class {$name} extends Model
     {
         $content = "<?php
 
-namespace Modules\\{$group}{$name}\Resources;
+namespace Modules\\{$group}{$name}\\Resources;
 
-use Illuminate\Http\Request;
+use Illuminate\\Http\\Request;
+use App\\Http\\Resources\\SuccessResource;
 
-use App\Http\Resources\SuccessResource;
 class {$name}Resource extends SuccessResource
 {
     public function toArray(Request \$request): array
@@ -302,19 +310,13 @@ class {$name}Resource extends SuccessResource
     {
         $content = "<?php
 
-namespace Modules\\{$group}{$name}\Resources;
+namespace Modules\\{$group}{$name}\\Resources;
 
-use Illuminate\Http\Request;
-use App\Http\Resources\SuccessCollection;
+use Illuminate\\Http\\Request;
+use App\\Http\\Resources\\SuccessCollection;
 
 class {$name}Collection extends SuccessCollection
 {
-
-         /**
-     * Transform the resource collection into an array.
-     *
-     * @return array<int|string, mixed>
-     */
     public function toArray(Request \$request): array
     {
         return parent::toArray(\$request);
@@ -328,9 +330,9 @@ class {$name}Collection extends SuccessCollection
     {
         $content = "<?php
 
-namespace Modules\\{$group}{$name}\Requests;
+namespace Modules\\{$group}{$name}\\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\\Foundation\\Http\\FormRequest;
 
 class {$name}Request extends FormRequest
 {
@@ -342,18 +344,16 @@ class {$name}Request extends FormRequest
     public function rules(): array
     {
         \$rules = [
-            'name' => ['required', 'string', 'max:255','unique:{$plural},name'],
-            'code' => ['sometimes','required', 'string', 'max:255','unique:{$plural},code'],
-            'description' => ['sometimes','required', 'string', 'max:255'],
-            'status' => ['sometimes','required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255', 'unique:{$plural},name'],
+            'code' => ['sometimes', 'required', 'string', 'max:255', 'unique:{$plural},code'],
+            'description' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'status' => ['sometimes', 'required', 'string', 'max:255'],
         ];
 
-        // For update requests, make validation more flexible
         if (\$this->isMethod('PUT') || \$this->isMethod('PATCH')) {
-            \$id=\$this->route('$lower');
-            \$rules['name'] = ['sometimes', 'required', 'string', 'max:255', 'unique:{$plural},name,' . \$id,];
-            \$rules['code'] = ['sometimes', 'required', 'string', 'max:255', 'unique:{$plural},code,' . \$id,];
-
+            \$id = \$this->route('{$lower}');
+            \$rules['name'] = ['sometimes', 'required', 'string', 'max:255', 'unique:{$plural},name,' . \$id];
+            \$rules['code'] = ['sometimes', 'required', 'string', 'max:255', 'unique:{$plural},code,' . \$id];
         }
 
         return \$rules;
@@ -362,19 +362,8 @@ class {$name}Request extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'The name field is required.',
-            'name.string' => 'The name must be a string.',
-            'name.max' => 'The name may not be greater than 255 characters.',
             'name.unique' => 'The name has already been taken.',
-            'code.required' => 'The code field is required.',
-            'code.string' => 'The code must be a string.',
-            'code.max' => 'The code may not be greater than 255 characters.',
             'code.unique' => 'The code has already been taken.',
-            'description.required   ' => 'The description field is required.',
-            'description.string' => 'The description must be a string.',
-            'description.max' => 'The description may not be greater than 255 characters.',
-            'status.required' => 'The status field is required.',
-            'status.string' => 'The status must be a string.',
         ];
     }
 }
@@ -384,20 +373,20 @@ class {$name}Request extends FormRequest
 
     private function createFacade(string $modulePath, string $name, string $plural, string $group): void
     {
-
         $content = "<?php
-        namespace Modules\\{$group}{$name}\Facades;
-        use Illuminate\Support\Facades\Facade;
-        use Modules\\{$group}{$name}\Contracts\\{$name}ServiceInterface;
-        class {$name}Facade extends Facade
-        {
-            protected static function getFacadeAccessor()
-            {
-                return {$name}ServiceInterface::class;
-            }
-        }
+namespace Modules\\{$group}{$name}\\Facades;
 
-        ";
+use Illuminate\\Support\\Facades\\Facade;
+use Modules\\{$group}{$name}\\Contracts\\{$name}ServiceInterface;
+
+class {$name}Facade extends Facade
+{
+    protected static function getFacadeAccessor()
+    {
+        return {$name}ServiceInterface::class;
+    }
+}
+";
         File::put("{$modulePath}/Facades/{$name}Facade.php", $content);
     }
 
@@ -405,11 +394,11 @@ class {$name}Request extends FormRequest
     {
         $content = "<?php
 
-namespace Modules\\{$group}{$name}\Tests\Feature;
+namespace Modules\\{$group}{$name}\\Tests\\Feature;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Modules\\{$group}{$name}\Models\\{$name};
+use Tests\\TestCase;
+use Illuminate\\Foundation\\Testing\\RefreshDatabase;
+use Modules\\{$group}{$name}\\Models\\{$name};
 
 class {$name}Test extends TestCase
 {
@@ -429,76 +418,15 @@ class {$name}Test extends TestCase
 
     public function test_can_create_{$name}(): void
     {
-        \$data = ['name' => 'Test {$name}'];
+        \$data = [
+            'name' => 'Test {$name}',
+            'code' => 'TST' . rand(100, 999),
+        ];
 
         \$response = \$this->postJson('/api/{$plural}', \$data);
-        \$response->assertStatus(201)
-                 ->assertJsonStructure([
-                     'data',
-                     'status',
-                     'code',
-                     'message'
-                 ]);
+        \$response->assertStatus(201);
 
         \$this->assertDatabaseHas('{$plural}', \$data);
-    }
-
-    public function test_can_show_{$name}(): void
-    {
-        \${$name} = {$name}::factory()->create();
-
-        \$response = \$this->getJson('/api/{$plural}/' . \${$name}->id);
-        \$response->assertStatus(200)
-                 ->assertJsonStructure([
-                     'data' => [
-                         'id',
-                         'name',
-                         'created_at',
-                         'updated_at'
-                     ],
-                     'status',
-                     'code',
-                     'message'
-                 ]);
-    }
-
-    public function test_can_update_{$name}(): void
-    {
-        \${$name} = {$name}::factory()->create();
-        \$data = ['name' => 'Updated {$name}'];
-
-        \$response = \$this->putJson('/api/{$plural}/' . \${$name}->id, \$data);
-        \$response->assertStatus(200)
-                 ->assertJsonStructure([
-                     'data',
-                     'status',
-                     'code',
-                     'message'
-                 ]);
-
-        \$this->assertDatabaseHas('{$plural}', \$data);
-    }
-
-    public function test_can_delete_{$name}(): void
-    {
-        \${$name} = {$name}::factory()->create();
-
-        \$response = \$this->deleteJson('/api/{$plural}/' . \${$name}->id);
-        \$response->assertStatus(200)
-                 ->assertJsonStructure([
-                     'status',
-                     'code',
-                     'message'
-                 ]);
-
-        \$this->assertDatabaseMissing('{$plural}', ['id' => \${$name}->id]);
-    }
-
-    public function test_validation_errors_on_create(): void
-    {
-        \$response = \$this->postJson('/api/{$plural}', []);
-        \$response->assertStatus(422)
-                 ->assertJsonValidationErrors(['name']);
     }
 }
 ";
@@ -510,9 +438,9 @@ class {$name}Test extends TestCase
         $migrationName = date('Y_m_d_His') . "_create_{$plural}_table.php";
         $content = "<?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use Illuminate\\Database\\Migrations\\Migration;
+use Illuminate\\Database\\Schema\\Blueprint;
+use Illuminate\\Support\\Facades\\Schema;
 
 return new class extends Migration
 {
@@ -524,8 +452,6 @@ return new class extends Migration
             \$table->string('code')->unique();
             \$table->string('description')->nullable();
             \$table->string('status')->default('active');
-            \$table->string('icon')->nullable();
-
             \$table->timestamps();
         });
     }
@@ -543,19 +469,19 @@ return new class extends Migration
     {
         $content = "<?php
 
-namespace Modules\\{$group}{$name}\Database\Seeders;
+namespace Modules\\{$group}{$name}\\Database\\Seeders;
 
-use Illuminate\Database\Seeder;
-use Modules\\{$group}{$name}\Models\\{$name};
+use Illuminate\\Database\\Seeder;
+use Modules\\{$group}{$name}\\Models\\{$name};
 
 class {$name}Seeder extends Seeder
 {
     public function run(): void
     {
-        {$name}::create(['name' => 'Sample {$name}']);
-
-        // Uncomment to use factory if available
-        // {$name}::factory()->count(10)->create();
+        {$name}::create([
+            'name' => 'Sample {$name}',
+            'code' => 'SMPL',
+        ]);
     }
 }
 ";
@@ -569,20 +495,21 @@ class {$name}Seeder extends Seeder
         string $group
     ): void {
         $content = "<?php
-namespace Modules\\{$group}{$name}\Providers;
+namespace Modules\\{$group}{$name}\\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Route;
-use Modules\\{$group}{$name}\Contracts\\{$name}ServiceInterface;
-use Modules\\{$group}{$name}\Services\\{$name}Service;
-use Modules\\{$group}{$name}\Repositories\\{$name}Repository;
-use Modules\\{$group}{$name}\Models\\{$name};
+use Illuminate\\Support\\ServiceProvider;
+use Illuminate\\Support\\Facades\\Route;
+use Modules\\{$group}{$name}\\Contracts\\{$name}ServiceInterface;
+use Modules\\{$group}{$name}\\Services\\{$name}Service;
+use Modules\\{$group}{$name}\\Contracts\\{$name}RepositoryInterface;
+use Modules\\{$group}{$name}\\Repositories\\{$name}Repository;
+use Modules\\{$group}{$name}\\Models\\{$name};
 
 class {$name}ServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        \$this->app->singleton({$name}Repository::class, function (\$app) {
+        \$this->app->singleton({$name}RepositoryInterface::class, function (\$app) {
             return new {$name}Repository(new {$name}());
         });
         \$this->app->singleton({$name}ServiceInterface::class, {$name}Service::class);

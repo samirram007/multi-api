@@ -8,12 +8,15 @@ use Modules\Aipt\DistributorBook\Repositories\DistributorBookRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\DistributorBook\Contracts\DistributorBookServiceInterface;
 use Modules\Aipt\DistributorBook\Services\DistributorBookService;
+use Modules\Aipt\DistributorBook\Models\DistributorBook;
 
 class DistributorBookServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(DistributorBookRepositoryInterface::class, DistributorBookRepository::class);
+        $this->app->singleton(DistributorBookRepositoryInterface::class, function ($app) {
+            return new DistributorBookRepository(new DistributorBook());
+        });
         $this->app->singleton(DistributorBookServiceInterface::class, DistributorBookService::class);
         
     }

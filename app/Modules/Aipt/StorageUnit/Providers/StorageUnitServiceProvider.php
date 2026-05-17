@@ -8,12 +8,15 @@ use Modules\Aipt\StorageUnit\Repositories\StorageUnitRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\StorageUnit\Contracts\StorageUnitServiceInterface;
 use Modules\Aipt\StorageUnit\Services\StorageUnitService;
+use Modules\Aipt\StorageUnit\Models\StorageUnit;
 
 class StorageUnitServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(StorageUnitRepositoryInterface::class, StorageUnitRepository::class);
+        $this->app->singleton(StorageUnitRepositoryInterface::class, function ($app) {
+            return new StorageUnitRepository(new StorageUnit());
+        });
         $this->app->singleton(StorageUnitServiceInterface::class, StorageUnitService::class);
     }
 

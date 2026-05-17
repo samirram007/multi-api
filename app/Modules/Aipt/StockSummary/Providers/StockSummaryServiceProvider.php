@@ -8,12 +8,15 @@ use Modules\Aipt\StockSummary\Repositories\StockSummaryRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\StockSummary\Contracts\StockSummaryServiceInterface;
 use Modules\Aipt\StockSummary\Services\StockSummaryService;
+use Modules\Aipt\StockSummary\Models\StockSummary;
 
 class StockSummaryServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(StockSummaryRepositoryInterface::class, StockSummaryRepository::class);
+        $this->app->singleton(StockSummaryRepositoryInterface::class, function ($app) {
+            return new StockSummaryRepository(new StockSummary());
+        });
         $this->app->singleton(StockSummaryServiceInterface::class, StockSummaryService::class);
     }
 

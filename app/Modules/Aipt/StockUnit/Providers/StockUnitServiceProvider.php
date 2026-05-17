@@ -8,12 +8,15 @@ use Modules\Aipt\StockUnit\Repositories\StockUnitRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\StockUnit\Contracts\StockUnitServiceInterface;
 use Modules\Aipt\StockUnit\Services\StockUnitService;
+use Modules\Aipt\StockUnit\Models\StockUnit;
 
 class StockUnitServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(StockUnitRepositoryInterface::class, StockUnitRepository::class);
+        $this->app->singleton(StockUnitRepositoryInterface::class, function ($app) {
+            return new StockUnitRepository(new StockUnit());
+        });
         $this->app->singleton(StockUnitServiceInterface::class, StockUnitService::class);
     }
 

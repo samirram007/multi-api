@@ -8,12 +8,15 @@ use Modules\Aipt\StockItemPrice\Repositories\StockItemPriceRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\StockItemPrice\Contracts\StockItemPriceServiceInterface;
 use Modules\Aipt\StockItemPrice\Services\StockItemPriceService;
+use Modules\Aipt\StockItemPrice\Models\StockItemPrice;
 
 class StockItemPriceServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(StockItemPriceRepositoryInterface::class, StockItemPriceRepository::class);
+        $this->app->singleton(StockItemPriceRepositoryInterface::class, function ($app) {
+            return new StockItemPriceRepository(new StockItemPrice());
+        });
         $this->app->singleton(StockItemPriceServiceInterface::class, StockItemPriceService::class);
     }
 

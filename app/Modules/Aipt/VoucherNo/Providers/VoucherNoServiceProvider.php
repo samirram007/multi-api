@@ -8,12 +8,15 @@ use Modules\Aipt\VoucherNo\Repositories\VoucherNoRepository;
 use Illuminate\Support\Facades\Route;
 use Modules\Aipt\VoucherNo\Contracts\VoucherNoServiceInterface;
 use Modules\Aipt\VoucherNo\Services\VoucherNoService;
+use Modules\Aipt\VoucherNo\Models\VoucherNo;
 
 class VoucherNoServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(VoucherNoRepositoryInterface::class, VoucherNoRepository::class);
+        $this->app->singleton(VoucherNoRepositoryInterface::class, function ($app) {
+            return new VoucherNoRepository(new VoucherNo());
+        });
         $this->app->singleton(VoucherNoServiceInterface::class, VoucherNoService::class);
     }
 
