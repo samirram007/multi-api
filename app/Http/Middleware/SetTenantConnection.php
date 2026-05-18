@@ -17,18 +17,21 @@ class SetTenantConnection
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (app()->environment('testing')) {
-            $default = config('database.default');
-            Config::set('database.connections.tenant', config("database.connections.{$default}"));
-            Config::set('database.connections.central', config("database.connections.{$default}"));
-            Config::set('tenant_id', 1);
+        // if (app()->environment('testing')) {
+        //     $default = config('database.default');
+        //     Config::set('database.connections.tenant', config("database.connections.{$default}"));
+        //     Config::set('database.connections.central', config("database.connections.{$default}"));
+        //     Config::set('tenant_id', 1);
+        //     return $next($request);
+        // }
+
+        // dd($request->is(config('bypass.routes')));
+        //dd($request);
+        if ($request->is(config('bypass.routes'))) {
+            Config::set('database.default', 'central');
             return $next($request);
         }
 
-        if ($request->is(config('bypass.routes'))) {
-            // dd($request->is('api/onboarding/*'));
-            return $next($request);
-        }
 
         $tenantKey = $request->header('X-Tenant-Key');
 
@@ -38,7 +41,7 @@ class SetTenantConnection
 
         // 1. Fetch tenant configuration from 'central' database
         if (app()->environment('testing')) {
-            $tenant = (object)[
+            $tenant = (object) [
                 'id' => 1,
                 'api_key' => $tenantKey,
                 'db_name' => 'testing', // Use the default testing database
@@ -84,16 +87,21 @@ class SetTenantConnection
         Config::set('database.connections.tenant.driver', $driver);
         Config::set('database.connections.tenant.host', $tenant->db_host ?? env('DB_HOST', '127.0.0.1'));
         Config::set('database.connections.tenant.port', $tenant->db_port ?? env('DB_PORT', '3306'));
-        Config::set('database.connections.tenant.database', $tenant->db_name);
+        Config::set('database.connections.tenant.database', $tenant->db_name ?? '');
         Config::set('database.connections.tenant.username', $tenant->db_username ?? env('DB_USERNAME', ''));
         Config::set('database.connections.tenant.password', $tenant->db_password ?? env('DB_PASSWORD', ''));
 
-        if (app()->environment('testing')) {
-             Config::set('database.connections.tenant.driver', 'sqlite');
-             Config::set('database.connections.tenant.database', database_path('test_database.sqlite'));
+        if (empty(Config::get('database.connections.tenant.database'))) {
+             // If we reached here without a database name, it's a configuration error
+             // But we should probably allow the request to continue if it's not a tenant-specific route
+             // However, this middleware is applied globally.
         }
-        else if ($driver === 'sqlite') {
-             Config::set('database.connections.tenant.database', ':memory:');
+
+        if (app()->environment('testing')) {
+            Config::set('database.connections.tenant.driver', 'sqlite');
+            Config::set('database.connections.tenant.database', database_path('test_database.sqlite'));
+        } else if ($driver === 'sqlite') {
+            Config::set('database.connections.tenant.database', ':memory:');
         }
 
         // 3. Purge existing connection to apply settings

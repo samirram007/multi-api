@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'domain' => env('TELESCOPE_DOMAIN', 'https://poly-erp-api.local/telescope'),
+    'domain' => env('TELESCOPE_DOMAIN', null),
 
     /*
     |--------------------------------------------------------------------------
@@ -59,7 +59,7 @@ return [
 
     'storage' => [
         'database' => [
-            'connection' => env('DB_CONNECTION', 'central'),
+            'connection' => 'central',
             'chunk' => 1000,
         ],
     ],
@@ -109,7 +109,7 @@ return [
     */
 
     'only_paths' => [
-        // 'api/*'
+        'api/*'
     ],
 
     'ignore_paths' => [

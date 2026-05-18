@@ -6,7 +6,7 @@ namespace Modules\Document\Document\Services;
 use Modules\Document\Document\Contracts\DocumentServiceInterface;
 use Modules\Document\Document\Models\Document;
 use Modules\App\Tenant\Services\TenantManager;
-
+use Modules\Document\Document\Facades\DocumentRepoFacade;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Client\Response;
@@ -33,7 +33,7 @@ class DocumentService implements DocumentServiceInterface
             return;
         }
 
-        $folder = Document::find($parentId);
+        $folder = DocumentRepoFacade::find($parentId);
         if (!$folder) {
             return;
         }
@@ -47,7 +47,7 @@ class DocumentService implements DocumentServiceInterface
             'total_size' => $files->sum('size'),
         ];
 
-        $folder->update(['meta' => $meta]);
+        DocumentRepoFacade::update($meta, $parentId);
 
         // Recursive update to parent
         $this->updateFolderMetadata($folder->parent_id);
@@ -56,7 +56,7 @@ class DocumentService implements DocumentServiceInterface
 
     public function getAll(): Collection
     {
-        return Document::where('user_id', Auth::id())
+        return DocumentRepoFacade::query()->where('user_id', Auth::id())
             ->with('children')
             ->orderByRaw("document_type = 'folder' DESC, original_name ASC, updated_at DESC")
             ->get();
@@ -64,7 +64,7 @@ class DocumentService implements DocumentServiceInterface
 
     public function paginate(int $perPage = 15): LengthAwarePaginator
     {
-        return Document::where('user_id', Auth::id())
+        return DocumentRepoFacade::query()->where('user_id', Auth::id())
             ->with('children')
             ->orderByRaw("document_type = 'folder' DESC, original_name ASC, updated_at DESC")
             ->paginate($perPage);
@@ -72,7 +72,7 @@ class DocumentService implements DocumentServiceInterface
 
     public function find(int $id): ?Document
     {
-        return Document::where('user_id', Auth::id())->find($id);
+        return DocumentRepoFacade::query()->where('user_id', Auth::id())->find($id);
     }
 
     /*
@@ -114,7 +114,7 @@ class DocumentService implements DocumentServiceInterface
                     'public'
                 );
 
-                $document = Document::create([
+                $document = DocumentRepoFacade::create([
                     'user_id' => $userId,
                     'parent_id' => $parentId,
                     'document_type' => $documentType,
@@ -136,7 +136,7 @@ class DocumentService implements DocumentServiceInterface
 
     public function update(int $id, array $data): Document
     {
-        $document = Document::where('user_id', Auth::id())->findOrFail($id);
+        $document = DocumentRepoFacade::query()->where('user_id', Auth::id())->findOrFail($id);
 
         $document->update($data);
 
@@ -151,7 +151,7 @@ class DocumentService implements DocumentServiceInterface
 
     public function delete(int $id): bool
     {
-        $document = Document::where('user_id', Auth::id())->find($id);
+        $document = DocumentRepoFacade::query()->where('user_id', Auth::id())->find($id);
 
         if (!$document) {
             return false;
@@ -171,7 +171,7 @@ class DocumentService implements DocumentServiceInterface
     {
         return DB::transaction(function () use ($ids) {
 
-            $documents = Document::query()
+            $documents = DocumentRepoFacade::query()
                 ->where('user_id', Auth::id())
                 ->whereIn('id', $ids)
                 ->get();
@@ -207,7 +207,7 @@ class DocumentService implements DocumentServiceInterface
 
     public function getFile(int $id): Response
     {
-        $document = Document::where('user_id', Auth::id())->findOrFail($id);
+        $document = DocumentRepoFacade::query()->where('user_id', Auth::id())->findOrFail($id);
 
         $path = 'public/' . $document->path;
 
@@ -228,21 +228,21 @@ class DocumentService implements DocumentServiceInterface
     */
     public function getRoot(): Collection
     {
-        return Document::where('user_id', Auth::id())
+        return DocumentRepoFacade::query()->where('user_id', Auth::id())
             ->whereNull('parent_id')
             ->orderByRaw("document_type = 'folder' DESC, original_name ASC, updated_at DESC")
             ->get();
     }
     public function getChildren(int $parentId): Collection
     {
-        return Document::where('user_id', Auth::id())
+        return DocumentRepoFacade::query()->where('user_id', Auth::id())
             ->where('parent_id', $parentId)
             ->orderByRaw("document_type = 'folder' DESC, original_name ASC, updated_at DESC")
             ->get();
     }
     public function getTree(int $rootId = null): Collection
     {
-        $query = Document::where('user_id', Auth::id());
+        $query = DocumentRepoFacade::query()->where('user_id', Auth::id());
 
         if ($rootId) {
             $query->where('id', $rootId);
@@ -256,7 +256,7 @@ class DocumentService implements DocumentServiceInterface
     public function getPath(int $id): Collection
     {
         $path = collect();
-        $current = Document::find($id);
+        $current = DocumentRepoFacade::find($id);
 
         while ($current) {
             $path->prepend($current);
@@ -274,7 +274,7 @@ class DocumentService implements DocumentServiceInterface
 
     public function createFolder(array $data): Document
     {
-        $folder = Document::create([
+        $folder = DocumentRepoFacade::create([
             'user_id' => Auth::id(),
             'parent_id' => $data['parent_id'] ?? null,
             'original_name' => $data['name'],
@@ -296,7 +296,7 @@ class DocumentService implements DocumentServiceInterface
             if ($parentId == $childId) {
                 return true;
             }
-            $parent = Document::find($parentId);
+            $parent = DocumentRepoFacade::find($parentId);
             $parentId = $parent?->parent_id;
         }
 
@@ -305,7 +305,7 @@ class DocumentService implements DocumentServiceInterface
 
     public function rename(int $id, string $name): bool
     {
-        $document = Document::findOrFail($id);
+        $document = DocumentRepoFacade::query()->findOrFail($id);
         return $document->update(['original_name' => $name]);
     }
 
@@ -317,14 +317,14 @@ class DocumentService implements DocumentServiceInterface
 
     public function search(string $query): Collection
     {
-        return Document::where('user_id', Auth::id())
+        return DocumentRepoFacade::query()->where('user_id', Auth::id())
             ->where('original_name', 'like', "%{$query}%")
             ->get();
     }
 
     public function filter(array $filters): Collection
     {
-        $query = Document::where('user_id', Auth::id());
+        $query = DocumentRepoFacade::query()->where('user_id', Auth::id());
 
         if (!empty($filters['type'])) {
             $query->where('document_type', $filters['type']);
@@ -339,7 +339,7 @@ class DocumentService implements DocumentServiceInterface
 
     public function getByType(string $type): Collection
     {
-        return Document::where('user_id', Auth::id())
+        return DocumentRepoFacade::query()->where('user_id', Auth::id())
             ->where('document_type', $type)
             ->get();
     }
@@ -393,7 +393,7 @@ class DocumentService implements DocumentServiceInterface
             'public'
         );
 
-        return Document::create([
+        return DocumentRepoFacade::create([
             'user_id' => $userId,
             'parent_id' => $parentId,
             'document_type' => $documentType,
@@ -408,7 +408,7 @@ class DocumentService implements DocumentServiceInterface
 
     public function copy(int $id, ?int $targetParentId): Document
     {
-        $document = Document::findOrFail($id);
+        $document = DocumentRepoFacade::query()->findOrFail($id);
 
         $newDocument = $document->replicate();
         $newDocument->parent_id = $targetParentId;
@@ -425,13 +425,13 @@ class DocumentService implements DocumentServiceInterface
     }
     public function generateCopyName(string $originalName): string
     {
-        $copyCount = Document::where('name', 'like', "{$originalName} (copy%)")->count();
+        $copyCount = DocumentRepoFacade::query()->where('name', 'like', "{$originalName} (copy%)")->count();
         return "{$originalName} (copy" . ($copyCount > 0 ? " {$copyCount}" : "") . ")";
     }
 
     public function move(int $id, ?int $newParentId): bool
     {
-        $document = Document::findOrFail($id);
+        $document = DocumentRepoFacade::query()->findOrFail($id);
         $oldParentId = $document->parent_id;
 
         // Prevent circular move
@@ -451,7 +451,7 @@ class DocumentService implements DocumentServiceInterface
 
     public function getByUser(int $userId): Collection
     {
-        return Document::where('user_id', $userId)->get();
+        return DocumentRepoFacade::query()->where('user_id', $userId)->get();
     }
 
     /*
@@ -462,13 +462,13 @@ class DocumentService implements DocumentServiceInterface
 
     public function updateMeta(int $id, array $meta): bool
     {
-        $document = Document::where('user_id', Auth::id())->findOrFail($id);
+        $document = DocumentRepoFacade::query()->where('user_id', Auth::id())->findOrFail($id);
         return $document->update(['meta' => $meta]);
     }
 
     public function updateTags(int $id, array $tags): bool
     {
-        $document = Document::where('user_id', Auth::id())->findOrFail($id);
+        $document = DocumentRepoFacade::query()->where('user_id', Auth::id())->findOrFail($id);
         return $document->update(['tags' => $tags]);
     }
 
@@ -480,19 +480,19 @@ class DocumentService implements DocumentServiceInterface
 
     public function canView(int $id, int $userId): bool
     {
-        $document = Document::find($id);
+        $document = DocumentRepoFacade::query()->find($id);
         return $document && $document->user_id === $userId;
     }
 
     public function canEdit(int $id, int $userId): bool
     {
-        $document = Document::find($id);
+        $document = DocumentRepoFacade::query()->find($id);
         return $document && $document->user_id === $userId;
     }
 
     public function canDelete(int $id, int $userId): bool
     {
-        $document = Document::find($id);
+        $document = DocumentRepoFacade::query()->find($id);
         return $document && $document->user_id === $userId;
     }
 
@@ -507,6 +507,6 @@ class DocumentService implements DocumentServiceInterface
     private function generateFolderPath(Document $document): string
     {
         $path = [];
-        
+        return "";
     }
 }

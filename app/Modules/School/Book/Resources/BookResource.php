@@ -7,13 +7,25 @@ use Illuminate\Http\Request;
 use App\Http\Resources\SuccessResource;
 class BookResource extends SuccessResource
 {
-    public function toArray(Request $request): array
+        public function toArray(Request $request): array
     {
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'created_at' => $this->created_at?->toISOString(),
-            'updated_at' => $this->updated_at?->toISOString(),
+            'code' => $this->code,
+            'description' => $this->description,
+            'subjectId' => $this->subject_id,
+            'publicationYear' => $this->publication_year,
+            'pageCount' => $this->page_count,
+            'price' => $this->price,
+            'publishedAt' => $this->published_at?->toISOString(),
+            'publisher' => $this->publisher,
+            'author' => $this->author,
+            'illustrator' => $this->illustrator,
+            'translator' => $this->translator,
+            'coverImageId' => $this->cover_image_id,
+            'createdAt' => $this->created_at?->toISOString(),
+            'updatedAt' => $this->updated_at?->toISOString(),
         ];
     }
 }

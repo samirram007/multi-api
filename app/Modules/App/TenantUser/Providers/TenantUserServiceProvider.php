@@ -3,18 +3,23 @@ namespace Modules\App\TenantUser\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Modules\App\TenantUser\Contracts\TenantUserRepositoryInterface;
 use Modules\App\TenantUser\Contracts\TenantUserServiceInterface;
+use Modules\App\TenantUser\Models\TenantUser;
+use Modules\App\TenantUser\Repositories\TenantUserRepository;
 use Modules\App\TenantUser\Services\TenantUserService;
 
 class TenantUserServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        $this->app->singleton(
+            TenantUserRepositoryInterface::class,
+            function ($app) {
+                return new TenantUserRepository(new TenantUser());
+            }
+        );
         $this->app->singleton(TenantUserServiceInterface::class, TenantUserService::class);
-
-
-
-
     }
 
     public function boot(): void

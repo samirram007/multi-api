@@ -26,13 +26,13 @@ return Application::configure(basePath: dirname(__DIR__))
             App\Http\Middleware\NormalizeQueryParameters::class,
             Illuminate\Http\Middleware\HandleCors::class
         ]);
-$middleware->append(App\Http\Middleware\SetTenantConnection::class);
+        $middleware->append(App\Http\Middleware\SetTenantConnection::class);
 
         $middleware->alias([
             'jwt.cookies' => App\Http\Middleware\JWTFromCookie::class,
-'jwt.tenant.cookies' => App\Http\Middleware\JWTFromCookieTenant::class,
-'tenant' => App\Http\Middleware\SetTenantConnection::class,
-
+            'jwt.tenant.cookies' => App\Http\Middleware\JWTFromCookieTenant::class,
+            // 'tenant' => App\Http\Middleware\SetTenantConnection::class,
+    
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
@@ -41,7 +41,7 @@ $middleware->append(App\Http\Middleware\SetTenantConnection::class);
         $exceptions->render(function (AuthenticationException $e) {
             if (request()->is('api/*')) {
                 return ApiErrorResponse::respond(
-                    'Unauthenticated.',
+                    $e->getMessage() ?: 'Unauthenticated.',
                     401,
                     null,
                     'AUTH_401'

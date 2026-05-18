@@ -2,39 +2,39 @@
 
 namespace Modules\App\TenantUser\Services;
 
+use Illuminate\Support\Facades\Log;
 use Modules\App\TenantUser\Contracts\TenantUserServiceInterface;
+use Modules\App\TenantUser\Facades\TenantUserRepoFacade;
 use Modules\App\TenantUser\Models\TenantUser;
 use Illuminate\Database\Eloquent\Collection;
 
 class TenantUserService implements TenantUserServiceInterface
 {
-    protected $resource=[];
+    protected array $resource = [];
 
     public function getAll(): Collection
     {
-        return TenantUser::with($this->resource)->get();
+        return TenantUserRepoFacade::with($this->resource)->get();
     }
 
     public function getById(int $id): ?TenantUser
     {
-        return TenantUser::with($this->resource)->findOrFail($id);
+       Log::info("Fetching tenant user with ID: $id");
+        return TenantUserRepoFacade::with($this->resource)->find($id);
     }
 
     public function store(array $data): TenantUser
     {
-        return TenantUser::create($data);
+        return TenantUserRepoFacade::create($data);
     }
 
     public function update(array $data, int $id): TenantUser
     {
-        $record = TenantUser::findOrFail($id);
-        $record->update($data);
-        return $record->fresh();
+        return TenantUserRepoFacade::with($this->resource)->find($id)->update($data);
     }
 
     public function delete(int $id): bool
     {
-        $record = TenantUser::findOrFail($id);
-        return $record->delete();
+        return TenantUserRepoFacade::delete($id);
     }
 }

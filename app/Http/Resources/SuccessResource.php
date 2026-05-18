@@ -30,6 +30,11 @@ class SuccessResource extends JsonResource
         return is_array($this->resource) ? $this->resource : $this->resource->toArray();
     }
 
+    public function toResponse($request)
+    {
+        return parent::toResponse($request)->setStatusCode($this->successCode);
+    }
+
     public function with(Request $request): array
     {
         return [

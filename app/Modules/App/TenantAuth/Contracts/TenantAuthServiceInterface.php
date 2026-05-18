@@ -12,5 +12,6 @@ interface TenantAuthServiceInterface
     public function login(array $credentials): ?array;
     public function register(array $data): ?array;
     public function profile(): TenantUser;
+    public function logout(): void;
 
 }

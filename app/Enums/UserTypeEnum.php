@@ -5,6 +5,7 @@ namespace App\Enums;
 enum UserTypeEnum: string
 {
     case ADMIN = 'admin';
+    case OWNER = 'owner';
     case DEVELOPER = 'developer';
     case SUPER_ADMIN = 'super_admin';
     case STUDENT = 'student';

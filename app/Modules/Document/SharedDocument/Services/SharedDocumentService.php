@@ -3,38 +3,36 @@
 namespace Modules\Document\SharedDocument\Services;
 
 use Modules\Document\SharedDocument\Contracts\SharedDocumentServiceInterface;
+use Modules\Document\SharedDocument\Facades\SharedDocumentRepoFacade;
 use Modules\Document\SharedDocument\Models\SharedDocument;
 use Illuminate\Database\Eloquent\Collection;
 
 class SharedDocumentService implements SharedDocumentServiceInterface
 {
-    protected $resource = [];
+    protected $resource = ['user', 'document'];
 
     public function getAll(): Collection
     {
-        return SharedDocument::with($this->resource)->get();
+        return SharedDocumentRepoFacade::all($this->resource);
     }
 
     public function getById(int $id): ?SharedDocument
     {
-        return SharedDocument::with($this->resource)->findOrFail($id);
+        return SharedDocumentRepoFacade::find($id, $this->resource);
     }
 
     public function store(array $data): SharedDocument
     {
-        return SharedDocument::create($data);
+        return SharedDocumentRepoFacade::create($data);
     }
 
     public function update(array $data, int $id): SharedDocument
     {
-        $record = SharedDocument::findOrFail($id);
-        $record->update($data);
-        return $record->fresh();
+        return SharedDocumentRepoFacade::update($data, $id);
     }
 
     public function delete(int $id): bool
     {
-        $record = SharedDocument::findOrFail($id);
-        return $record->delete();
+        return SharedDocumentRepoFacade::delete($id);
     }
 }

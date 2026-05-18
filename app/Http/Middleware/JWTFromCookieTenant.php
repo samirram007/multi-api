@@ -21,21 +21,28 @@ class JWTFromCookieTenant
         $token = $request->bearerToken() ?? $request->cookie('tenant_token');
 
         if (!$token) {
-            throw new AuthenticationException('No token provided.', ['api']);
+             throw new AuthenticationException('Unauthenticated: No token provided in header or cookie (tenant_token).', ['tenant_api']);
         }
 
         try {
             Auth::shouldUse('tenant_api');
             JWTAuth::setToken($token);
-            $tenantUser = JWTAuth::authenticate();
+            $user = JWTAuth::authenticate();
 
-            if ($tenantUser) {
-                Auth::guard('tenant_api')->login($tenantUser);
-            } else {
-                throw new AuthenticationException('Tenant User Unauthenticated.');
+            if (!$user) {
+                throw new AuthenticationException('Unauthenticated: Token valid but user not found.', ['tenant_api']);
             }
-        } catch (JWTException $e) {
-            throw new AuthenticationException('Invalid or expired token.', ['tenant_api']);
+
+            Auth::guard('tenant_api')->setUser($user);
+
+        } catch (\PHPOpenSourceSaver\JWTAuth\Exceptions\TokenExpiredException $e) {
+            throw new AuthenticationException('Unauthenticated: Token has expired.', ['tenant_api']);
+        } catch (\PHPOpenSourceSaver\JWTAuth\Exceptions\TokenInvalidException $e) {
+            throw new AuthenticationException('Unauthenticated: Token is invalid.', ['tenant_api']);
+        } catch (\PHPOpenSourceSaver\JWTAuth\Exceptions\JWTException $e) {
+            throw new AuthenticationException('Unauthenticated: JWT error: ' . $e->getMessage(), ['tenant_api']);
+        } catch (\Exception $e) {
+            throw new AuthenticationException('Unauthenticated: ' . $e->getMessage(), ['tenant_api']);
         }
 
         return $next($request);

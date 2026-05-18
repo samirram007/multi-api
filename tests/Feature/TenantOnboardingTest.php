@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Modules\App\Tenant\Models\Tenant;
-use Modules\App\Tenant\Models\TenantUser;
+use Modules\App\TenantUser\Models\TenantUser;
 
 test('it can register an organizational owner', function () {
     $response = $this->postJson('/api/onboarding/register', [

@@ -33,12 +33,13 @@ class TenantAuthService implements TenantAuthServiceInterface
 
     public function register(array $data): ?array
     {
-        $data = TenantUserFacade::store($data);
+        $data['user_type'] = $data['user_type'] ?? 'owner';
+        $password = $data['password'];
+        $user = TenantUserFacade::store($data);
 
         $token = auth('tenant_api')->attempt([
-            'email' => $data['email'],
-            'password' => $data['password'],
-            'tenant_id' => config('tenant_id')
+            'email' => $user->email,
+            'password' => $password,
         ]);
 
         if (!$token) {
@@ -48,7 +49,10 @@ class TenantAuthService implements TenantAuthServiceInterface
         return [
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth('tenant_api')->factory()->getTTL() * 60
+            'expires_in' => auth('tenant_api')->factory()->getTTL() * 60,
+            'name' => $user->name,
+            'email' => $user->email,
+            'user_type' => $user->user_type,
         ];
 
     }
@@ -56,5 +60,10 @@ class TenantAuthService implements TenantAuthServiceInterface
     public function profile(): TenantUser
     {
         return TenantUserFacade::getById(auth('tenant_api')->user()->id);
+    }
+
+    public function logout(): void
+    {
+        auth('tenant_api')->logout();
     }
 }

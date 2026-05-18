@@ -4,95 +4,79 @@ namespace Modules\App\TenantAuth\Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Modules\App\TenantAuth\Models\TenantAuth;
+use Modules\App\TenantUser\Models\TenantUser;
+use Illuminate\Support\Facades\Hash;
 
 class TenantAuthTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_can_list_tenant_auths(): void
+    public function test_can_register_tenant_user(): void
     {
-        $response = $this->getJson('/api/tenant_auths');
-        $response->assertStatus(200)
-                 ->assertJsonStructure([
-                     'data',
-                     'status',
-                     'code',
-                     'message'
-                 ]);
-    }
+        $data = [
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'password' => 'password',
+            'password_confirmation' => 'password',
+        ];
 
-    public function test_can_create_TenantAuth(): void
-    {
-        $data = ['name' => 'Test TenantAuth'];
+        $response = $this->postJson('/api/onboarding/register', $data);
 
-        $response = $this->postJson('/api/tenant_auths', $data);
-        $response->assertStatus(201)
-                 ->assertJsonStructure([
-                     'data',
-                     'status',
-                     'code',
-                     'message'
-                 ]);
-
-        $this->assertDatabaseHas('tenant_auths', $data);
-    }
-
-    public function test_can_show_TenantAuth(): void
-    {
-        $TenantAuth = TenantAuth::factory()->create();
-
-        $response = $this->getJson('/api/tenant_auths/' . $TenantAuth->id);
         $response->assertStatus(200)
                  ->assertJsonStructure([
                      'data' => [
-                         'id',
-                         'name',
-                         'created_at',
-                         'updated_at'
+                         'access_token',
+                         'token_type',
+                         'expires_in'
                      ],
                      'status',
-                     'code',
-                     'message'
+                     'code'
                  ]);
+
+        $this->assertDatabaseHas('tenant_users', ['email' => 'test@example.com']);
     }
 
-    public function test_can_update_TenantAuth(): void
+    public function test_can_login_tenant_user(): void
     {
-        $TenantAuth = TenantAuth::factory()->create();
-        $data = ['name' => 'Updated TenantAuth'];
+        $user = TenantUser::create([
+            'name' => 'Login User',
+            'email' => 'login@example.com',
+            'password' => Hash::make('password'),
+        ]);
 
-        $response = $this->putJson('/api/tenant_auths/' . $TenantAuth->id, $data);
+        $data = [
+            'email' => 'login@example.com',
+            'password' => 'password',
+        ];
+
+        $response = $this->postJson('/api/onboarding/login', $data);
+
         $response->assertStatus(200)
                  ->assertJsonStructure([
-                     'data',
+                     'data' => [
+                         'access_token',
+                         'token_type',
+                         'expires_in'
+                     ],
                      'status',
-                     'code',
-                     'message'
+                     'code'
                  ]);
-
-        $this->assertDatabaseHas('tenant_auths', $data);
     }
 
-    public function test_can_delete_TenantAuth(): void
+    public function test_can_get_profile(): void
     {
-        $TenantAuth = TenantAuth::factory()->create();
+        $user = TenantUser::create([
+            'name' => 'Profile User',
+            'email' => 'profile@example.com',
+            'password' => Hash::make('password'),
+        ]);
 
-        $response = $this->deleteJson('/api/tenant_auths/' . $TenantAuth->id);
+        $token = auth('tenant_api')->login($user);
+
+        $response = $this->withHeader('Authorization', 'Bearer ' . $token)
+                         ->getJson('/api/onboarding/profile');
+
         $response->assertStatus(200)
-                 ->assertJsonStructure([
-                     'status',
-                     'code',
-                     'message'
-                 ]);
-
-        $this->assertDatabaseMissing('tenant_auths', ['id' => $TenantAuth->id]);
-    }
-
-    public function test_validation_errors_on_create(): void
-    {
-        $response = $this->postJson('/api/tenant_auths', []);
-        $response->assertStatus(422)
-                 ->assertJsonValidationErrors(['name']);
+                 ->assertJsonPath('data.email', 'profile@example.com');
     }
 }

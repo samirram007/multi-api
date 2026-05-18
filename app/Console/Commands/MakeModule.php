@@ -64,7 +64,7 @@ class MakeModule extends Command
         $content = "<?php
 
 use Illuminate\Support\Facades\Route;
-use App\Modules\\{$name}\Controllers\Api\\{$name}Controller;
+use Modules\\{$name}\Controllers\Api\\{$name}Controller;
 
 Route::apiResource('{$plural}', {$name}Controller::class)->middleware(['jwt.cookies']);
 ";
@@ -75,13 +75,13 @@ Route::apiResource('{$plural}', {$name}Controller::class)->middleware(['jwt.cook
     {
         $content = "<?php
 
-namespace App\Modules\\{$name}\Controllers\Api;
+namespace Modules\\{$name}\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Modules\\{$name}\Contracts\\{$name}ServiceInterface;
-use App\Modules\\{$name}\Resources\\{$name}Resource;
-use App\Modules\\{$name}\Resources\\{$name}Collection;
-use App\Modules\\{$name}\Requests\\{$name}Request;
+use Modules\\{$name}\Contracts\\{$name}ServiceInterface;
+use Modules\\{$name}\Resources\\{$name}Resource;
+use Modules\\{$name}\Resources\\{$name}Collection;
+use Modules\\{$name}\Requests\\{$name}Request;
 use App\Http\Resources\SuccessResource;
 use App\Http\Resources\SuccessCollection;
 use App\Traits\ApiResponseTrait;
@@ -136,10 +136,10 @@ class {$name}Controller extends Controller
     {
         $content = "<?php
 
-namespace App\Modules\\{$name}\Contracts;
+namespace Modules\\{$name}\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use App\Modules\\{$name}\Models\\{$name};
+use Modules\\{$name}\Models\\{$name};
 
 interface {$name}ServiceInterface
 {
@@ -157,10 +157,10 @@ interface {$name}ServiceInterface
     {
         $content = "<?php
 
-namespace App\Modules\\{$name}\Services;
+namespace Modules\\{$name}\Services;
 
-use App\Modules\\{$name}\Contracts\\{$name}ServiceInterface;
-use App\Modules\\{$name}\Models\\{$name};
+use Modules\\{$name}\Contracts\\{$name}ServiceInterface;
+use Modules\\{$name}\Models\\{$name};
 use Illuminate\Database\Eloquent\Collection;
 
 class {$name}Service implements {$name}ServiceInterface
@@ -203,7 +203,7 @@ class {$name}Service implements {$name}ServiceInterface
     {
         $content = "<?php
 
-namespace App\Modules\\{$name}\Models;
+namespace Modules\\{$name}\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -235,7 +235,7 @@ class {$name} extends Model
     {
         $content = "<?php
 
-namespace App\Modules\\{$name}\Resources;
+namespace Modules\\{$name}\Resources;
 
 use Illuminate\Http\Request;
 
@@ -260,7 +260,7 @@ class {$name}Resource extends SuccessResource
     {
         $content = "<?php
 
-namespace App\Modules\\{$name}\Resources;
+namespace Modules\\{$name}\Resources;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\SuccessCollection;
@@ -286,7 +286,7 @@ class {$name}Collection extends SuccessCollection
     {
         $content = "<?php
 
-namespace App\Modules\\{$name}\Requests;
+namespace Modules\\{$name}\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -344,11 +344,11 @@ class {$name}Request extends FormRequest
     {
         $content = "<?php
 
-namespace App\Modules\\{$name}\Tests\Feature;
+namespace Modules\\{$name}\Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Modules\\{$name}\Models\\{$name};
+use Modules\\{$name}\Models\\{$name};
 
 class {$name}Test extends TestCase
 {
@@ -482,10 +482,10 @@ return new class extends Migration
     {
         $content = "<?php
 
-namespace App\Modules\\{$name}\Database\Seeders;
+namespace Modules\\{$name}\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Modules\\{$name}\Models\\{$name};
+use Modules\\{$name}\Models\\{$name};
 
 class {$name}Seeder extends Seeder
 {
@@ -505,12 +505,12 @@ class {$name}Seeder extends Seeder
     {
         $content = "<?php
 
-namespace App\Modules\\{$name}\Providers;
+namespace Modules\\{$name}\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\\{$name}\Contracts\\{$name}ServiceInterface;
-use App\Modules\\{$name}\Services\\{$name}Service;
+use Modules\\{$name}\Contracts\\{$name}ServiceInterface;
+use Modules\\{$name}\Services\\{$name}Service;
 
 class {$name}ServiceProvider extends ServiceProvider
 {

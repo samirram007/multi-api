@@ -6,12 +6,18 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Modules\Document\SharedDocument\Contracts\SharedDocumentServiceInterface;
 use Modules\Document\SharedDocument\Services\SharedDocumentService;
+use Modules\Document\SharedDocument\Contracts\SharedDocumentRepositoryInterface;
+use Modules\Document\SharedDocument\Repositories\SharedDocumentRepository;
+use Modules\Document\SharedDocument\Models\SharedDocument;
 
 class SharedDocumentServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(SharedDocumentServiceInterface::class, SharedDocumentService::class);
+        $this->app->singleton(SharedDocumentRepositoryInterface::class, function ($app) {
+            return new SharedDocumentRepository(new SharedDocument());
+        });
+        $this->app->singleton(SharedDocumentServiceInterface::class, SharedDocumentService::class);
     }
 
     public function boot(): void

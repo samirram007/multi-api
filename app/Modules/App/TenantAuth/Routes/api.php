@@ -16,6 +16,7 @@ Route::prefix('onboarding')->group(function () {
     //     Route::get('profile', [TenantAuthController::class, 'profile']);
     // });
     Route::get('profile', [TenantAuthController::class, 'profile'])->middleware(['jwt.tenant.cookies']);
+    Route::get('logout', [TenantAuthController::class, 'logout'])->middleware(['jwt.tenant.cookies']);
     Route::post('register', [TenantAuthController::class, 'register']);
     Route::post('login', [TenantAuthController::class, 'login']);
 });
