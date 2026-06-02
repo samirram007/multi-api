@@ -20,7 +20,8 @@ class AuthController extends Controller
     private string $domain;
     private int $token_expire_duration;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->domain = strtolower(config('session.domain', 'localhost'));
 
         $this->token_expire_duration = config('session.lifetime', 120) * 60;
@@ -115,8 +116,8 @@ class AuthController extends Controller
         return response()->json([
             'success' => true,
             'message' => $message,
-            'access_token' => $token,
-            'token_type' => 'bearer',
+            'accessToken' => $token,
+            'tokenType' => 'bearer',
             'tokenDuration' => $this->token_expire_duration,
             'expireOn' => now()->addMinutes($this->token_expire_duration)->toIso8601String(),
 

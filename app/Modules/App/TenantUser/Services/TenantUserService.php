@@ -19,7 +19,7 @@ class TenantUserService implements TenantUserServiceInterface
 
     public function getById(int $id): ?TenantUser
     {
-       Log::info("Fetching tenant user with ID: $id");
+        // Log::info("Fetching tenant user with ID: $id");
         return TenantUserRepoFacade::with($this->resource)->find($id);
     }
 

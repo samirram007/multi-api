@@ -60,10 +60,10 @@ trait Cacheable
      */
     protected function getCacheKey(string $method, array $params = []): string
     {
-        return $this->getCachePrefix() . 
-               '_v' . $this->getCacheVersion() . 
-               '_' . $method . 
-               '_' . md5(json_encode($params));
+        return $this->getCachePrefix() .
+            '_v' . $this->getCacheVersion() .
+            '_' . $method .
+            '_' . md5(json_encode($params));
     }
 
     /**

@@ -13,10 +13,10 @@ class TenantUserResource extends SuccessResource
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
-            'user_type' => $this->user_type,
+            'userType' => $this->user_type,
             'status' => $this->status,
-            'created_at' => $this->created_at?->toISOString(),
-            'updated_at' => $this->updated_at?->toISOString(),
+            'createdAt' => $this->created_at?->toISOString(),
+            'updatedAt' => $this->updated_at?->toISOString(),
         ];
     }
 }

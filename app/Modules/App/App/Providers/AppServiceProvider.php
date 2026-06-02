@@ -5,15 +5,15 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Modules\App\App\Contracts\AppServiceInterface;
 use Modules\App\App\Services\AppService;
+use Modules\App\App\Contracts\AppRepositoryInterface;
+use Modules\App\App\Repositories\AppRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
         $this->app->singleton(AppServiceInterface::class, AppService::class);
-
-
-
+        $this->app->singleton(AppRepositoryInterface::class, AppRepository::class);
     }
 
     public function boot(): void
